@@ -56,7 +56,6 @@ class MainActivity : AppCompatActivity() {
 
         hideImages()
 
-        // NOTE: the timer must be started as shown below
         object : CountDownTimer(30000, 3000) {
             override fun onFinish() {
                 timerTextView.text = ""
