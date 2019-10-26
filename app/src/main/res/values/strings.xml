@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Catch Piggy Snake</string>
+    <string name="action_settings">Action Settings</string>
+    <string name="title_activity_game_over">GameOverActivity</string>
+</resources>
