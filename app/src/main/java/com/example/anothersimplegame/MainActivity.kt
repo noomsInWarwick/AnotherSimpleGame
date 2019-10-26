@@ -60,10 +60,10 @@ class MainActivity : AppCompatActivity() {
         object : CountDownTimer(30000, 3000) {
             override fun onFinish() {
                 timerTextView.text = ""
-                imageView5.setImageDrawable(getResources().getDrawable(R.drawable.piggysnake_smiley_old));
+                imageView5.setImageDrawable(getResources().getDrawable(R.drawable.piggysnake_smiley_old))
                 // imageView5.setWidth(imageView5.maxWidth * 2)
                 imageView5.visibility = View.VISIBLE
-                gameActive = false;
+                gameActive = false
                 handler.removeCallbacks(runnable)
             }
 
