@@ -35,25 +35,13 @@ class MainActivity : AppCompatActivity() {
         //home navigation
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         window.statusBarColor = ContextCompat.getColor(this, R.color.colorAccent)
+
         gameActive = true;
-
+        playAgainButton.visibility = View.INVISIBLE
         score = 0
-        imageList = arrayListOf(
-            imageView1,
-            imageView2,
-            imageView3,
-            imageView4,
-            imageView5,
-            imageView6,
-            imageView7,
-            imageView8,
-            imageView9
-        )
 
-        // load and then randomize the list to determine the order of the images display.
-        randomIndexesList = arrayListOf(0, 1, 2, 3, 4, 5, 6, 7, 8)
-        randomIndexesList.shuffle()
-
+        initImagesList()
+        initRandomIndexes()
         hideImages()
 
         object : CountDownTimer(30000, 3000) {
@@ -62,6 +50,7 @@ class MainActivity : AppCompatActivity() {
                 imageView5.setImageDrawable(getResources().getDrawable(R.drawable.piggysnake_smiley_old))
                 // imageView5.setWidth(imageView5.maxWidth * 2)
                 imageView5.visibility = View.VISIBLE
+                playAgainButton.visibility = View.VISIBLE
                 gameActive = false
                 handler.removeCallbacks(runnable)
             }
@@ -70,6 +59,11 @@ class MainActivity : AppCompatActivity() {
                 timerTextView.text = "Time: " + p0 / 3000
             }
         }.start()
+    }
+
+    override fun onRestart() {
+        super.onRestart();
+        // setContentView(R.layout.add_entry);
     }
 
     //setting menu in action bar
@@ -145,4 +139,33 @@ class MainActivity : AppCompatActivity() {
             displayedImageList.add(imageList[imageList.indexOf(view)])
         }
     }
+
+    fun doRestart(view: View) {
+
+        finish();
+        startActivity(getIntent());
+    }
+
+    fun initImagesList() {
+
+        imageList = arrayListOf(
+            imageView1,
+            imageView2,
+            imageView3,
+            imageView4,
+            imageView5,
+            imageView6,
+            imageView7,
+            imageView8,
+            imageView9
+        )
+    }
+
+    fun initRandomIndexes() {
+
+        // load and then randomize the list to determine the order of the images display.
+        randomIndexesList = arrayListOf(0, 1, 2, 3, 4, 5, 6, 7, 8)
+        randomIndexesList.shuffle()
+    }
+
 }
