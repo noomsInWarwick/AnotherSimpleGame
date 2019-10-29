@@ -154,25 +154,45 @@
         android:gravity="center"
         android:onClick="doRestart"
         android:text="Score:  0"
+        android:textStyle="bold"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="24sp"
-        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/gridLayout" />
 
-    <Button
+    <!-- <Button
+         android:id="@+id/playAgainButton"
+         android:layout_width="125dp"
+         android:layout_height="60dp"
+         android:onClick="doRestart"
+         android:text="Play again"
+         app:layout_constraintBottom_toBottomOf="parent"
+         app:layout_constraintEnd_toEndOf="parent"
+         app:layout_constraintHorizontal_bias="0.055"
+         app:layout_constraintStart_toStartOf="parent"
+         app:layout_constraintTop_toBottomOf="@+id/gridLayout"
+         app:layout_constraintVertical_bias="0.578" /> -->
+
+    <ImageButton
         android:id="@+id/playAgainButton"
-        android:layout_width="125dp"
-        android:layout_height="60dp"
+        android:layout_width="68dp"
+        android:layout_height="79dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:adjustViewBounds="true"
+        android:backgroundTint="@color/colorAccent"
         android:onClick="doRestart"
-        android:text="Play again"
+        android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.055"
+        app:layout_constraintEnd_toStartOf="@+id/scoreTextView"
+        app:layout_constraintHorizontal_bias="0.58"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/gridLayout"
-        app:layout_constraintVertical_bias="0.578" />
+        app:layout_constraintVertical_bias="0.531"
+        app:srcCompat="@drawable/repeat" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

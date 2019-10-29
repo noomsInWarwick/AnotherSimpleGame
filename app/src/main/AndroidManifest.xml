@@ -8,10 +8,6 @@
         android:roundIcon="@mipmap/piggy_snake_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity
-            android:name=".GameOverActivity"
-            android:label="@string/title_activity_game_over"
-            android:theme="@style/NoActionBar"></activity>
         <!-- android:theme="@style/AppTheme" -->
         <activity android:name=".MainActivity">
             <intent-filter>

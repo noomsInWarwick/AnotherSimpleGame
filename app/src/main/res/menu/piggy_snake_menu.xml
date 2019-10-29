@@ -1,9 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-    <!-- Settings, should always be in the overflow -->
+    <!-- Settings, should always be in the overflow -->+
     <item
-        android:id="@+id/action_settings"
-        android:title="@string/action_settings"
-        app:showAsAction="never" />
+        android:id="@+id/settings"
+        android:title="@string/settings"
+        app:showAsAction="never">
+        <menu>
+            <item
+                android:id="@+id/vibrate"
+                android:title="@string/vibrate"
+                app:showAsAction="never" />
+        </menu>
+    </item>
+    <item
+        android:id="@+id/languages"
+        android:title="@string/languages"
+        app:showAsAction="never">
+        <menu>
+            <item
+                android:id="@+id/language_english"
+                android:title="@string/english"
+                app:showAsAction="never" />
+            <item
+                android:id="@+id/language_espanol"
+                android:title="@string/espanol"
+                app:showAsAction="never" />
+            <item
+                android:id="@+id/language_francais"
+                android:title="@string/francais"
+                app:showAsAction="never" />
+            <item
+                android:id="@+id/language_portuguese"
+                android:title="@string/portuguese"
+                app:showAsAction="never" />
+            <item
+                android:id="@+id/language_chinese"
+                android:title="@string/chinese"
+                app:showAsAction="never" />
+        </menu>
+    </item>
+    <item
+        android:id="@+id/themes"
+        android:title="@string/themes"
+        app:showAsAction="never">
+        <menu>
+            <item
+                android:id="@+id/seasons"
+                android:title="@string/seasons"
+                app:showAsAction="never">
+                <menu>
+                    <item
+                        android:id="@+id/winter"
+                        android:title="@string/winter"
+                        app:showAsAction="never" />
+                    <item
+                        android:id="@+id/spring"
+                        android:title="@string/spring"
+                        app:showAsAction="never" />
+                    <item
+                        android:id="@+id/summer"
+                        android:title="@string/summer"
+                        app:showAsAction="never" />
+                    <item
+                        android:id="@+id/autumn"
+                        android:title="@string/autumn"
+                        app:showAsAction="never" />
+                </menu>
+            </item>
+            <item
+                android:id="@+id/holidays"
+                android:title="@string/holidays"
+                app:showAsAction="never" />
+        </menu>
+    </item>
+
 </menu>

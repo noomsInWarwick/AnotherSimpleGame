@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity() {
     var displayedIdx = 0
     var clickedId = 0
     var randomIdx = 0
-    var gameActive = true;
+    var gameActive = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -79,7 +79,7 @@ class MainActivity : AppCompatActivity() {
 
     // actions on click menu items
     override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
-        R.id.action_settings -> {
+        R.id.settings -> {
             // User chose the "Settings" item, show the app settings UI...
             true
         }
