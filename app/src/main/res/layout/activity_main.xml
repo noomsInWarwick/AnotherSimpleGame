@@ -147,34 +147,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.871" />
 
-    <TextView
-        android:id="@+id/scoreTextView"
-        android:layout_width="151dp"
-        android:layout_height="47dp"
-        android:gravity="center"
-        android:onClick="doRestart"
-        android:text="Score:  0"
-        android:textStyle="bold"
-        android:textColor="@color/colorPrimaryDark"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/gridLayout" />
-
-    <!-- <Button
-         android:id="@+id/playAgainButton"
-         android:layout_width="125dp"
-         android:layout_height="60dp"
-         android:onClick="doRestart"
-         android:text="Play again"
-         app:layout_constraintBottom_toBottomOf="parent"
-         app:layout_constraintEnd_toEndOf="parent"
-         app:layout_constraintHorizontal_bias="0.055"
-         app:layout_constraintStart_toStartOf="parent"
-         app:layout_constraintTop_toBottomOf="@+id/gridLayout"
-         app:layout_constraintVertical_bias="0.578" /> -->
-
     <ImageButton
         android:id="@+id/playAgainButton"
         android:layout_width="68dp"
@@ -189,10 +161,40 @@
         android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/scoreTextView"
-        app:layout_constraintHorizontal_bias="0.58"
+        app:layout_constraintHorizontal_bias="0.336"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/gridLayout"
-        app:layout_constraintVertical_bias="0.531"
         app:srcCompat="@drawable/repeat" />
+
+    <TextView
+        android:id="@+id/scoreTextView"
+        android:layout_width="96dp"
+        android:layout_height="30dp"
+        android:gravity="right"
+        android:text="@string/score"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.482"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/gridLayout"
+        app:layout_constraintVertical_bias="0.548" />
+
+    <TextView
+        android:id="@+id/scoreValueView"
+        android:layout_width="59dp"
+        android:layout_height="30dp"
+        android:gravity="left"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/scoreTextView"
+        app:layout_constraintTop_toBottomOf="@+id/gridLayout"
+        app:layout_constraintHorizontal_weight="2"
+        app:layout_constraintVertical_bias="0.546" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

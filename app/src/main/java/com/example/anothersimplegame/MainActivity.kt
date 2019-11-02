@@ -11,7 +11,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import kotlinx.android.synthetic.main.activity_main.*
 
-
 class MainActivity : AppCompatActivity() {
 
     var imageList = ArrayList<ImageView>()
@@ -133,7 +132,8 @@ class MainActivity : AppCompatActivity() {
     fun increaseScore(view: View) {
         if (gameActive) {
             score++
-            scoreTextView.text = "Score: " + score
+            scoreTextView.text = "Score: "
+            scoreValueView.text = score.toString()
             imageTimer = 1L
             clickedId = view.id
             displayedImageList.add(imageList[imageList.indexOf(view)])
