@@ -2,9 +2,10 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mainConstraint"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/piggy_backdrop"
+    android:background="@drawable/piggy_backdrop_spring"
     tools:context=".MainActivity">
 
     <androidx.appcompat.widget.Toolbar
@@ -24,10 +25,9 @@
         android:id="@+id/gridLayout"
         android:layout_width="380dp"
         android:layout_height="413dp"
-        android:layout_marginStart="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.50"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.55">
@@ -161,40 +161,49 @@
         android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/scoreTextView"
-        app:layout_constraintHorizontal_bias="0.336"
+        app:layout_constraintHorizontal_bias="0.08"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/gridLayout"
         app:srcCompat="@drawable/repeat" />
 
     <TextView
         android:id="@+id/scoreTextView"
-        android:layout_width="96dp"
-        android:layout_height="30dp"
+        android:layout_width="82dp"
+        android:layout_height="35dp"
         android:gravity="right"
         android:text="@string/score"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.482"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/scoreValueView"
+        app:layout_constraintHorizontal_bias="0.983"
+        app:layout_constraintStart_toEndOf="@+id/verticalGuideline"
         app:layout_constraintTop_toBottomOf="@+id/gridLayout"
-        app:layout_constraintVertical_bias="0.548" />
+        app:layout_constraintVertical_bias="0.583" />
 
     <TextView
         android:id="@+id/scoreValueView"
-        android:layout_width="59dp"
-        android:layout_height="30dp"
+        android:layout_width="0dp"
+        android:layout_height="46dp"
         android:gravity="left"
+        android:paddingLeft="15dp"
         android:textColor="@color/colorPrimaryDark"
-        android:textSize="24sp"
+        android:textSize="30dp"
         android:textStyle="bold"
+        app:layout_constraintBaseline_toBaselineOf="@id/scoreTextView"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_weight="2"
         app:layout_constraintStart_toEndOf="@+id/scoreTextView"
         app:layout_constraintTop_toBottomOf="@+id/gridLayout"
-        app:layout_constraintHorizontal_weight="2"
-        app:layout_constraintVertical_bias="0.546" />
+        app:layout_constraintVertical_bias="0.509" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/verticalGuideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="152dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

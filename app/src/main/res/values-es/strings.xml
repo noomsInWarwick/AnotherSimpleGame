@@ -1,17 +1,10 @@
 <resources>
     <string name="app_name">Catch Piggy Snake</string>
 
-    <string name="score">Calificar</string>
+    <string name="score">Calificar:  </string>
 
     <string name="settings">Configuraciones</string>
     <string name="vibrate">Vibrar</string>
-
-    <string name="languages">Languages</string>
-    <string name="english">English</string>
-    <string name="espanol">Espanol</string>
-    <string name="francais">Francais</string>
-    <string name="portuguese">Portuguese</string>
-    <string name="chinese">Chinese</string>
 
     <string name="themes">Temas</string>
     <string name="holidays">Días festivos</string>

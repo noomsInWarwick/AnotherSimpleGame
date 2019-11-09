@@ -1,5 +1,6 @@
 package com.example.anothersimplegame
 
+import android.content.Context
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.os.Handler
@@ -9,7 +10,9 @@ import android.view.View
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import com.example.anothersimplegame.PropertiesReader
 import kotlinx.android.synthetic.main.activity_main.*
+import androidx.constraintlayout.widget.ConstraintLayout as ConstraintLayout1
 
 class MainActivity : AppCompatActivity() {
 
@@ -26,6 +29,9 @@ class MainActivity : AppCompatActivity() {
     var randomIdx = 0
     var gameActive = true
 
+    val propertiesReader = PropertiesReader()
+    // var Properties props;
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -34,6 +40,11 @@ class MainActivity : AppCompatActivity() {
         //home navigation
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         window.statusBarColor = ContextCompat.getColor(this, R.color.colorAccent)
+
+        val context: Context = this@MainActivity.baseContext
+        propertiesReader.getProperties("PiggySnake.properties", context)
+
+        setBackground()
 
         gameActive = true;
         playAgainButton.visibility = View.INVISIBLE
@@ -89,6 +100,23 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    fun writeBackgroundToUse() {
+
+        // write the selected season's image to the properties file.\
+
+        // restart the game
+        //doRestart(view)
+    }
+
+    fun setBackground() {
+
+        val rl: ConstraintLayout1
+        rl = findViewById(R.id.mainConstraint)
+
+        val dr: Int = R.drawable.piggy_backdrop_spring
+        rl.setBackgroundResource(dr)
+    }
+
     fun hideImages() {
 
         runnable = object : Runnable {
@@ -132,7 +160,7 @@ class MainActivity : AppCompatActivity() {
     fun increaseScore(view: View) {
         if (gameActive) {
             score++
-            scoreTextView.text = "Score: "
+            //scoreTextView.text = "Score: "
             scoreValueView.text = score.toString()
             imageTimer = 1L
             clickedId = view.id
