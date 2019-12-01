@@ -21,6 +21,8 @@
             <item
                 android:id="@+id/seasons"
                 android:title="@string/seasons"
+                android:height="50dp"
+                android:width="50dp"
                 app:showAsAction="never">
                 <menu>
                     <item
@@ -45,10 +47,6 @@
                         app:showAsAction="never" />
                 </menu>
             </item>
-            <item
-                android:id="@+id/holidays"
-                android:title="@string/holidays"
-                app:showAsAction="never" />
         </menu>
     </item>
 
