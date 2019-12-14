@@ -4,12 +4,14 @@ import android.content.Context
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.os.Handler
+import android.util.DisplayMetrics
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import com.example.anothersimplegame.R.drawable
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.Runnable
 import androidx.constraintlayout.widget.ConstraintLayout as ConstraintLayout1
@@ -17,6 +19,7 @@ import androidx.constraintlayout.widget.ConstraintLayout as ConstraintLayout1
 class MainActivity : AppCompatActivity() {
 
     var imageList = ArrayList<ImageView>()
+    var descendingImageList = ArrayList<ImageView?>()
     var displayedImageList = ArrayList<ImageView>()
     var randomIndexesList = ArrayList<Int>()
 
@@ -25,12 +28,22 @@ class MainActivity : AppCompatActivity() {
     var imageTimer = 3000L
     var handler: Handler = Handler()
     var runnable: Runnable = Runnable {}
+    var imageRunnable: Runnable = Runnable {}
     var displayedIdx = 0
     var randomIdx = 0
     var gameActive = true
     var threadCounter = 0
     var countDownTimer = 30000L
     var isDone = false
+    var imagesManager: ImagesManager = ImagesManager()
+    var leafNumber = 1
+    var layoutWidth = 0
+
+    private var fallingleafone: ImageView? = null
+    private var fallingleaftwo: ImageView? = null
+    private var fallingleafthree: ImageView? = null
+    private var fallingleaffour: ImageView? = null
+    private var theSnowman: ImageView? = null
 
     var prefs: PiggySnakePreferencesReader? = null
 
@@ -44,6 +57,7 @@ class MainActivity : AppCompatActivity() {
         window.statusBarColor = ContextCompat.getColor(this, R.color.colorAccent)
 
         val context: Context = this@MainActivity.baseContext
+
         prefs = PiggySnakePreferencesReader(this)
         val bgImage = prefs!!.bgImage
 
@@ -56,8 +70,28 @@ class MainActivity : AppCompatActivity() {
         score = 0
         nbrImagesDisplayed = 0
 
+        fallingleafone = findViewById<ImageView>(R.id.fallingleaf_one)
+        fallingleaftwo = findViewById<ImageView>(R.id.fallingleaf_two)
+        fallingleafthree = findViewById<ImageView>(R.id.fallingleaf_three)
+        fallingleaffour = findViewById<ImageView>(R.id.fallingleaf_four)
+        theSnowman = findViewById<ImageView>(R.id.snowmanImageView)
+
+        imagesManager.setSnowmanVisibility(theSnowman, false)
+        imagesManager.setLeavesVisibility(
+            fallingleafone,
+            fallingleaftwo,
+            fallingleafthree,
+            fallingleaffour,
+            false
+        )
+
         initImagesList(bgImage)
         initRandomIndexes()
+
+        // get device dimensions
+        val displayMetrics = DisplayMetrics()
+        windowManager.defaultDisplay.getMetrics(displayMetrics)
+        layoutWidth = displayMetrics.widthPixels
     }
 
     override fun onStart() {
@@ -65,14 +99,38 @@ class MainActivity : AppCompatActivity() {
 
         hideImages()
 
+
+
+        when (prefs!!.currentSeason) {
+            Seasons.Spring -> {
+            }
+            Seasons.Summer -> {
+            }
+            Seasons.Autumn -> {
+                descendingLeaves()
+            }
+            Seasons.Winter -> {
+                imagesManager.setSnowmanVisibility(theSnowman, true)
+                imagesManager.moveSnowman(theSnowman, layoutWidth)
+            }
+            else -> {
+            }
+        }
+
         object : CountDownTimer(countDownTimer, 3000) {
+
             override fun onFinish() {
-                timerTextView.text = ""
-                imageView5.setImageDrawable(getResources().getDrawable(R.drawable.piggysnake_smiley_old))
-                imageView5.visibility = View.VISIBLE
-                playAgainButton.visibility = View.VISIBLE
-                gameActive = false
+                if (gameActive) {
+                    timerTextView.text = ""
+                    imageView5.setImageDrawable(getResources().getDrawable(drawable.piggysnake_smiley_old))
+                    imageView5.visibility = View.VISIBLE
+                    imagesManager.fade(imageView5, 3000)
+                    playAgainButton.visibility = View.VISIBLE
+                    gameActive = false
+                }
+
                 handler.removeCallbacks(runnable)
+                handler.removeCallbacks(imageRunnable)
             }
 
             override fun onTick(p0: Long) {
@@ -109,7 +167,8 @@ class MainActivity : AppCompatActivity() {
             if (item.getTitle() == "Winter" || item.getTitle() == "Spring"
                 || item.getTitle() == "Summer" || item.getTitle() == "Autumn"
             ) {
-                prefs!!.writeBackgroundToUse(item.getTitle().toString())
+                prefs!!.determineSeason(item.getTitle().toString())
+                prefs!!.writeBackgroundToUse()
                 restartTheGame()
             }
 
@@ -123,7 +182,8 @@ class MainActivity : AppCompatActivity() {
 
         val rl: ConstraintLayout1
         rl = findViewById(R.id.mainConstraint)
-        rl.setBackgroundResource(prefs!!.setBackground(bgImage))
+        prefs!!.determineSeason(bgImage)
+        rl.setBackgroundResource(prefs!!.setBackground())
     }
 
     fun hideImages() {
@@ -138,7 +198,7 @@ class MainActivity : AppCompatActivity() {
                 for (displayedImage in displayedImageList) {
                     displayedIdx = imageList.indexOf(displayedImage)
                     if (imageList.indexOf(displayedImage) >= 0) {
-                        imageList[displayedIdx].setImageDrawable(getResources().getDrawable(R.drawable.piggysnake_smiley));
+                        imageList[displayedIdx].setImageDrawable(getResources().getDrawable(drawable.piggysnake_smiley));
                         imageList[displayedIdx].maxWidth = 75
                     }
                 }
@@ -164,6 +224,55 @@ class MainActivity : AppCompatActivity() {
         handler.post(runnable)
     }
 
+    fun descendingLeaves() {
+
+        imagesManager.setLeavesVisibility(
+            fallingleafone,
+            fallingleaftwo,
+            fallingleafthree,
+            fallingleaffour,
+            true
+        )
+
+        imageRunnable = object : Runnable {
+            override fun run() {
+
+                when (leafNumber) {
+                    1 -> {
+                        imagesManager.rotate(fallingleafone)
+                        imagesManager.rotate(fallingleafthree)
+                        imagesManager.rotate(fallingleaftwo)
+                        imagesManager.rotate(fallingleaffour)
+                        leafNumber = 2
+                    }
+                    2 -> {
+                        imagesManager.rotate(fallingleaftwo)
+                        imagesManager.rotate(fallingleaffour)
+                        leafNumber = 3
+                    }
+                    3 -> {
+                        imagesManager.rotate(fallingleafthree)
+                        imagesManager.rotate(fallingleaftwo)
+                        leafNumber = 4
+                    }
+                    4 -> {
+                        imagesManager.rotate(fallingleaffour)
+                        imagesManager.rotate(fallingleaftwo)
+                        leafNumber = 1
+                    }
+                    else -> {
+                        imagesManager.rotate(fallingleafone)
+                        leafNumber = 1
+                    }
+                }
+
+                handler.postDelayed(imageRunnable, 9000L)
+            }
+        }
+
+        handler.post(imageRunnable)
+    }
+
     fun increaseScore(view: View) {
 
         if (gameActive) {
@@ -186,7 +295,8 @@ class MainActivity : AppCompatActivity() {
 
     fun initImagesList(bgImage: String?) {
 
-        var dr = prefs!!.setPiggySnakeImage(bgImage)
+        prefs!!.determineSeason(bgImage)
+        var dr = prefs!!.setPiggySnakeImage()
 
         imageView1.setImageDrawable(getResources().getDrawable(dr));
         imageView2.setImageDrawable(getResources().getDrawable(dr));
@@ -210,6 +320,14 @@ class MainActivity : AppCompatActivity() {
             imageView9
         )
     }
+
+//    fun initDescendingImagesList() {
+//
+//        descendingImageList = arrayListOf(
+//            //  fallingleafone,
+//            fallingleaftwo
+//        )
+//    }
 
     fun initRandomIndexes() {
         // load and then randomize the list to determine the order of the images display.
