@@ -38,6 +38,7 @@ class MainActivity : AppCompatActivity() {
     var imagesManager: ImagesManager = ImagesManager()
     var leafNumber = 1
     var layoutWidth = 0
+    // val bitmap: Bitmap = Bitmap.createBitmap(700, 1000, Bitmap.Config.ARGB_8888)
 
     private var fallingleafone: ImageView? = null
     private var fallingleaftwo: ImageView? = null
@@ -57,6 +58,21 @@ class MainActivity : AppCompatActivity() {
         window.statusBarColor = ContextCompat.getColor(this, R.color.colorAccent)
 
         val context: Context = this@MainActivity.baseContext
+
+        //val bitmap: Bitmap = Bitmap.createBitmap(700, 1000, Bitmap.Config.ARGB_8888)
+//        val canvas: Canvas = Canvas(bitmap)
+//        var shapeDrawable: ShapeDrawable
+
+        // draw oval shape to canvas
+//        var left = 100
+//        var top = 500
+//        var right = 600
+//        var bottom = 800
+//        shapeDrawable = ShapeDrawable(OvalShape())
+//        shapeDrawable.setBounds( left, top, right, bottom)
+//        shapeDrawable.getPaint().setColor(Color.parseColor("#009191"))
+//        shapeDrawable.draw(canvas)
+
 
         prefs = PiggySnakePreferencesReader(this)
         val bgImage = prefs!!.bgImage
@@ -99,18 +115,19 @@ class MainActivity : AppCompatActivity() {
 
         hideImages()
 
-
-
         when (prefs!!.currentSeason) {
             Seasons.Spring -> {
             }
             Seasons.Summer -> {
+                //  imagesManager.fade(fruitOne, 10000)
             }
             Seasons.Autumn -> {
                 descendingLeaves()
             }
             Seasons.Winter -> {
+                imagesManager.doSnowman(theSnowman)
                 imagesManager.setSnowmanVisibility(theSnowman, true)
+                imagesManager.fade(theSnowman, 10000)
                 imagesManager.moveSnowman(theSnowman, layoutWidth)
             }
             else -> {
@@ -200,6 +217,7 @@ class MainActivity : AppCompatActivity() {
                     if (imageList.indexOf(displayedImage) >= 0) {
                         imageList[displayedIdx].setImageDrawable(getResources().getDrawable(drawable.piggysnake_smiley));
                         imageList[displayedIdx].maxWidth = 75
+                        //imageList[displayedIdx].background = BitmapDrawable(getResources(), bitmap)
                     }
                 }
 
@@ -239,29 +257,29 @@ class MainActivity : AppCompatActivity() {
 
                 when (leafNumber) {
                     1 -> {
-                        imagesManager.rotate(fallingleafone)
-                        imagesManager.rotate(fallingleafthree)
-                        imagesManager.rotate(fallingleaftwo)
-                        imagesManager.rotate(fallingleaffour)
+                        imagesManager.rotate(fallingleafone, 9000)
+                        imagesManager.rotate(fallingleafthree, 12000)
+                        imagesManager.rotate(fallingleaftwo, 7000)
+                        imagesManager.rotate(fallingleaffour, 10000)
                         leafNumber = 2
                     }
                     2 -> {
-                        imagesManager.rotate(fallingleaftwo)
-                        imagesManager.rotate(fallingleaffour)
+                        imagesManager.rotate(fallingleaftwo, 9000)
+                        imagesManager.rotate(fallingleaffour, 7000)
                         leafNumber = 3
                     }
                     3 -> {
-                        imagesManager.rotate(fallingleafthree)
-                        imagesManager.rotate(fallingleaftwo)
+                        imagesManager.rotate(fallingleafthree, 8000)
+                        imagesManager.rotate(fallingleaftwo, 10000)
                         leafNumber = 4
                     }
                     4 -> {
-                        imagesManager.rotate(fallingleaffour)
-                        imagesManager.rotate(fallingleaftwo)
+                        imagesManager.rotate(fallingleaffour, 9000)
+                        imagesManager.rotate(fallingleaftwo, 7000)
                         leafNumber = 1
                     }
                     else -> {
-                        imagesManager.rotate(fallingleafone)
+                        imagesManager.rotate(fallingleafone, 9000)
                         leafNumber = 1
                     }
                 }
@@ -321,17 +339,10 @@ class MainActivity : AppCompatActivity() {
         )
     }
 
-//    fun initDescendingImagesList() {
-//
-//        descendingImageList = arrayListOf(
-//            //  fallingleafone,
-//            fallingleaftwo
-//        )
-//    }
-
     fun initRandomIndexes() {
         // load and then randomize the list to determine the order of the images display.
         randomIndexesList = arrayListOf(0, 1, 2, 3, 4, 5, 6, 7, 8)
         randomIndexesList.shuffle()
     }
+
 }
