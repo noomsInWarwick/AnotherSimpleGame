@@ -46,6 +46,13 @@ class MainActivity : AppCompatActivity() {
     private var fallingleaffour: ImageView? = null
     private var theSnowman: ImageView? = null
 
+    private var orangeOne: ImageView? = null
+    private var orangeTwo: ImageView? = null
+    private var orangeThree: ImageView? = null
+    private var orangeFour: ImageView? = null
+    private var orangeFive: ImageView? = null
+    private var orangeSix: ImageView? = null
+
     var prefs: PiggySnakePreferencesReader? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -58,21 +65,6 @@ class MainActivity : AppCompatActivity() {
         window.statusBarColor = ContextCompat.getColor(this, R.color.colorAccent)
 
         val context: Context = this@MainActivity.baseContext
-
-        //val bitmap: Bitmap = Bitmap.createBitmap(700, 1000, Bitmap.Config.ARGB_8888)
-//        val canvas: Canvas = Canvas(bitmap)
-//        var shapeDrawable: ShapeDrawable
-
-        // draw oval shape to canvas
-//        var left = 100
-//        var top = 500
-//        var right = 600
-//        var bottom = 800
-//        shapeDrawable = ShapeDrawable(OvalShape())
-//        shapeDrawable.setBounds( left, top, right, bottom)
-//        shapeDrawable.getPaint().setColor(Color.parseColor("#009191"))
-//        shapeDrawable.draw(canvas)
-
 
         prefs = PiggySnakePreferencesReader(this)
         val bgImage = prefs!!.bgImage
@@ -90,7 +82,15 @@ class MainActivity : AppCompatActivity() {
         fallingleaftwo = findViewById<ImageView>(R.id.fallingleaf_two)
         fallingleafthree = findViewById<ImageView>(R.id.fallingleaf_three)
         fallingleaffour = findViewById<ImageView>(R.id.fallingleaf_four)
+
         theSnowman = findViewById<ImageView>(R.id.snowmanImageView)
+
+        orangeOne = findViewById<ImageView>(R.id.orangeOne)
+        orangeTwo = findViewById<ImageView>(R.id.orangeTwo)
+        orangeThree = findViewById<ImageView>(R.id.orangeThree)
+        orangeFour = findViewById<ImageView>(R.id.orangeFour)
+        orangeFive = findViewById<ImageView>(R.id.orangeFive)
+        orangeSix = findViewById<ImageView>(R.id.orangeSix)
 
         imagesManager.setSnowmanVisibility(theSnowman, false)
         imagesManager.setLeavesVisibility(
@@ -98,6 +98,15 @@ class MainActivity : AppCompatActivity() {
             fallingleaftwo,
             fallingleafthree,
             fallingleaffour,
+            false
+        )
+        imagesManager.setFruitVisibility(
+            orangeOne,
+            orangeTwo,
+            orangeThree,
+            orangeFour,
+            orangeFive,
+            orangeSix,
             false
         )
 
@@ -111,7 +120,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onStart() {
-        super.onStart();
+        super.onStart()
 
         hideImages()
 
@@ -119,7 +128,15 @@ class MainActivity : AppCompatActivity() {
             Seasons.Spring -> {
             }
             Seasons.Summer -> {
-                //  imagesManager.fade(fruitOne, 10000)
+                imagesManager.doTheFruit(
+                    orangeOne,
+                    orangeTwo,
+                    orangeThree,
+                    orangeFour,
+                    orangeFive,
+                    orangeSix,
+                    true
+                )
             }
             Seasons.Autumn -> {
                 descendingLeaves()
@@ -139,7 +156,7 @@ class MainActivity : AppCompatActivity() {
             override fun onFinish() {
                 if (gameActive) {
                     timerTextView.text = ""
-                    imageView5.setImageDrawable(getResources().getDrawable(drawable.piggysnake_smiley_old))
+                    imageView5.setImageDrawable(resources.getDrawable(drawable.piggysnake_smiley_old))
                     imageView5.visibility = View.VISIBLE
                     imagesManager.fade(imageView5, 3000)
                     playAgainButton.visibility = View.VISIBLE
@@ -181,10 +198,10 @@ class MainActivity : AppCompatActivity() {
         else -> {
             // If we got here, the user's action was not recognized.
             // Invoke the superclass to handle it.
-            if (item.getTitle() == "Winter" || item.getTitle() == "Spring"
-                || item.getTitle() == "Summer" || item.getTitle() == "Autumn"
+            if (item.title == "Winter" || item.title == "Spring"
+                || item.title == "Summer" || item.title == "Autumn"
             ) {
-                prefs!!.determineSeason(item.getTitle().toString())
+                prefs!!.determineSeason(item.title.toString())
                 prefs!!.writeBackgroundToUse()
                 restartTheGame()
             }
@@ -215,9 +232,8 @@ class MainActivity : AppCompatActivity() {
                 for (displayedImage in displayedImageList) {
                     displayedIdx = imageList.indexOf(displayedImage)
                     if (imageList.indexOf(displayedImage) >= 0) {
-                        imageList[displayedIdx].setImageDrawable(getResources().getDrawable(drawable.piggysnake_smiley));
+                        imageList[displayedIdx].setImageDrawable(resources.getDrawable(drawable.piggysnake_smiley))
                         imageList[displayedIdx].maxWidth = 75
-                        //imageList[displayedIdx].background = BitmapDrawable(getResources(), bitmap)
                     }
                 }
 
@@ -307,8 +323,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun restartTheGame() {
-        finish();
-        startActivity(getIntent());
+        finish()
+        startActivity(intent)
     }
 
     fun initImagesList(bgImage: String?) {
@@ -316,15 +332,15 @@ class MainActivity : AppCompatActivity() {
         prefs!!.determineSeason(bgImage)
         var dr = prefs!!.setPiggySnakeImage()
 
-        imageView1.setImageDrawable(getResources().getDrawable(dr));
-        imageView2.setImageDrawable(getResources().getDrawable(dr));
-        imageView3.setImageDrawable(getResources().getDrawable(dr));
-        imageView4.setImageDrawable(getResources().getDrawable(dr));
-        imageView5.setImageDrawable(getResources().getDrawable(dr));
-        imageView6.setImageDrawable(getResources().getDrawable(dr));
-        imageView7.setImageDrawable(getResources().getDrawable(dr));
-        imageView8.setImageDrawable(getResources().getDrawable(dr));
-        imageView9.setImageDrawable(getResources().getDrawable(dr));
+        imageView1.setImageDrawable(resources.getDrawable(dr))
+        imageView2.setImageDrawable(resources.getDrawable(dr))
+        imageView3.setImageDrawable(resources.getDrawable(dr))
+        imageView4.setImageDrawable(resources.getDrawable(dr))
+        imageView5.setImageDrawable(resources.getDrawable(dr))
+        imageView6.setImageDrawable(resources.getDrawable(dr))
+        imageView7.setImageDrawable(resources.getDrawable(dr))
+        imageView8.setImageDrawable(resources.getDrawable(dr))
+        imageView9.setImageDrawable(resources.getDrawable(dr))
 
         imageList = arrayListOf(
             imageView1,

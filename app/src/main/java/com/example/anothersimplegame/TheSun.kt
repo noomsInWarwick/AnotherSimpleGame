@@ -7,7 +7,6 @@ import android.graphics.Color
 import android.graphics.Paint
 import android.util.AttributeSet
 import android.view.View
-import android.widget.ImageView
 
 class TheSun(context: Context, attrs: AttributeSet?) : View(context, attrs) {
 
@@ -16,6 +15,10 @@ class TheSun(context: Context, attrs: AttributeSet?) : View(context, attrs) {
     private val defaultBarWidth = resources.getDimensionPixelSize(R.dimen.volume_bar_default_width)
     private val defaultBarHeight =
         resources.getDimensionPixelSize(R.dimen.volume_bar_default_height)
+
+    var BitmapSize = 40
+
+    //private var theFruit: ImageView? = null
 
     init {
         thumbPaint.color = Color.RED
@@ -46,13 +49,12 @@ class TheSun(context: Context, attrs: AttributeSet?) : View(context, attrs) {
     }
 
     override fun onDraw(canvas: Canvas) {
-        // drawBar(canvas)
+        fade(50000)
         drawThumb(canvas)
     }
 
     private fun drawThumb(canvas: Canvas) {
         val thumbX = calculateThumbX()
-        //val thumbY = calculateThumbY()
         val thumbY = height.toFloat() / 2.3F
         val radius = height.toFloat() / 2.3F
 
@@ -72,14 +74,9 @@ class TheSun(context: Context, attrs: AttributeSet?) : View(context, attrs) {
         return 50.0F
     }
 
-    private fun calculateThumbY(): Float {
-
-        return 25.0F
-    }
-
-    public fun fade(image: ImageView?, fadeDuration: Long) {
-        val fade = ObjectAnimator.ofFloat(image, View.ALPHA, 0.1f, 5.1f)
-        fade.setDuration(fadeDuration)
+    fun fade(fadeDuration: Long) {
+        val fade = ObjectAnimator.ofFloat(this, View.ALPHA, 0.1f, 5.1f)
+        fade.duration = fadeDuration
         fade.start()
     }
 

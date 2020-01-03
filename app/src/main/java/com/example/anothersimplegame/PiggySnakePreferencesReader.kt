@@ -8,7 +8,7 @@ class PiggySnakePreferencesReader(context: Context) {
 
     val PREFS_FILENAME = "com.example.anothersimplegame.PiggySnake.properties"
     val BACKGROUND_IMAGE = "backgroundimage"
-    val prefs: SharedPreferences = context.getSharedPreferences(PREFS_FILENAME, 0);
+    val prefs: SharedPreferences = context.getSharedPreferences(PREFS_FILENAME, 0)
 
     var currentSeason = Seasons.Summer
 
@@ -69,7 +69,7 @@ class PiggySnakePreferencesReader(context: Context) {
             else -> dr = R.drawable.piggysnake
         }
 
-        return dr;
+        return dr
     }
 
     fun setSeason() {

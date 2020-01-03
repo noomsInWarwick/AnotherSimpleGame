@@ -54,6 +54,15 @@
             app:layout_row="0"
             app:srcCompat="@drawable/piggysnake" />
 
+        <!--   <com.example.anothersimplegame.TheSun
+               android:id="@+id/fruitThree"
+               android:layout_width="40dp"
+               android:layout_height="wrap_content"
+               android:layout_marginStart="36dp"
+               app:layout_column="2"
+               app:layout_row="0"
+               tools:ignore="MissingConstraints" /> -->
+
         <ImageView
             android:id="@+id/imageView3"
             android:layout_width="125dp"
@@ -84,11 +93,73 @@
 
         <ImageView
             android:id="@+id/fallingleaf_one"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
             android:layout_centerInParent="true"
             android:src="@drawable/fallingleaf_one"
             app:layout_column="0"
+            app:layout_row="2" />
+
+        <ImageView
+            android:id="@+id/orangeOne"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_centerInParent="true"
+            android:src="@drawable/fruit_orange"
+            android:layout_marginStart="56dp"
+            app:layout_column="0"
+            app:layout_row="0" />
+
+        <ImageView
+            android:id="@+id/orangeTwo"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_centerInParent="true"
+            android:src="@drawable/fruit_orange"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="45dp"
+            app:layout_column="1"
+            app:layout_row="0" />
+
+        <ImageView
+            android:id="@+id/orangeThree"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_centerInParent="true"
+            android:src="@drawable/fruit_orange"
+            android:layout_marginTop="20dp"
+            app:layout_column="2"
+            app:layout_row="0" />
+
+        <ImageView
+            android:id="@+id/orangeFour"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_centerInParent="true"
+            android:src="@drawable/fruit_orange"
+            android:layout_marginStart="36dp"
+            app:layout_column="0"
+            app:layout_row="1" />
+
+        <ImageView
+            android:id="@+id/orangeFive"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_centerInParent="true"
+            android:src="@drawable/fruit_orange"
+            android:layout_marginStart="46dp"
+            android:layout_marginTop="22dp"
+            app:layout_column="2"
+            app:layout_row="1" />
+
+        <ImageView
+            android:id="@+id/orangeSix"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_centerInParent="true"
+            android:src="@drawable/fruit_orange"
+            android:layout_marginStart="16dp"
+            app:layout_column="2"
             app:layout_row="2" />
 
         <ImageView
@@ -101,15 +172,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_row="1"
             app:srcCompat="@drawable/piggysnake" />
-
-        <com.example.anothersimplegame.TheSun
-            android:id="@+id/fruitTwo"
-            android:layout_width="60dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            app:layout_column="2"
-            app:layout_row="1"
-            tools:ignore="MissingConstraints" />
 
         <ImageView
             android:id="@+id/imageView6"
@@ -124,8 +186,8 @@
 
         <ImageView
             android:id="@+id/fallingleaf_two"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
             android:layout_centerInParent="true"
             android:src="@drawable/fallingleaf_two"
             app:layout_column="1"
@@ -155,8 +217,8 @@
 
         <ImageView
             android:id="@+id/fallingleaf_three"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
             android:layout_centerInParent="true"
             android:src="@drawable/fallingleaf_three"
             app:layout_column="2"
@@ -164,10 +226,11 @@
 
         <ImageView
             android:id="@+id/fallingleaf_four"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
             android:layout_centerInParent="true"
             android:src="@drawable/fallingleaf_four"
+            android:layout_marginStart="36dp"
             app:layout_column="2"
             app:layout_row="2" />
 
@@ -182,15 +245,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_row="2"
             app:srcCompat="@drawable/piggysnake" />
-
-        <com.example.anothersimplegame.TheSun
-            android:id="@+id/fruitOne"
-            android:layout_width="60dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            app:layout_column="0"
-            app:layout_row="0"
-            tools:ignore="MissingConstraints" />
 
     </androidx.gridlayout.widget.GridLayout>
 

@@ -21,13 +21,11 @@
             <item
                 android:id="@+id/seasons"
                 android:title="@string/seasons"
-                android:height="50dp"
-                android:width="50dp"
                 app:showAsAction="never">
                 <menu>
                     <item
                         android:id="@+id/winter"
-                        android:icon="@drawable/winter"
+                        android:icon="@drawable/spring"
                         android:title="@string/winter"
                         app:showAsAction="never" />
                     <item
