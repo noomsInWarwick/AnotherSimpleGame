@@ -235,7 +235,7 @@ class MainActivity : AppCompatActivity() {
                 for (displayedImage in displayedImageList) {
                     displayedIdx = imageList.indexOf(displayedImage)
                     if (imageList.indexOf(displayedImage) >= 0) {
-                        imageList[displayedIdx].setImageDrawable(resources.getDrawable(drawable.piggysnake_smiley))
+                        imageList[displayedIdx].setImageDrawable(resources.getDrawable(drawable.piggysnake_smiley_trans))
                         imageList[displayedIdx].maxWidth = 75
                     }
                 }
@@ -288,6 +288,7 @@ class MainActivity : AppCompatActivity() {
                         leafNumber = 3
                     }
                     3 -> {
+                        imagesManager.rotate(fallingleafone, 15000)
                         imagesManager.rotate(fallingleafthree, 8000)
                         imagesManager.rotate(fallingleaftwo, 10000)
                         leafNumber = 4
