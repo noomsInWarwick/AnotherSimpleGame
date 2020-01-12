@@ -4,6 +4,7 @@
     <!-- Settings, should always be in the overflow -->+
     <item
         android:id="@+id/settings"
+        android:menuCategory="alternative"
         android:title="@string/settings"
         app:showAsAction="never">
         <menu>
@@ -21,27 +22,28 @@
             <item
                 android:id="@+id/seasons"
                 android:title="@string/seasons"
+                android:background="@color/colorAccent"
                 app:showAsAction="never">
                 <menu>
                     <item
                         android:id="@+id/winter"
-                        android:icon="@drawable/spring"
                         android:title="@string/winter"
+                        android:icon="@drawable/wintertime"
                         app:showAsAction="never" />
                     <item
                         android:id="@+id/spring"
-                        android:icon="@drawable/spring"
                         android:title="@string/spring"
+                        android:icon="@drawable/spring"
                         app:showAsAction="never" />
                     <item
                         android:id="@+id/summer"
-                        android:icon="@drawable/summer"
                         android:title="@string/summer"
+                        android:icon="@drawable/summertime"
                         app:showAsAction="never" />
                     <item
                         android:id="@+id/autumn"
-                        android:icon="@drawable/autumn"
                         android:title="@string/autumn"
+                        android:icon="@drawable/autumn"
                         app:showAsAction="never" />
                 </menu>
             </item>

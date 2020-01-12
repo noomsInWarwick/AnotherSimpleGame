@@ -117,10 +117,10 @@ class ImagesManager {
             fruitSix,
             isVisible
         )
-        fade(fruitOne, 20000)
-        fade(fruitTwo, 25000)
-        fade(fruitThree, 10000)
-        fade(fruitFour, 8000)
+        fade(fruitOne, 60000)
+        fade(fruitTwo, 35000)
+        fade(fruitThree, 50000)
+        fade(fruitFour, 18000)
         fade(fruitFive, 30000)
         fade(fruitSix, 45000)
     }

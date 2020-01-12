@@ -1,25 +1,27 @@
 package com.example.anothersimplegame
 
 import android.content.Context
-import android.os.Bundle
-import android.os.CountDownTimer
-import android.os.Handler
+import android.os.*
+import android.os.VibrationEffect.createOneShot
 import android.util.DisplayMetrics
 import android.view.Menu
 import android.view.MenuItem
+import android.view.MotionEvent
 import android.view.View
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.core.view.MotionEventCompat
 import com.example.anothersimplegame.R.drawable
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.Runnable
 import androidx.constraintlayout.widget.ConstraintLayout as ConstraintLayout1
 
+@Suppress("DEPRECATION")
 class MainActivity : AppCompatActivity() {
 
     var imageList = ArrayList<ImageView>()
-    var descendingImageList = ArrayList<ImageView?>()
     var displayedImageList = ArrayList<ImageView>()
     var randomIndexesList = ArrayList<Int>()
 
@@ -38,7 +40,9 @@ class MainActivity : AppCompatActivity() {
     var imagesManager: ImagesManager = ImagesManager()
     var leafNumber = 1
     var layoutWidth = 0
-    // val bitmap: Bitmap = Bitmap.createBitmap(700, 1000, Bitmap.Config.ARGB_8888)
+    private var showBar = false
+
+    // val context: Context = this@MainActivity.baseContext
 
     private var fallingleafone: ImageView? = null
     private var fallingleaftwo: ImageView? = null
@@ -53,7 +57,7 @@ class MainActivity : AppCompatActivity() {
     private var orangeFive: ImageView? = null
     private var orangeSix: ImageView? = null
 
-    var prefs: PiggySnakePreferencesReader? = null
+    private var prefs: PiggySnakePreferencesReader? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -62,6 +66,7 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(findViewById(R.id.toolbar))
         //home navigation
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.hide()
         window.statusBarColor = ContextCompat.getColor(this, R.color.colorAccent)
 
         val context: Context = this@MainActivity.baseContext
@@ -83,7 +88,7 @@ class MainActivity : AppCompatActivity() {
         fallingleafthree = findViewById<ImageView>(R.id.fallingleaf_three)
         fallingleaffour = findViewById<ImageView>(R.id.fallingleaf_four)
 
-        theSnowman = findViewById<ImageView>(R.id.snowmanImageView)
+        theSnowman = findViewById(R.id.snowmanImageView)
 
         orangeOne = findViewById<ImageView>(R.id.orangeOne)
         orangeTwo = findViewById<ImageView>(R.id.orangeTwo)
@@ -146,8 +151,6 @@ class MainActivity : AppCompatActivity() {
                 imagesManager.setSnowmanVisibility(theSnowman, true)
                 imagesManager.fade(theSnowman, 10000)
                 imagesManager.moveSnowman(theSnowman, layoutWidth)
-            }
-            else -> {
             }
         }
 
@@ -310,6 +313,7 @@ class MainActivity : AppCompatActivity() {
     fun increaseScore(view: View) {
 
         if (gameActive) {
+            vibrate()
             score++
             scoreValueView.text = score.toString()
             displayedImageList.add(imageList[imageList.indexOf(view)])
@@ -359,6 +363,53 @@ class MainActivity : AppCompatActivity() {
         // load and then randomize the list to determine the order of the images display.
         randomIndexesList = arrayListOf(0, 1, 2, 3, 4, 5, 6, 7, 8)
         randomIndexesList.shuffle()
+    }
+
+    fun Context.vibrate(milliseconds: Long = 100) {
+        val vibrator = this.getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
+
+        // Check whether device/hardware has a vibrator
+        val canVibrate: Boolean = vibrator.hasVibrator()
+
+        if (canVibrate) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                vibrator.vibrate(
+                    createOneShot(
+                        milliseconds,
+                        // The default vibration strength of the device.
+                        VibrationEffect.DEFAULT_AMPLITUDE
+                    )
+                )
+            } else {
+                vibrator.vibrate(milliseconds)
+            }
+        }
+    }
+
+
+    override fun onTouchEvent(event: MotionEvent): Boolean {
+
+        val action: Int = MotionEventCompat.getActionMasked(event)
+
+        return when (action) {
+            MotionEvent.ACTION_DOWN -> {
+                if (supportActionBar!!.isShowing) {
+                    supportActionBar?.hide()
+                    Toast.makeText(this, "Chewy is good  <80 ", Toast.LENGTH_SHORT).show()
+                } else {
+                    supportActionBar?.show()
+                    Toast.makeText(this, "Chey is rad =:0", Toast.LENGTH_SHORT).show()
+                }
+                true
+            }
+            MotionEvent.ACTION_MOVE -> {
+                false
+            }
+            MotionEvent.ACTION_UP -> {
+                false
+            }
+            else -> false
+        }
     }
 
 }

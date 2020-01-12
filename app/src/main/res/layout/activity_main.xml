@@ -37,6 +37,7 @@
             android:layout_width="125dp"
             android:layout_height="140dp"
             android:onClick="increaseScore"
+            android:soundEffectsEnabled="true"
             app:layout_column="0"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -53,15 +54,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_row="0"
             app:srcCompat="@drawable/piggysnake" />
-
-        <!--   <com.example.anothersimplegame.TheSun
-               android:id="@+id/fruitThree"
-               android:layout_width="40dp"
-               android:layout_height="wrap_content"
-               android:layout_marginStart="36dp"
-               app:layout_column="2"
-               app:layout_row="0"
-               tools:ignore="MissingConstraints" /> -->
 
         <ImageView
             android:id="@+id/imageView3"
