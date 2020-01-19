@@ -23,6 +23,7 @@ class MainActivity : AppCompatActivity() {
 
     var imageList = ArrayList<ImageView>()
     var displayedImageList = ArrayList<ImageView>()
+    var fruitsList = ArrayList<ImageView?>()
     var randomIndexesList = ArrayList<Int>()
 
     var score: Int = 0
@@ -49,14 +50,6 @@ class MainActivity : AppCompatActivity() {
     private var fallingleafthree: ImageView? = null
     private var fallingleaffour: ImageView? = null
     private var theSnowman: ImageView? = null
-
-    private var orangeOne: ImageView? = null
-    private var orangeTwo: ImageView? = null
-    private var orangeThree: ImageView? = null
-    private var orangeFour: ImageView? = null
-    private var orangeFive: ImageView? = null
-    private var orangeSix: ImageView? = null
-
     private var prefs: PiggySnakePreferencesReader? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -90,12 +83,7 @@ class MainActivity : AppCompatActivity() {
 
         theSnowman = findViewById(R.id.snowmanImageView)
 
-        orangeOne = findViewById<ImageView>(R.id.orangeOne)
-        orangeTwo = findViewById<ImageView>(R.id.orangeTwo)
-        orangeThree = findViewById<ImageView>(R.id.orangeThree)
-        orangeFour = findViewById<ImageView>(R.id.orangeFour)
-        orangeFive = findViewById<ImageView>(R.id.orangeFive)
-        orangeSix = findViewById<ImageView>(R.id.orangeSix)
+        loadFruitsList()
 
         imagesManager.setSnowmanVisibility(theSnowman, false)
         imagesManager.setLeavesVisibility(
@@ -105,13 +93,9 @@ class MainActivity : AppCompatActivity() {
             fallingleaffour,
             false
         )
+
         imagesManager.setFruitVisibility(
-            orangeOne,
-            orangeTwo,
-            orangeThree,
-            orangeFour,
-            orangeFive,
-            orangeSix,
+            fruitsList,
             false
         )
 
@@ -134,12 +118,7 @@ class MainActivity : AppCompatActivity() {
             }
             Seasons.Summer -> {
                 imagesManager.doTheFruit(
-                    orangeOne,
-                    orangeTwo,
-                    orangeThree,
-                    orangeFour,
-                    orangeFive,
-                    orangeSix,
+                    fruitsList,
                     true
                 )
             }
@@ -162,6 +141,15 @@ class MainActivity : AppCompatActivity() {
                     imageView5.setImageDrawable(resources.getDrawable(drawable.piggysnake_smiley_old))
                     imageView5.visibility = View.VISIBLE
                     imagesManager.fade(imageView5, 3000)
+
+                    //###########  rework below
+                    // check of the randomIdx is resident in the 'caught' index category
+//                    if (imageList[randomIdx]) {
+//
+//                    }
+                    // imageList[displayedIdx].setImageDrawable(resources.getDrawable(drawable.piggysnake_smiley_trans))
+                    // imageList[randomIdx].visibility = View.INVISIBLE
+                    //############# rework above
                     playAgainButton.visibility = View.VISIBLE
                     gameActive = false
                 }
@@ -357,6 +345,18 @@ class MainActivity : AppCompatActivity() {
             imageView7,
             imageView8,
             imageView9
+        )
+    }
+
+    fun loadFruitsList() {
+
+        fruitsList = arrayListOf(
+            findViewById<ImageView>(R.id.orangeOne),
+            findViewById<ImageView>(R.id.orangeTwo),
+            findViewById<ImageView>(R.id.orangeThree),
+            findViewById<ImageView>(R.id.orangeFour),
+            findViewById<ImageView>(R.id.orangeFive),
+            findViewById<ImageView>(R.id.orangeSix)
         )
     }
 

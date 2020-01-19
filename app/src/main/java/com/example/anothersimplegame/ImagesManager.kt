@@ -100,54 +100,51 @@ class ImagesManager {
     }
 
     fun doTheFruit(
-        fruitOne: ImageView?, fruitTwo: ImageView?,
-        fruitThree: ImageView?,
-        fruitFour: ImageView?,
-        fruitFive: ImageView?,
-        fruitSix: ImageView?,
+        fruitsList: ArrayList<ImageView?>,
         isVisible: Boolean
     ) {
 
         setFruitVisibility(
-            fruitOne,
-            fruitTwo,
-            fruitThree,
-            fruitFour,
-            fruitFive,
-            fruitSix,
+            fruitsList,
             isVisible
         )
-        fade(fruitOne, 60000)
-        fade(fruitTwo, 35000)
-        fade(fruitThree, 50000)
-        fade(fruitFour, 18000)
-        fade(fruitFive, 30000)
-        fade(fruitSix, 45000)
     }
 
-    fun setFruitVisibility(
-        fruitOne: ImageView?, fruitTwo: ImageView?,
-        fruitThree: ImageView?,
-        fruitFour: ImageView?,
-        fruitFive: ImageView?,
-        fruitSix: ImageView?,
-        isVisible: Boolean
-    ) {
+    fun setFruitVisibility(fruitsList: ArrayList<ImageView?>, isVisible: Boolean) {
 
-        if (isVisible) {
-            fruitOne!!.visibility = View.VISIBLE
-            fruitTwo!!.visibility = View.VISIBLE
-            fruitThree!!.visibility = View.VISIBLE
-            fruitFour!!.visibility = View.VISIBLE
-            fruitFive!!.visibility = View.VISIBLE
-            fruitSix!!.visibility = View.VISIBLE
-        } else {
-            fruitOne!!.visibility = View.INVISIBLE
-            fruitTwo!!.visibility = View.INVISIBLE
-            fruitThree!!.visibility = View.INVISIBLE
-            fruitFour!!.visibility = View.INVISIBLE
-            fruitFive!!.visibility = View.INVISIBLE
-            fruitSix!!.visibility = View.INVISIBLE
+        var idx = 0
+
+        for (fruitImage in fruitsList) {
+            if (isVisible) {
+                fruitImage?.visibility = View.VISIBLE
+                when (idx) {
+                    0 -> {
+                        fade(fruitImage, 60000)
+                    }
+                    1 -> {
+                        fade(fruitImage, 35000)
+                    }
+                    2 -> {
+                        fade(fruitImage, 50000)
+                    }
+                    3 -> {
+                        fade(fruitImage, 18000)
+                    }
+                    4 -> {
+                        fade(fruitImage, 30000)
+                    }
+                    5 -> {
+                        fade(fruitImage, 45000)
+                    }
+                    else -> {
+                        fade(fruitImage, 75000)
+                    }
+                }
+                idx++
+            } else {
+                fruitImage?.visibility = View.INVISIBLE
+            }
         }
     }
+
 }

@@ -16,34 +16,35 @@
     </item>
     <item
         android:id="@+id/themes"
+        android:icon="@drawable/piggy_backdrop_spring"
         android:title="@string/themes"
         app:showAsAction="never">
         <menu>
             <item
                 android:id="@+id/seasons"
-                android:title="@string/seasons"
                 android:background="@color/colorAccent"
+                android:title="@string/seasons"
                 app:showAsAction="never">
                 <menu>
                     <item
                         android:id="@+id/winter"
-                        android:title="@string/winter"
                         android:icon="@drawable/wintertime"
+                        android:title="@string/winter"
                         app:showAsAction="never" />
                     <item
                         android:id="@+id/spring"
-                        android:title="@string/spring"
                         android:icon="@drawable/spring"
+                        android:title="@string/spring"
                         app:showAsAction="never" />
                     <item
                         android:id="@+id/summer"
-                        android:title="@string/summer"
                         android:icon="@drawable/summertime"
+                        android:title="@string/summer"
                         app:showAsAction="never" />
                     <item
                         android:id="@+id/autumn"
-                        android:title="@string/autumn"
                         android:icon="@drawable/autumn"
+                        android:title="@string/autumn"
                         app:showAsAction="never" />
                 </menu>
             </item>
