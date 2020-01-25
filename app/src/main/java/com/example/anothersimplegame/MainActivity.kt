@@ -57,6 +57,10 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         //setting toolbar
         setSupportActionBar(findViewById(R.id.toolbar))
+
+        //findViewById(R.id.verticalGuideline)
+
+
         //home navigation
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.hide()
