@@ -198,6 +198,9 @@ class MainActivity : AppCompatActivity() {
             ) {
                 prefs!!.determineSeason(item.title.toString())
                 prefs!!.writeBackgroundToUse()
+
+                item.icon.setBounds(10, 10, 10, 10)
+
                 restartTheGame()
             }
 
@@ -322,6 +325,20 @@ class MainActivity : AppCompatActivity() {
     fun restartTheGame() {
         finish()
         startActivity(intent)
+    }
+
+    fun changeSeasons(view: View) {
+
+        //      if (item.title == "Winter" || item.title == "Spring"
+        //          || item.title == "Summer" || item.title == "Autumn"
+        //      ) {
+        prefs!!.determineSeason("Winter")
+        prefs!!.writeBackgroundToUse()
+
+        //item.icon.setBounds(10,10,10,10)
+
+        restartTheGame()
+        //    }
     }
 
     fun initImagesList(bgImage: String?) {
