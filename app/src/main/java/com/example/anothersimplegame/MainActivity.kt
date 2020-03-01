@@ -4,7 +4,6 @@ import android.content.Context
 import android.os.*
 import android.os.VibrationEffect.createOneShot
 import android.util.DisplayMetrics
-import android.view.Menu
 import android.view.MenuItem
 import android.view.MotionEvent
 import android.view.View
@@ -57,9 +56,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         //setting toolbar
         setSupportActionBar(findViewById(R.id.toolbar))
-
-        //findViewById(R.id.verticalGuideline)
-
+        getSupportActionBar()?.setDisplayShowTitleEnabled(false);
 
         //home navigation
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
@@ -173,10 +170,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     //setting menu in action bar
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.piggy_snake_menu, menu)
-        return super.onCreateOptionsMenu(menu)
-    }
+    //  override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+    //      menuInflater.inflate(R.menu.piggy_snake_menu, menu)
+    //      return super.onCreateOptionsMenu(menu)
+    //  }
 
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()
@@ -327,18 +324,27 @@ class MainActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-    fun changeSeasons(view: View) {
+    fun doWinter(view: View) {
+        changeSeasons("Winter")
+    }
 
-        //      if (item.title == "Winter" || item.title == "Spring"
-        //          || item.title == "Summer" || item.title == "Autumn"
-        //      ) {
-        prefs!!.determineSeason("Winter")
+    fun doSpring(view: View) {
+        changeSeasons("Spring")
+    }
+
+    fun doSummer(view: View) {
+        changeSeasons("Summer")
+    }
+
+    fun doAutumn(view: View) {
+        changeSeasons("Autumn")
+    }
+
+    fun changeSeasons(season: String) {
+
+        prefs!!.determineSeason(season)
         prefs!!.writeBackgroundToUse()
-
-        //item.icon.setBounds(10,10,10,10)
-
         restartTheGame()
-        //    }
     }
 
     fun initImagesList(bgImage: String?) {
