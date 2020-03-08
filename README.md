@@ -1,7 +1,7 @@
 # AnotherSimpleGame
 
 ## Table of contents
-* [General info](#general-info)
+* [General Information](#general-info)
 * [Screenshots](#screenshots)
 * [Technologies](#technologies)
 * [Setup](#setup)
@@ -9,3 +9,10 @@
 * [Status](#status)
 * [Inspiration](#inspiration)
 * [Contact](#contact)
+
+## General Information
+
+### This project is my first endeavor into developeing and deploying an Android application written in Kotlin.  It is version 1.0
+is the starting point for what should be a fun and learning experience for all involved.
+
+
