@@ -22,16 +22,39 @@ This application is written in native Kotlin and makes use of no external librar
 
 ### Setup
 
+You will need Android Studio or another ide that may be used to develop Android applications.
+
 ### Features
 
+
 ### Status
+
+Version 1.0 is live and version 2.0 is in the works.  Below are changes to be rolled out with version
+2.0
+
+-> Add an audio clip at the end of the gane that states the the game is over
+
+-> junits
+
+-> Animation...
+   - birds
+   - hot air baloon
+   - lady bug
+   - snow
+   - butterfly
+
+-> Add Easter Eggs for various characters from the Piggy Snake book.
+
+-> Update the image for the Sub to be more in line with the image used in the Piggy Snale book.
+
+-> Replace the statically placed oranges with randomly placed oranges.
 
 ### Inspiration
 
 Yes there is inspiration behind this project.  While at a playground with 2 of my young
 grandchildren in Central Florida a young girl joined us at the swingsets and helped push
 my grand-daughter on the swing.  She pointed over to an area of tall grass a short distance
-from the palyground and told us we should not go over there because that is where the piggy
+from the playground and told us we should not go over there because that is where the piggy
 snake and vampire snake live.  Very sweet and duly noted.
 
 The next day while drawing animal figures with my grandchildren, piggy snake came up in our
