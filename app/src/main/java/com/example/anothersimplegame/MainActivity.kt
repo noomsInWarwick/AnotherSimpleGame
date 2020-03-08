@@ -290,7 +290,6 @@ class MainActivity : AppCompatActivity() {
             score++
             scoreValueView.text = score.toString()
             displayedImageList.add(imageList[imageList.indexOf(view)])
-            view.setEnabled(false)
             handler.removeCallbacks(runnable)
             handler.post(runnable)
         }
