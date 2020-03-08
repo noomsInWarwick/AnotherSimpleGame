@@ -16,7 +16,7 @@ import kotlinx.coroutines.Runnable
 import androidx.constraintlayout.widget.ConstraintLayout as ConstraintLayout1
 
 @Suppress("DEPRECATION")
-class MainActivity : AppCompatActivity() {
+class MainActivity_Hold_20200307 : AppCompatActivity() {
 
     var imageList = ArrayList<ImageView>()
     var displayedImageList = ArrayList<ImageView>()
@@ -61,7 +61,7 @@ class MainActivity : AppCompatActivity() {
         supportActionBar?.hide()
         window.statusBarColor = ContextCompat.getColor(this, R.color.colorAccent)
 
-        val context: Context = this@MainActivity.baseContext
+        val context: Context = this@MainActivity_Hold_20200307.baseContext
 
         prefs = PiggySnakePreferencesReader(this)
         val bgImage = prefs!!.bgImage
@@ -110,7 +110,7 @@ class MainActivity : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
 
-        manageImages()
+        hideImages()
 
         when (prefs!!.currentSeason) {
             Seasons.Spring -> {
@@ -178,6 +178,29 @@ class MainActivity : AppCompatActivity() {
         return true
     }
 
+    // actions on click menu items
+//    override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
+//
+//        R.id.settings -> {
+//            // User chose the "Settings" item, show the app settings UI...
+//            true
+//        }
+//        else -> {
+//            if (item.title == "Winter" || item.title == "Spring"
+//                || item.title == "Summer" || item.title == "Autumn"
+//            ) {
+//                prefs!!.determineSeason(item.title.toString())
+//                prefs!!.writeBackgroundToUse()
+//
+//                item.icon.setBounds(10, 10, 10, 10)
+//
+//                restartTheGame()
+//            }
+//
+//            super.onOptionsItemSelected(item)
+//        }
+//    }
+
     fun setBackground(
         context: Context, bgImage: String?
     ) {
@@ -188,7 +211,7 @@ class MainActivity : AppCompatActivity() {
         rl.setBackgroundResource(prefs!!.setBackground())
     }
 
-    fun manageImages() {
+    fun hideImages() {
 
         runnable = object : Runnable {
             override fun run() {
@@ -197,20 +220,14 @@ class MainActivity : AppCompatActivity() {
                     isDone = true
                 }
 
-                // if the grid's spot is was selected/caught, have the smiley face image display.
                 for (displayedImage in displayedImageList) {
                     displayedIdx = imageList.indexOf(displayedImage)
                     if (imageList.indexOf(displayedImage) >= 0) {
                         imageList[displayedIdx].setImageDrawable(resources.getDrawable(drawable.piggysnake_smiley_trans))
                         imageList[displayedIdx].maxWidth = 75
-                        // set image that overlaps with piggy snake image to be invisible whan at the selected spot.
-                        if (displayedIdx == 1) {
-                            orangeTwo.visibility = View.INVISIBLE
-                        }
                     }
                 }
 
-                // if the grid's spot has not yet been selected/caught, do not diplay anything.
                 for (image in imageList) {
                     // if not selected yet, hide it.
                     if (displayedImageList.indexOf(image) == -1) {
@@ -218,7 +235,6 @@ class MainActivity : AppCompatActivity() {
                     }
                 }
 
-                // select a random index to work with and then remove that entry from the list that holds the randomly ordered index values.
                 if (randomIndexesList.size > 0) {
                     randomIdx = randomIndexesList.get(0)
                     randomIndexesList.removeAt(0)
@@ -290,7 +306,6 @@ class MainActivity : AppCompatActivity() {
             score++
             scoreValueView.text = score.toString()
             displayedImageList.add(imageList[imageList.indexOf(view)])
-            view.setEnabled(false)
             handler.removeCallbacks(runnable)
             handler.post(runnable)
         }
