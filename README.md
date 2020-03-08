@@ -12,7 +12,6 @@
 
 ## General Information
 
-### This project is my first endeavor into developeing and deploying an Android application written in Kotlin.  It is version 1.0
-is the starting point for what should be a fun and learning experience for all involved.
+### This project is my first endeavor into developing and deploying an Android application written in Kotlin.  It is version 1.0 /n and is the starting point for what should be a fun and learning experience for all involved.
 
 
