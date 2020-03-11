@@ -75,40 +75,16 @@ class MainActivity : AppCompatActivity() {
         score = 0
         nbrImagesDisplayed = 0
 
-        fallingleafone = findViewById<ImageView>(R.id.fallingleaf_one)
-        fallingleaftwo = findViewById<ImageView>(R.id.fallingleaf_two)
-        fallingleafthree = findViewById<ImageView>(R.id.fallingleaf_three)
-        fallingleaffour = findViewById<ImageView>(R.id.fallingleaf_four)
-
-        theSnowman = findViewById(R.id.snowmanImageView)
-
-        loadFruitsList()
-
-        imagesManager.setSnowmanVisibility(theSnowman, false)
-        imagesManager.setLeavesVisibility(
-            fallingleafone,
-            fallingleaftwo,
-            fallingleafthree,
-            fallingleaffour,
-            false
-        )
-
-        imagesManager.setFruitVisibility(
-            fruitsList,
-            false
-        )
+        prepareSnowman()
+        prepareSummerFruits()
+        prepareAutumnLeaves()
 
         initImagesList(bgImage)
         initRandomIndexes()
 
-        // get device dimensions
         val displayMetrics = DisplayMetrics()
         windowManager.defaultDisplay.getMetrics(displayMetrics)
         layoutWidth = displayMetrics.widthPixels
-    }
-
-    override fun onStart() {
-        super.onStart()
 
         manageImages()
 
@@ -140,15 +116,6 @@ class MainActivity : AppCompatActivity() {
                     imageView5.setImageDrawable(resources.getDrawable(drawable.piggysnake_smiley_old))
                     imageView5.visibility = View.VISIBLE
                     imagesManager.fade(imageView5, 3000)
-
-                    //###########  rework below
-                    // check of the randomIdx is resident in the 'caught' index category
-//                    if (imageList[randomIdx]) {
-//
-//                    }
-                    // imageList[displayedIdx].setImageDrawable(resources.getDrawable(drawable.piggysnake_smiley_trans))
-                    // imageList[randomIdx].visibility = View.INVISIBLE
-                    //############# rework above
                     playAgainButton.visibility = View.VISIBLE
                     gameActive = false
                 }
@@ -165,6 +132,31 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }.start()
+    }
+
+    private fun prepareSnowman() {
+        theSnowman = findViewById(R.id.snowmanImageView)
+        imagesManager.setSnowmanVisibility(theSnowman, false)
+    }
+
+    private fun prepareAutumnLeaves() {
+
+        fallingleafone = findViewById<ImageView>(R.id.fallingleaf_one)
+        fallingleaftwo = findViewById<ImageView>(R.id.fallingleaf_two)
+        fallingleafthree = findViewById<ImageView>(R.id.fallingleaf_three)
+        fallingleaffour = findViewById<ImageView>(R.id.fallingleaf_four)
+
+        imagesManager.setLeavesVisibility(
+            fallingleafone,
+            fallingleaftwo,
+            fallingleafthree,
+            fallingleaffour,
+            false
+        )
+    }
+
+    override fun onStart() {
+        super.onStart()
     }
 
     //setting menu in action bar
@@ -356,7 +348,7 @@ class MainActivity : AppCompatActivity() {
         )
     }
 
-    fun loadFruitsList() {
+    fun prepareSummerFruits() {
 
         fruitsList = arrayListOf(
             findViewById<ImageView>(R.id.orangeOne),
@@ -366,6 +358,11 @@ class MainActivity : AppCompatActivity() {
             findViewById<ImageView>(R.id.orangeFive),
             findViewById<ImageView>(R.id.orangeSix),
             findViewById<ImageView>(R.id.orangeSeven)
+        )
+
+        imagesManager.setFruitVisibility(
+            fruitsList,
+            false
         )
     }
 

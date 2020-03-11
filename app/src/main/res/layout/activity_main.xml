@@ -343,6 +343,7 @@
         android:backgroundTint="@color/colorAccent"
         android:onClick="doRestart"
         android:scaleType="fitCenter"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/scoreTextView"
         app:layout_constraintHorizontal_bias="0.08"

@@ -7,6 +7,7 @@ import android.util.DisplayMetrics
 import android.view.MotionEvent
 import android.view.View
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.view.MotionEventCompat
@@ -16,7 +17,7 @@ import kotlinx.coroutines.Runnable
 import androidx.constraintlayout.widget.ConstraintLayout as ConstraintLayout1
 
 @Suppress("DEPRECATION")
-class MainActivity_Hold_20200307 : AppCompatActivity() {
+class MainActivity_Hold_2020030707 : AppCompatActivity() {
 
     var imageList = ArrayList<ImageView>()
     var displayedImageList = ArrayList<ImageView>()
@@ -61,7 +62,7 @@ class MainActivity_Hold_20200307 : AppCompatActivity() {
         supportActionBar?.hide()
         window.statusBarColor = ContextCompat.getColor(this, R.color.colorAccent)
 
-        val context: Context = this@MainActivity_Hold_20200307.baseContext
+        val context: Context = this@MainActivity_Hold_2020030707.baseContext
 
         prefs = PiggySnakePreferencesReader(this)
         val bgImage = prefs!!.bgImage
@@ -101,16 +102,7 @@ class MainActivity_Hold_20200307 : AppCompatActivity() {
         initImagesList(bgImage)
         initRandomIndexes()
 
-        // get device dimensions
-        val displayMetrics = DisplayMetrics()
-        windowManager.defaultDisplay.getMetrics(displayMetrics)
-        layoutWidth = displayMetrics.widthPixels
-    }
-
-    override fun onStart() {
-        super.onStart()
-
-        hideImages()
+        manageImages()
 
         when (prefs!!.currentSeason) {
             Seasons.Spring -> {
@@ -125,6 +117,7 @@ class MainActivity_Hold_20200307 : AppCompatActivity() {
                 descendingLeaves()
             }
             Seasons.Winter -> {
+                Toast.makeText(this, "Chewy is good  <80 ", Toast.LENGTH_SHORT).show()
                 imagesManager.doSnowman(theSnowman)
                 imagesManager.setSnowmanVisibility(theSnowman, true)
                 imagesManager.fade(theSnowman, 10000)
@@ -140,15 +133,6 @@ class MainActivity_Hold_20200307 : AppCompatActivity() {
                     imageView5.setImageDrawable(resources.getDrawable(drawable.piggysnake_smiley_old))
                     imageView5.visibility = View.VISIBLE
                     imagesManager.fade(imageView5, 3000)
-
-                    //###########  rework below
-                    // check of the randomIdx is resident in the 'caught' index category
-//                    if (imageList[randomIdx]) {
-//
-//                    }
-                    // imageList[displayedIdx].setImageDrawable(resources.getDrawable(drawable.piggysnake_smiley_trans))
-                    // imageList[randomIdx].visibility = View.INVISIBLE
-                    //############# rework above
                     playAgainButton.visibility = View.VISIBLE
                     gameActive = false
                 }
@@ -165,6 +149,15 @@ class MainActivity_Hold_20200307 : AppCompatActivity() {
                 }
             }
         }.start()
+
+        // get device dimensions
+        val displayMetrics = DisplayMetrics()
+        windowManager.defaultDisplay.getMetrics(displayMetrics)
+        layoutWidth = displayMetrics.widthPixels
+    }
+
+    override fun onStart() {
+        super.onStart()
     }
 
     //setting menu in action bar
@@ -178,29 +171,6 @@ class MainActivity_Hold_20200307 : AppCompatActivity() {
         return true
     }
 
-    // actions on click menu items
-//    override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
-//
-//        R.id.settings -> {
-//            // User chose the "Settings" item, show the app settings UI...
-//            true
-//        }
-//        else -> {
-//            if (item.title == "Winter" || item.title == "Spring"
-//                || item.title == "Summer" || item.title == "Autumn"
-//            ) {
-//                prefs!!.determineSeason(item.title.toString())
-//                prefs!!.writeBackgroundToUse()
-//
-//                item.icon.setBounds(10, 10, 10, 10)
-//
-//                restartTheGame()
-//            }
-//
-//            super.onOptionsItemSelected(item)
-//        }
-//    }
-
     fun setBackground(
         context: Context, bgImage: String?
     ) {
@@ -211,7 +181,7 @@ class MainActivity_Hold_20200307 : AppCompatActivity() {
         rl.setBackgroundResource(prefs!!.setBackground())
     }
 
-    fun hideImages() {
+    fun manageImages() {
 
         runnable = object : Runnable {
             override fun run() {
@@ -220,14 +190,20 @@ class MainActivity_Hold_20200307 : AppCompatActivity() {
                     isDone = true
                 }
 
+                // if the grid's spot is was selected/caught, have the smiley face image display.
                 for (displayedImage in displayedImageList) {
                     displayedIdx = imageList.indexOf(displayedImage)
                     if (imageList.indexOf(displayedImage) >= 0) {
                         imageList[displayedIdx].setImageDrawable(resources.getDrawable(drawable.piggysnake_smiley_trans))
                         imageList[displayedIdx].maxWidth = 75
+                        // set image that overlaps with piggy snake image to be invisible whan at the selected spot.
+                        if (displayedIdx == 1) {
+                            orangeTwo.visibility = View.INVISIBLE
+                        }
                     }
                 }
 
+                // if the grid's spot has not yet been selected/caught, do not diplay anything.
                 for (image in imageList) {
                     // if not selected yet, hide it.
                     if (displayedImageList.indexOf(image) == -1) {
@@ -235,6 +211,7 @@ class MainActivity_Hold_20200307 : AppCompatActivity() {
                     }
                 }
 
+                // select a random index to work with and then remove that entry from the list that holds the randomly ordered index values.
                 if (randomIndexesList.size > 0) {
                     randomIdx = randomIndexesList.get(0)
                     randomIndexesList.removeAt(0)
@@ -306,6 +283,7 @@ class MainActivity_Hold_20200307 : AppCompatActivity() {
             score++
             scoreValueView.text = score.toString()
             displayedImageList.add(imageList[imageList.indexOf(view)])
+            view.setEnabled(false)
             handler.removeCallbacks(runnable)
             handler.post(runnable)
         }

@@ -14,7 +14,7 @@ class ImagesManager {
     var randomIndexesList = ArrayList<Int>()
     var snowmanTimer = 30000L
 
-    private var orangeOne: ImageView? = null
+    // private var orangeOne: ImageView? = null
 
     fun setLeavesVisibility(
         leafOne: ImageView?, leafTwo: ImageView?,
