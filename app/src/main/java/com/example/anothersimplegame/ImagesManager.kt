@@ -9,12 +9,7 @@ import android.widget.ImageView
 
 class ImagesManager {
 
-    var imageList = ArrayList<ImageView>()
-    var displayedImageList = ArrayList<ImageView>()
-    var randomIndexesList = ArrayList<Int>()
     var snowmanTimer = 30000L
-
-    // private var orangeOne: ImageView? = null
 
     fun setLeavesVisibility(
         leafOne: ImageView?, leafTwo: ImageView?,

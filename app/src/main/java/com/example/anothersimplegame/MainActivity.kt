@@ -40,8 +40,6 @@ class MainActivity : AppCompatActivity() {
     var layoutWidth = 0
     private var showBar = false
 
-    // val context: Context = this@MainActivity.baseContext
-
     private var fallingleafone: ImageView? = null
     private var fallingleaftwo: ImageView? = null
     private var fallingleafthree: ImageView? = null
@@ -76,8 +74,6 @@ class MainActivity : AppCompatActivity() {
         nbrImagesDisplayed = 0
 
         prepareSnowman()
-        prepareSummerFruits()
-        prepareAutumnLeaves()
 
         initImagesList(bgImage)
         initRandomIndexes()
@@ -90,17 +86,18 @@ class MainActivity : AppCompatActivity() {
 
         when (prefs!!.currentSeason) {
             Seasons.Spring -> {
+                //fruitsList.clear()
             }
             Seasons.Summer -> {
-                imagesManager.doTheFruit(
-                    fruitsList,
-                    true
-                )
+                prepareSummerFruits()
             }
             Seasons.Autumn -> {
+                //fruitsList.clear()
+                prepareAutumnLeaves()
                 descendingLeaves()
             }
             Seasons.Winter -> {
+                // fruitsList.clear()
                 imagesManager.doSnowman(theSnowman)
                 imagesManager.setSnowmanVisibility(theSnowman, true)
                 imagesManager.fade(theSnowman, 10000)
@@ -118,6 +115,8 @@ class MainActivity : AppCompatActivity() {
                     imagesManager.fade(imageView5, 3000)
                     playAgainButton.visibility = View.VISIBLE
                     gameActive = false
+                    fruitsList.clear()
+                    randomIndexesList.clear()
                 }
 
                 handler.removeCallbacks(runnable)
@@ -137,22 +136,6 @@ class MainActivity : AppCompatActivity() {
     private fun prepareSnowman() {
         theSnowman = findViewById(R.id.snowmanImageView)
         imagesManager.setSnowmanVisibility(theSnowman, false)
-    }
-
-    private fun prepareAutumnLeaves() {
-
-        fallingleafone = findViewById<ImageView>(R.id.fallingleaf_one)
-        fallingleaftwo = findViewById<ImageView>(R.id.fallingleaf_two)
-        fallingleafthree = findViewById<ImageView>(R.id.fallingleaf_three)
-        fallingleaffour = findViewById<ImageView>(R.id.fallingleaf_four)
-
-        imagesManager.setLeavesVisibility(
-            fallingleafone,
-            fallingleaftwo,
-            fallingleafthree,
-            fallingleaffour,
-            false
-        )
     }
 
     override fun onStart() {
@@ -223,6 +206,14 @@ class MainActivity : AppCompatActivity() {
         }
 
         handler.post(runnable)
+    }
+
+    private fun prepareAutumnLeaves() {
+
+        fallingleafone = findViewById<ImageView>(R.id.fallingleaf_one)
+        fallingleaftwo = findViewById<ImageView>(R.id.fallingleaf_two)
+        fallingleafthree = findViewById<ImageView>(R.id.fallingleaf_three)
+        fallingleaffour = findViewById<ImageView>(R.id.fallingleaf_four)
     }
 
     fun descendingLeaves() {
@@ -360,9 +351,9 @@ class MainActivity : AppCompatActivity() {
             findViewById<ImageView>(R.id.orangeSeven)
         )
 
-        imagesManager.setFruitVisibility(
+        imagesManager.doTheFruit(
             fruitsList,
-            false
+            true
         )
     }
 
