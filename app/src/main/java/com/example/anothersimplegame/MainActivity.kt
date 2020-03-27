@@ -11,6 +11,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.view.MotionEventCompat
 import com.example.anothersimplegame.R.drawable
+import com.example.anothersimplegame.imagesmanagers.ImagesManagerAutumn
+import com.example.anothersimplegame.imagesmanagers.ImagesManagerFruits
+import com.example.anothersimplegame.imagesmanagers.ImagesManagerSnowman
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.Runnable
 import androidx.constraintlayout.widget.ConstraintLayout as ConstraintLayout1
@@ -28,15 +31,14 @@ class MainActivity : AppCompatActivity() {
     var imageTimer = 3000L
     var handler: Handler = Handler()
     var runnable: Runnable = Runnable {}
-    var imageRunnable: Runnable = Runnable {}
     var displayedIdx = 0
     var randomIdx = 0
     var gameActive = true
-    var threadCounter = 0
     var countDownTimer = 30000L
     var isDone = false
-    var imagesManager: ImagesManager = ImagesManager()
-    var leafNumber = 1
+    var autumnImagesManager: ImagesManagerAutumn = ImagesManagerAutumn()
+    var snowmanImagesManager: ImagesManagerSnowman = ImagesManagerSnowman()
+    var fruitsImagesManager: ImagesManagerFruits = ImagesManagerFruits()
     var layoutWidth = 0
     private var showBar = false
 
@@ -67,7 +69,6 @@ class MainActivity : AppCompatActivity() {
         setBackground(context, bgImage)
 
         gameActive = true
-        threadCounter = 0
         isDone = false
         playAgainButton.visibility = View.INVISIBLE
         score = 0
@@ -86,22 +87,20 @@ class MainActivity : AppCompatActivity() {
 
         when (prefs!!.currentSeason) {
             Seasons.Spring -> {
-                //fruitsList.clear()
             }
             Seasons.Summer -> {
                 prepareSummerFruits()
             }
             Seasons.Autumn -> {
-                //fruitsList.clear()
                 prepareAutumnLeaves()
+                setLeavesVisibility()
                 descendingLeaves()
             }
             Seasons.Winter -> {
-                // fruitsList.clear()
-                imagesManager.doSnowman(theSnowman)
-                imagesManager.setSnowmanVisibility(theSnowman, true)
-                imagesManager.fade(theSnowman, 10000)
-                imagesManager.moveSnowman(theSnowman, layoutWidth)
+                snowmanImagesManager.doSnowman(theSnowman)
+                snowmanImagesManager.setSnowmanVisibility(theSnowman, true)
+                snowmanImagesManager.fade(theSnowman, 10000)
+                snowmanImagesManager.moveSnowman(theSnowman, layoutWidth)
             }
         }
 
@@ -112,7 +111,7 @@ class MainActivity : AppCompatActivity() {
                     timerTextView.text = ""
                     imageView5.setImageDrawable(resources.getDrawable(drawable.piggysnake_smiley_old))
                     imageView5.visibility = View.VISIBLE
-                    imagesManager.fade(imageView5, 3000)
+                    autumnImagesManager.fade(imageView5, 3000)
                     playAgainButton.visibility = View.VISIBLE
                     gameActive = false
                     fruitsList.clear()
@@ -120,7 +119,9 @@ class MainActivity : AppCompatActivity() {
                 }
 
                 handler.removeCallbacks(runnable)
-                handler.removeCallbacks(imageRunnable)
+                if (prefs!!.currentSeason.equals(Seasons.Autumn)) {
+                    autumnImagesManager.cleanUp()
+                }
             }
 
             override fun onTick(p0: Long) {
@@ -135,7 +136,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun prepareSnowman() {
         theSnowman = findViewById(R.id.snowmanImageView)
-        imagesManager.setSnowmanVisibility(theSnowman, false)
+        snowmanImagesManager.setSnowmanVisibility(theSnowman, false)
     }
 
     override fun onStart() {
@@ -156,7 +157,6 @@ class MainActivity : AppCompatActivity() {
     fun setBackground(
         context: Context, bgImage: String?
     ) {
-
         val rl: ConstraintLayout1
         rl = findViewById(R.id.mainConstraint)
         prefs!!.determineSeason(bgImage)
@@ -216,54 +216,25 @@ class MainActivity : AppCompatActivity() {
         fallingleaffour = findViewById<ImageView>(R.id.fallingleaf_four)
     }
 
-    fun descendingLeaves() {
+    private fun setLeavesVisibility() {
 
-        imagesManager.setLeavesVisibility(
+        autumnImagesManager.setLeavesVisibility(
             fallingleafone,
             fallingleaftwo,
             fallingleafthree,
             fallingleaffour,
             true
         )
+    }
 
-        imageRunnable = object : Runnable {
-            override fun run() {
+    private fun descendingLeaves() {
 
-                when (leafNumber) {
-                    1 -> {
-                        imagesManager.rotate(fallingleafone, 9000)
-                        imagesManager.rotate(fallingleafthree, 12000)
-                        imagesManager.rotate(fallingleaftwo, 7000)
-                        imagesManager.rotate(fallingleaffour, 10000)
-                        leafNumber = 2
-                    }
-                    2 -> {
-                        imagesManager.rotate(fallingleaftwo, 9000)
-                        imagesManager.rotate(fallingleaffour, 7000)
-                        leafNumber = 3
-                    }
-                    3 -> {
-                        imagesManager.rotate(fallingleafone, 15000)
-                        imagesManager.rotate(fallingleafthree, 8000)
-                        imagesManager.rotate(fallingleaftwo, 10000)
-                        leafNumber = 4
-                    }
-                    4 -> {
-                        imagesManager.rotate(fallingleaffour, 9000)
-                        imagesManager.rotate(fallingleaftwo, 7000)
-                        leafNumber = 1
-                    }
-                    else -> {
-                        imagesManager.rotate(fallingleafone, 9000)
-                        leafNumber = 1
-                    }
-                }
-
-                handler.postDelayed(imageRunnable, 9000L)
-            }
-        }
-
-        handler.post(imageRunnable)
+        autumnImagesManager.descendingLeavesDriver(
+            fallingleafone,
+            fallingleaftwo,
+            fallingleafthree,
+            fallingleaffour
+        )
     }
 
     fun increaseScore(view: View) {
@@ -314,8 +285,11 @@ class MainActivity : AppCompatActivity() {
     fun initImagesList(bgImage: String?) {
 
         prefs!!.determineSeason(bgImage)
+
+        // determine the piggy snake image to display - is based on season.
         var dr = prefs!!.setPiggySnakeImage()
 
+        // load the grid's views with the piggy snake image.
         imageView1.setImageDrawable(resources.getDrawable(dr))
         imageView2.setImageDrawable(resources.getDrawable(dr))
         imageView3.setImageDrawable(resources.getDrawable(dr))
@@ -351,7 +325,7 @@ class MainActivity : AppCompatActivity() {
             findViewById<ImageView>(R.id.orangeSeven)
         )
 
-        imagesManager.doTheFruit(
+        fruitsImagesManager.doTheFruit(
             fruitsList,
             true
         )
