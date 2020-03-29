@@ -40,7 +40,6 @@ class MainActivity : AppCompatActivity() {
     var snowmanImagesManager: ImagesManagerSnowman = ImagesManagerSnowman()
     var fruitsImagesManager: ImagesManagerFruits = ImagesManagerFruits()
     var layoutWidth = 0
-    private var showBar = false
 
     private var fallingleafone: ImageView? = null
     private var fallingleaftwo: ImageView? = null
@@ -54,7 +53,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         //setting toolbar
         setSupportActionBar(findViewById(R.id.toolbar))
-        getSupportActionBar()?.setDisplayShowTitleEnabled(false);
+        getSupportActionBar()?.setDisplayShowTitleEnabled(false)
 
         //home navigation
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
@@ -139,10 +138,6 @@ class MainActivity : AppCompatActivity() {
         snowmanImagesManager.setSnowmanVisibility(theSnowman, false)
     }
 
-    override fun onStart() {
-        super.onStart()
-    }
-
     //setting menu in action bar
     //  override fun onCreateOptionsMenu(menu: Menu?): Boolean {
     //      menuInflater.inflate(R.menu.piggy_snake_menu, menu)
@@ -154,7 +149,7 @@ class MainActivity : AppCompatActivity() {
         return true
     }
 
-    fun setBackground(
+    private fun setBackground(
         context: Context, bgImage: String?
     ) {
         val rl: ConstraintLayout1
@@ -163,7 +158,7 @@ class MainActivity : AppCompatActivity() {
         rl.setBackgroundResource(prefs!!.setBackground())
     }
 
-    fun manageImages() {
+    private fun manageImages() {
 
         runnable = object : Runnable {
             override fun run() {
@@ -210,10 +205,10 @@ class MainActivity : AppCompatActivity() {
 
     private fun prepareAutumnLeaves() {
 
-        fallingleafone = findViewById<ImageView>(R.id.fallingleaf_one)
-        fallingleaftwo = findViewById<ImageView>(R.id.fallingleaf_two)
-        fallingleafthree = findViewById<ImageView>(R.id.fallingleaf_three)
-        fallingleaffour = findViewById<ImageView>(R.id.fallingleaf_four)
+        fallingleafone = findViewById(R.id.fallingleaf_one)
+        fallingleaftwo = findViewById(R.id.fallingleaf_two)
+        fallingleafthree = findViewById(R.id.fallingleaf_three)
+        fallingleaffour = findViewById(R.id.fallingleaf_four)
     }
 
     private fun setLeavesVisibility() {
@@ -250,7 +245,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun doRestart(view: View) {
+    public fun doRestart(view: View) {
         restartTheGame()
     }
 
@@ -275,14 +270,14 @@ class MainActivity : AppCompatActivity() {
         changeSeasons("Autumn")
     }
 
-    fun changeSeasons(season: String) {
+    private fun changeSeasons(season: String) {
 
         prefs!!.determineSeason(season)
         prefs!!.writeBackgroundToUse()
         restartTheGame()
     }
 
-    fun initImagesList(bgImage: String?) {
+    private fun initImagesList(bgImage: String?) {
 
         prefs!!.determineSeason(bgImage)
 
@@ -313,16 +308,16 @@ class MainActivity : AppCompatActivity() {
         )
     }
 
-    fun prepareSummerFruits() {
+    private fun prepareSummerFruits() {
 
         fruitsList = arrayListOf(
-            findViewById<ImageView>(R.id.orangeOne),
-            findViewById<ImageView>(R.id.orangeTwo),
-            findViewById<ImageView>(R.id.orangeThree),
-            findViewById<ImageView>(R.id.orangeFour),
-            findViewById<ImageView>(R.id.orangeFive),
-            findViewById<ImageView>(R.id.orangeSix),
-            findViewById<ImageView>(R.id.orangeSeven)
+            findViewById(R.id.orangeOne),
+            findViewById(R.id.orangeTwo),
+            findViewById(R.id.orangeThree),
+            findViewById(R.id.orangeFour),
+            findViewById(R.id.orangeFive),
+            findViewById(R.id.orangeSix),
+            findViewById(R.id.orangeSeven)
         )
 
         fruitsImagesManager.doTheFruit(
@@ -331,13 +326,13 @@ class MainActivity : AppCompatActivity() {
         )
     }
 
-    fun initRandomIndexes() {
+    private fun initRandomIndexes() {
         // load and then randomize the list to determine the order of the images display.
         randomIndexesList = arrayListOf(0, 1, 2, 3, 4, 5, 6, 7, 8)
         randomIndexesList.shuffle()
     }
 
-    fun Context.vibrate(milliseconds: Long = 100) {
+    private fun Context.vibrate(milliseconds: Long = 100) {
         val vibrator = this.getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
 
         // Check whether device/hardware has a vibrator
