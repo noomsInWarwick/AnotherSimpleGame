@@ -6,7 +6,7 @@ import android.widget.ImageView
 
 class ImagesManagerFruits {
 
-    fun fade(image: ImageView?, fadeDuration: Long) {
+    private fun fade(image: ImageView?, fadeDuration: Long) {
         val fade = ObjectAnimator.ofFloat(image, View.ALPHA, 0.1f, 5.1f)
         fade.duration = fadeDuration
         fade.start()
@@ -23,7 +23,7 @@ class ImagesManagerFruits {
         )
     }
 
-    fun setFruitVisibility(fruitsList: ArrayList<ImageView?>, isVisible: Boolean) {
+    private fun setFruitVisibility(fruitsList: ArrayList<ImageView?>, isVisible: Boolean) {
 
         var idx = 0
 

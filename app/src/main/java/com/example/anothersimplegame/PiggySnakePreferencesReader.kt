@@ -71,9 +71,4 @@ class PiggySnakePreferencesReader(context: Context) {
 
         return dr
     }
-
-    fun setSeason() {
-
-    }
-
 }

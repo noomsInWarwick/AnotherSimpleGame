@@ -3,12 +3,8 @@
 
     <string name="score">Calificar:  </string>
 
-    <string name="settings">Configuraciones</string>
     <string name="vibrate">Vibrar</string>
 
-    <string name="themes">Temas</string>
-    <string name="holidays">Días festivos</string>
-    <string name="seasons">Estaciones</string>
     <string name="winter">Invierno</string>
     <string name="spring">Primavera</string>
     <string name="summer">Verano</string>

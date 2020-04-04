@@ -26,8 +26,8 @@ class MainActivity : AppCompatActivity() {
     var fruitsList = ArrayList<ImageView?>()
     var randomIndexesList = ArrayList<Int>()
 
-    var score: Int = 0
-    var nbrImagesDisplayed = 0
+    private var score: Int = 0
+    private var nbrImagesDisplayed = 0
     var imageTimer = 3000L
     var handler: Handler = Handler()
     var runnable: Runnable = Runnable {}
@@ -245,7 +245,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    public fun doRestart(view: View) {
+    fun doRestart(view: View) {
         restartTheGame()
     }
 

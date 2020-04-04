@@ -14,7 +14,7 @@ class ImagesManagerAutumn {
 
     var leafNumber = 1
 
-    public fun descendingLeavesDriver(
+    fun descendingLeavesDriver(
         leafOne: ImageView?, leafTwo: ImageView?,
         leafThree: ImageView?,
         leafFour: ImageView?
@@ -94,7 +94,7 @@ class ImagesManagerAutumn {
         return nextLeaf
     }
 
-    fun rotate(image: ImageView?, fallDuration: Long) {
+    private fun rotate(image: ImageView?, fallDuration: Long) {
 
         fade(image, 3000)
 
