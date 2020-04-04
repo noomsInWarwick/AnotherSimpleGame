@@ -1,12 +1,4 @@
 <resources>
     <string name="app_name">Catch Piggy Snake</string>
-
     <string name="score">Calificar:  </string>
-
-    <string name="vibrate">Vibrar</string>
-
-    <string name="winter">Invierno</string>
-    <string name="spring">Primavera</string>
-    <string name="summer">Verano</string>
-    <string name="autumn">Otoño</string>
 </resources>

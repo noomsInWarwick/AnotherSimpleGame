@@ -1,5 +1,2 @@
 <resources>
-    <dimen name="fab_margin">16dp</dimen>
-    <dimen name="volume_bar_default_width">300dp</dimen>
-    <dimen name="volume_bar_default_height">24dp</dimen>
 </resources>

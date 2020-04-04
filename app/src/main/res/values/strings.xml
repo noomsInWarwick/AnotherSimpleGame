@@ -1,10 +1,4 @@
 <resources>
     <string name="app_name">Catch Piggy Snake</string>
     <string name="score">Score:  </string>
-    <string name="vibrate">Vibrate</string>
-
-    <string name="winter">Winter</string>
-    <string name="spring">Spring</string>
-    <string name="summer">Summer</string>
-    <string name="autumn">Autumn</string>
 </resources>
