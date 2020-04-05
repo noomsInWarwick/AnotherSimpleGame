@@ -37,7 +37,7 @@
             app:layout_constraintEnd_toStartOf="@+id/spring"
             app:layout_constraintStart_toStartOf="@+id/toolbar"
             app:layout_constraintTop_toTopOf="parent"
-            android:contentDescription="TODO" />
+            android:contentDescription="@string/winter" />
 
         <ImageView
             android:id="@+id/spring"
@@ -53,7 +53,7 @@
             app:layout_constraintEnd_toStartOf="@+id/summer"
             app:layout_constraintStart_toEndOf="@+id/winter"
             app:layout_constraintTop_toTopOf="parent"
-            android:contentDescription="TODO" />
+            android:contentDescription="@string/spring" />
 
         <ImageView
             android:id="@+id/summer"
@@ -69,7 +69,7 @@
             app:layout_constraintEnd_toStartOf="@+id/autumn"
             app:layout_constraintStart_toEndOf="@+id/spring"
             app:layout_constraintTop_toTopOf="parent"
-            android:contentDescription="TODO" />
+            android:contentDescription="@string/summer" />
 
         <ImageView
             android:id="@+id/autumn"
@@ -85,7 +85,7 @@
             app:layout_constraintEnd_toEndOf="@+id/toolbar"
             app:layout_constraintStart_toEndOf="@+id/summer"
             app:layout_constraintTop_toTopOf="parent"
-            android:contentDescription="TODO" />
+            android:contentDescription="@string/autumn" />
         />
     </androidx.appcompat.widget.Toolbar>
 
@@ -109,7 +109,7 @@
         app:layout_constraintHorizontal_bias="0.8"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/mainConstraint"
-        android:contentDescription="TODO" />
+        android:contentDescription="@string/orange" />
 
     <TextView
         android:id="@+id/timerTextView"
@@ -145,7 +145,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_row="0"
             app:srcCompat="@drawable/piggysnake"
-            android:contentDescription="TODO" />
+            android:contentDescription="@string/piggysnake" />
 
         <ImageView
             android:id="@+id/imageView2"
@@ -157,7 +157,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_row="0"
             app:srcCompat="@drawable/piggysnake"
-            android:contentDescription="TODO" />
+            android:contentDescription="@string/piggysnake" />
 
         <ImageView
             android:id="@+id/imageView3"
@@ -169,7 +169,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_row="0"
             app:srcCompat="@drawable/piggysnake"
-            android:contentDescription="TODO" />
+            android:contentDescription="@string/piggysnake" />
 
         <ImageView
             android:id="@+id/imageView4"
@@ -181,7 +181,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_row="1"
             app:srcCompat="@drawable/piggysnake"
-            android:contentDescription="TODO" />
+            android:contentDescription="@string/piggysnake" />
 
         <ImageView
             android:id="@+id/fallingleaf_one"
@@ -193,7 +193,7 @@
             android:visibility="invisible"
             app:layout_column="0"
             app:layout_row="2"
-            android:contentDescription="TODO" />
+            android:contentDescription="@string/redleaf" />
 
         <ImageView
             android:id="@+id/orangeOne"
@@ -205,7 +205,7 @@
             android:visibility="invisible"
             app:layout_column="0"
             app:layout_row="0"
-            android:contentDescription="TODO" />
+            android:contentDescription="@string/orange" />
 
         <ImageView
             android:id="@+id/orangeTwo"
@@ -218,7 +218,7 @@
             android:visibility="invisible"
             app:layout_column="1"
             app:layout_row="0"
-            android:contentDescription="TODO" />
+            android:contentDescription="@string/orange" />
 
         <ImageView
             android:id="@+id/orangeThree"
@@ -230,7 +230,7 @@
             android:visibility="invisible"
             app:layout_column="2"
             app:layout_row="0"
-            android:contentDescription="TODO" />
+            android:contentDescription="@string/orange" />
 
         <ImageView
             android:id="@+id/orangeFour"
@@ -242,7 +242,7 @@
             android:visibility="invisible"
             app:layout_column="0"
             app:layout_row="1"
-            android:contentDescription="TODO" />
+            android:contentDescription="@string/orange" />
 
         <ImageView
             android:id="@+id/orangeFive"
@@ -255,7 +255,7 @@
             android:visibility="invisible"
             app:layout_column="2"
             app:layout_row="1"
-            android:contentDescription="TODO" />
+            android:contentDescription="@string/orange" />
 
         <ImageView
             android:id="@+id/orangeSix"
@@ -267,7 +267,7 @@
             android:visibility="invisible"
             app:layout_column="2"
             app:layout_row="2"
-            android:contentDescription="TODO" />
+            android:contentDescription="@string/orange" />
 
         <ImageView
             android:id="@+id/imageView5"
@@ -279,7 +279,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_row="1"
             app:srcCompat="@drawable/piggysnake"
-            android:contentDescription="TODO" />
+            android:contentDescription="@string/piggysnake" />
 
         <ImageView
             android:id="@+id/imageView6"
@@ -291,7 +291,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_row="1"
             app:srcCompat="@drawable/piggysnake"
-            android:contentDescription="TODO" />
+            android:contentDescription="@string/piggysnake" />
 
         <ImageView
             android:id="@+id/fallingleaf_two"
@@ -302,7 +302,7 @@
             android:visibility="invisible"
             app:layout_column="1"
             app:layout_row="2"
-            android:contentDescription="TODO" />
+            android:contentDescription="@string/greenleaf" />
 
         <ImageView
             android:id="@+id/imageView7"
@@ -314,7 +314,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_row="2"
             app:srcCompat="@drawable/piggysnake"
-            android:contentDescription="TODO" />
+            android:contentDescription="@string/piggysnake" />
 
         <ImageView
             android:id="@+id/imageView8"
@@ -326,7 +326,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_row="2"
             app:srcCompat="@drawable/piggysnake"
-            android:contentDescription="TODO" />
+            android:contentDescription="@string/piggysnake" />
 
         <ImageView
             android:id="@+id/fallingleaf_three"
@@ -337,7 +337,7 @@
             android:visibility="invisible"
             app:layout_column="2"
             app:layout_row="2"
-            android:contentDescription="TODO" />
+            android:contentDescription="@string/purpleleaf" />
 
         <ImageView
             android:id="@+id/fallingleaf_four"
@@ -349,7 +349,7 @@
             android:visibility="invisible"
             app:layout_column="2"
             app:layout_row="2"
-            android:contentDescription="TODO" />
+            android:contentDescription="@string/yellowleaf" />
 
 
         <ImageView
@@ -362,7 +362,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_row="2"
             app:srcCompat="@drawable/piggysnake"
-            android:contentDescription="TODO" />
+            android:contentDescription="@string/piggysnake" />
 
     </androidx.gridlayout.widget.GridLayout>
 
@@ -385,7 +385,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/gridLayout"
         app:srcCompat="@drawable/repeat"
-        android:contentDescription="TODO" />
+        android:contentDescription="@string/playagain" />
 
     <ImageView
         android:id="@+id/snowmanImageView"
@@ -399,7 +399,7 @@
         app:layout_constraintTop_toBottomOf="@+id/gridLayout"
         app:srcCompat="@drawable/snowman_trans"
         tools:ignore="MissingConstraints"
-        android:contentDescription="TODO" />
+        android:contentDescription="@string/snowman" />
 
     <TextView
         android:id="@+id/scoreTextView"
