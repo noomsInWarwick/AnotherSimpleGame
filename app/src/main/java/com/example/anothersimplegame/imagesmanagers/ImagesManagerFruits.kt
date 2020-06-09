@@ -4,7 +4,7 @@ import android.animation.ObjectAnimator
 import android.view.View
 import android.widget.ImageView
 
-class ImagesManagerFruits {
+object ImagesManagerFruits {
 
     private fun fade(image: ImageView?, fadeDuration: Long) {
         val fade = ObjectAnimator.ofFloat(image, View.ALPHA, 0.1f, 5.1f)

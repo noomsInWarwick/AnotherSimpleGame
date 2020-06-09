@@ -7,7 +7,7 @@ import android.view.animation.AccelerateInterpolator
 import android.widget.ImageView
 import kotlinx.coroutines.Runnable
 
-class ImagesManagerAutumn {
+object ImagesManagerAutumn {
 
     var imageRunnable: Runnable = Runnable {}
     var handler: Handler = Handler()
@@ -72,7 +72,7 @@ class ImagesManagerAutumn {
             }
             2 -> {
                 rotate(leafTwo, 9000)
-                rotate(leafTwo, 7000)
+                rotate(leafFour, 7000)
                 nextLeaf = 3
             }
             3 -> {
@@ -82,8 +82,8 @@ class ImagesManagerAutumn {
                 nextLeaf = 4
             }
             4 -> {
-                rotate(leafTwo, 9000)
-                rotate(leafTwo, 7000)
+                rotate(leafOne, 9000)
+                rotate(leafFour, 7000)
                 nextLeaf = 1
             }
             else -> {

@@ -6,7 +6,7 @@ import android.os.CountDownTimer
 import android.view.View
 import android.widget.ImageView
 
-class ImagesManagerSnowman {
+object ImagesManagerSnowman {
 
     var snowmanTimer = 30000L
 

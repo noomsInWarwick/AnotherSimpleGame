@@ -21,6 +21,15 @@ import androidx.constraintlayout.widget.ConstraintLayout as ConstraintLayout1
 @Suppress("DEPRECATION")
 class MainActivity : AppCompatActivity() {
 
+    companion object {
+        const val TIMELABEL = "Time: "
+        const val WINTERLABEL = "Winter"
+        const val SPRINGLABEL = "Spring"
+        const val SUMMERLABEL = "Summer"
+        const val AUTUMNLABEL = "Autumn"
+        const val INITIALIZESTRING = ""
+    }
+
     var imageList = ArrayList<ImageView>()
     var displayedImageList = ArrayList<ImageView>()
     var fruitsList = ArrayList<ImageView?>()
@@ -36,9 +45,9 @@ class MainActivity : AppCompatActivity() {
     var gameActive = true
     var countDownTimer = 30000L
     var isDone = false
-    var autumnImagesManager: ImagesManagerAutumn = ImagesManagerAutumn()
-    var snowmanImagesManager: ImagesManagerSnowman = ImagesManagerSnowman()
-    var fruitsImagesManager: ImagesManagerFruits = ImagesManagerFruits()
+    var autumnImagesManager: ImagesManagerAutumn = ImagesManagerAutumn
+    var snowmanImagesManager: ImagesManagerSnowman = ImagesManagerSnowman
+    var fruitsImagesManager: ImagesManagerFruits = ImagesManagerFruits
     var layoutWidth = 0
 
     private var fallingleafone: ImageView? = null
@@ -52,35 +61,33 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         //setting toolbar
-        setSupportActionBar(findViewById(R.id.toolbar))
-        getSupportActionBar()?.setDisplayShowTitleEnabled(false)
+        // setSupportActionBar(findViewById(R.id.toolbar))
+        // getSupportActionBar()?.setDisplayShowTitleEnabled(false)
 
         //home navigation
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.hide()
         window.statusBarColor = ContextCompat.getColor(this, R.color.colorAccent)
 
-        val context: Context = this@MainActivity.baseContext
+        val displayMetrics = DisplayMetrics()
+        windowManager.defaultDisplay.getMetrics(displayMetrics)
+        layoutWidth = displayMetrics.widthPixels
 
+        playAgainButton.visibility = View.INVISIBLE
+        score = 0
+        nbrImagesDisplayed = 0
+        gameActive = true
+        isDone = false
+
+        val context: Context = this@MainActivity.baseContext
         prefs = PiggySnakePreferencesReader(this)
         val bgImage = prefs!!.bgImage
 
         setBackground(context, bgImage)
 
-        gameActive = true
-        isDone = false
-        playAgainButton.visibility = View.INVISIBLE
-        score = 0
-        nbrImagesDisplayed = 0
-
         prepareSnowman()
-
         initImagesList(bgImage)
-        initRandomIndexes()
 
-        val displayMetrics = DisplayMetrics()
-        windowManager.defaultDisplay.getMetrics(displayMetrics)
-        layoutWidth = displayMetrics.widthPixels
 
         manageImages()
 
@@ -107,7 +114,7 @@ class MainActivity : AppCompatActivity() {
 
             override fun onFinish() {
                 if (gameActive) {
-                    timerTextView.text = ""
+                    timerTextView.text = INITIALIZESTRING
                     imageView5.setImageDrawable(resources.getDrawable(drawable.piggysnake_smiley_old))
                     imageView5.visibility = View.VISIBLE
                     autumnImagesManager.fade(imageView5, 3000)
@@ -115,10 +122,12 @@ class MainActivity : AppCompatActivity() {
                     gameActive = false
                     fruitsList.clear()
                     randomIndexesList.clear()
+                    imageList.clear()
+                    displayedImageList.clear()
                 }
 
                 handler.removeCallbacks(runnable)
-                if (prefs!!.currentSeason.equals(Seasons.Autumn)) {
+                if (prefs!!.currentSeason == Seasons.Autumn) {
                     autumnImagesManager.cleanUp()
                 }
             }
@@ -127,10 +136,15 @@ class MainActivity : AppCompatActivity() {
                 if (isDone) {
                     onFinish()
                 } else {
-                    timerTextView.text = "Time: " + p0 / 3000
+                    timerTextView.text = TIMELABEL + p0 / 3000
                 }
             }
         }.start()
+    }
+
+    override fun onStart() {
+        super.onStart()
+        initRandomIndexes()
     }
 
     private fun prepareSnowman() {
@@ -250,28 +264,32 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun restartTheGame() {
-        finish()
+        // finish()
+        finishAffinity()
         startActivity(intent)
     }
 
+    fun doBackArrow(view: View) {
+        finishAndRemoveTask()
+    }
+
     fun doWinter(view: View) {
-        changeSeasons("Winter")
+        changeSeasons(WINTERLABEL)
     }
 
     fun doSpring(view: View) {
-        changeSeasons("Spring")
+        changeSeasons(SPRINGLABEL)
     }
 
     fun doSummer(view: View) {
-        changeSeasons("Summer")
+        changeSeasons(SUMMERLABEL)
     }
 
     fun doAutumn(view: View) {
-        changeSeasons("Autumn")
+        changeSeasons(AUTUMNLABEL)
     }
 
     private fun changeSeasons(season: String) {
-
         prefs!!.determineSeason(season)
         prefs!!.writeBackgroundToUse()
         restartTheGame()
@@ -358,25 +376,27 @@ class MainActivity : AppCompatActivity() {
 
         val action: Int = MotionEventCompat.getActionMasked(event)
 
-        return when (action) {
-            MotionEvent.ACTION_DOWN -> {
-                if (supportActionBar!!.isShowing) {
-                    supportActionBar?.hide()
-                    //    Toast.makeText(this, "Chewy is good  <80 ", Toast.LENGTH_SHORT).show()
-                } else {
-                    supportActionBar?.show()
-                    //    Toast.makeText(this, "Chey is rad =:0", Toast.LENGTH_SHORT).show()
-                }
-                true
-            }
-            MotionEvent.ACTION_MOVE -> {
-                false
-            }
-            MotionEvent.ACTION_UP -> {
-                false
-            }
-            else -> false
-        }
+//        return when (action) {
+//            MotionEvent.ACTION_DOWN -> {
+//                if (supportActionBar!!.isShowing) {
+//                    supportActionBar?.hide()
+//                    //    Toast.makeText(this, "Chewy is good  <80 ", Toast.LENGTH_SHORT).show()
+//                } else {
+//                    supportActionBar?.show()
+//                    //    Toast.makeText(this, "Chey is rad =:0", Toast.LENGTH_SHORT).show()
+//                }
+//                true
+//            }
+//            MotionEvent.ACTION_MOVE -> {
+//                false
+//            }
+//            MotionEvent.ACTION_UP -> {
+//                false
+//            }
+//            else -> false
+//        }
+
+        return false
     }
 
 }

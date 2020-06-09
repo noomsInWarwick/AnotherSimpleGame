@@ -10,7 +10,7 @@ class PiggySnakePreferencesReader(context: Context) {
     val BACKGROUND_IMAGE = "backgroundimage"
     val prefs: SharedPreferences = context.getSharedPreferences(PREFS_FILENAME, 0)
 
-    var currentSeason = Seasons.Summer
+    var currentSeason = Summer
 
     var bgImage: String?
         get() = prefs.getString(BACKGROUND_IMAGE, "piggy_backdrop_spring")

@@ -8,9 +8,23 @@
     android:background="@drawable/piggy_backdrop_autumn"
     tools:context=".MainActivity">
 
+    <fragment
+        android:id="@+id/details_fragment"
+        class="com.example.anothersimplegame.FragmentToolBar"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="24dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/horizontalGuideline"
+        app:layout_constraintEnd_toEndOf="@+id/mainConstraint"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/mainConstraint"
+        app:layout_constraintTop_toTopOf="@+id/mainConstraint"
+        app:layout_constraintVertical_bias="0.990" />
+
     <!-- app:logo="@mipmap/ic_launcher" /> -->
 
-    <androidx.appcompat.widget.Toolbar
+    <!-- <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -24,7 +38,6 @@
 
         <ImageView
             android:id="@+id/winter"
-            android:onClick="doWinter"
             android:layout_width="40dp"
             android:layout_height="34dp"
             android:layout_marginLeft="15dp"
@@ -32,62 +45,63 @@
             android:layout_marginRight="25dp"
             android:layout_marginBottom="6dp"
             android:adjustViewBounds="true"
+            android:contentDescription="@string/winter"
+            android:onClick="doWinter"
             android:src="@drawable/wintertime_trans"
             app:layout_constraintBottom_toBottomOf="@+id/toolbar"
             app:layout_constraintEnd_toStartOf="@+id/spring"
             app:layout_constraintStart_toStartOf="@+id/toolbar"
-            app:layout_constraintTop_toTopOf="parent"
-            android:contentDescription="@string/winter" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/spring"
-            android:onClick="doSpring"
             android:layout_width="40dp"
             android:layout_height="34dp"
             android:layout_marginTop="6dp"
             android:layout_marginRight="25dp"
             android:layout_marginBottom="6dp"
             android:adjustViewBounds="true"
+            android:contentDescription="@string/spring"
+            android:onClick="doSpring"
             android:src="@drawable/springtime_trans"
             app:layout_constraintBottom_toBottomOf="@+id/toolbar"
             app:layout_constraintEnd_toStartOf="@+id/summer"
             app:layout_constraintStart_toEndOf="@+id/winter"
-            app:layout_constraintTop_toTopOf="parent"
-            android:contentDescription="@string/spring" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/summer"
-            android:onClick="doSummer"
             android:layout_width="40dp"
             android:layout_height="34dp"
             android:layout_marginTop="6dp"
             android:layout_marginRight="25dp"
             android:layout_marginBottom="6dp"
             android:adjustViewBounds="true"
+            android:contentDescription="@string/summer"
+            android:onClick="doSummer"
             android:src="@drawable/summertime_trans"
             app:layout_constraintBottom_toBottomOf="@+id/toolbar"
             app:layout_constraintEnd_toStartOf="@+id/autumn"
             app:layout_constraintStart_toEndOf="@+id/spring"
-            app:layout_constraintTop_toTopOf="parent"
-            android:contentDescription="@string/summer" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/autumn"
-            android:onClick="doAutumn"
             android:layout_width="40dp"
             android:layout_height="34dp"
             android:layout_marginTop="6dp"
             android:layout_marginRight="15dp"
             android:layout_marginBottom="6dp"
             android:adjustViewBounds="true"
+            android:contentDescription="@string/autumn"
+            android:onClick="doAutumn"
             android:src="@drawable/autumn_trans"
             app:layout_constraintBottom_toBottomOf="@+id/toolbar"
             app:layout_constraintEnd_toEndOf="@+id/toolbar"
             app:layout_constraintStart_toEndOf="@+id/summer"
-            app:layout_constraintTop_toTopOf="parent"
-            android:contentDescription="@string/autumn" />
+            app:layout_constraintTop_toTopOf="parent" />
         />
-    </androidx.appcompat.widget.Toolbar>
+    </androidx.appcompat.widget.Toolbar> -->
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/horizontalGuideline"
@@ -102,14 +116,14 @@
         android:layout_height="15dp"
         android:layout_centerInParent="true"
         android:layout_marginStart="16dp"
+        android:contentDescription="@string/orange"
         android:src="@drawable/fruit_orange_trans"
         android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/gridLayout"
         app:layout_constraintEnd_toStartOf="@+id/timerTextView"
         app:layout_constraintHorizontal_bias="0.8"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/mainConstraint"
-        android:contentDescription="@string/orange" />
+        app:layout_constraintTop_toTopOf="@+id/mainConstraint" />
 
     <TextView
         android:id="@+id/timerTextView"
@@ -138,50 +152,50 @@
             android:id="@+id/imageView1"
             android:layout_width="125dp"
             android:layout_height="140dp"
+            android:contentDescription="@string/piggysnake"
             android:onClick="increaseScore"
             android:soundEffectsEnabled="true"
             app:layout_column="0"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_row="0"
-            app:srcCompat="@drawable/piggysnake"
-            android:contentDescription="@string/piggysnake" />
+            app:srcCompat="@drawable/piggysnake" />
 
         <ImageView
             android:id="@+id/imageView2"
             android:layout_width="125dp"
             android:layout_height="140dp"
+            android:contentDescription="@string/piggysnake"
             android:onClick="increaseScore"
             app:layout_column="1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_row="0"
-            app:srcCompat="@drawable/piggysnake"
-            android:contentDescription="@string/piggysnake" />
+            app:srcCompat="@drawable/piggysnake" />
 
         <ImageView
             android:id="@+id/imageView3"
             android:layout_width="125dp"
             android:layout_height="140dp"
+            android:contentDescription="@string/piggysnake"
             android:onClick="increaseScore"
             app:layout_column="2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_row="0"
-            app:srcCompat="@drawable/piggysnake"
-            android:contentDescription="@string/piggysnake" />
+            app:srcCompat="@drawable/piggysnake" />
 
         <ImageView
             android:id="@+id/imageView4"
             android:layout_width="125dp"
             android:layout_height="140dp"
+            android:contentDescription="@string/piggysnake"
             android:onClick="increaseScore"
             app:layout_column="0"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_row="1"
-            app:srcCompat="@drawable/piggysnake"
-            android:contentDescription="@string/piggysnake" />
+            app:srcCompat="@drawable/piggysnake" />
 
         <ImageView
             android:id="@+id/fallingleaf_one"
@@ -189,11 +203,11 @@
             android:layout_height="20dp"
             android:layout_centerInParent="true"
             android:layout_marginStart="36dp"
+            android:contentDescription="@string/redleaf"
             android:src="@drawable/leaf_red"
             android:visibility="invisible"
             app:layout_column="0"
-            app:layout_row="2"
-            android:contentDescription="@string/redleaf" />
+            app:layout_row="2" />
 
         <ImageView
             android:id="@+id/orangeOne"
@@ -201,11 +215,11 @@
             android:layout_height="15dp"
             android:layout_centerInParent="true"
             android:layout_marginStart="56dp"
+            android:contentDescription="@string/orange"
             android:src="@drawable/fruit_orange_trans"
             android:visibility="invisible"
             app:layout_column="0"
-            app:layout_row="0"
-            android:contentDescription="@string/orange" />
+            app:layout_row="0" />
 
         <ImageView
             android:id="@+id/orangeTwo"
@@ -214,11 +228,11 @@
             android:layout_centerInParent="true"
             android:layout_marginStart="25dp"
             android:layout_marginTop="45dp"
+            android:contentDescription="@string/orange"
             android:src="@drawable/fruit_orange_trans"
             android:visibility="invisible"
             app:layout_column="1"
-            app:layout_row="0"
-            android:contentDescription="@string/orange" />
+            app:layout_row="0" />
 
         <ImageView
             android:id="@+id/orangeThree"
@@ -226,11 +240,11 @@
             android:layout_height="15dp"
             android:layout_centerInParent="true"
             android:layout_marginTop="20dp"
+            android:contentDescription="@string/orange"
             android:src="@drawable/fruit_orange_trans"
             android:visibility="invisible"
             app:layout_column="2"
-            app:layout_row="0"
-            android:contentDescription="@string/orange" />
+            app:layout_row="0" />
 
         <ImageView
             android:id="@+id/orangeFour"
@@ -238,11 +252,11 @@
             android:layout_height="15dp"
             android:layout_centerInParent="true"
             android:layout_marginStart="36dp"
+            android:contentDescription="@string/orange"
             android:src="@drawable/fruit_orange_trans"
             android:visibility="invisible"
             app:layout_column="0"
-            app:layout_row="1"
-            android:contentDescription="@string/orange" />
+            app:layout_row="1" />
 
         <ImageView
             android:id="@+id/orangeFive"
@@ -251,11 +265,11 @@
             android:layout_centerInParent="true"
             android:layout_marginStart="46dp"
             android:layout_marginTop="22dp"
+            android:contentDescription="@string/orange"
             android:src="@drawable/fruit_orange_trans"
             android:visibility="invisible"
             app:layout_column="2"
-            app:layout_row="1"
-            android:contentDescription="@string/orange" />
+            app:layout_row="1" />
 
         <ImageView
             android:id="@+id/orangeSix"
@@ -263,81 +277,81 @@
             android:layout_height="15dp"
             android:layout_centerInParent="true"
             android:layout_marginStart="16dp"
+            android:contentDescription="@string/orange"
             android:src="@drawable/fruit_orange_trans"
             android:visibility="invisible"
             app:layout_column="2"
-            app:layout_row="2"
-            android:contentDescription="@string/orange" />
+            app:layout_row="2" />
 
         <ImageView
             android:id="@+id/imageView5"
             android:layout_width="125dp"
             android:layout_height="140dp"
+            android:contentDescription="@string/piggysnake"
             android:onClick="increaseScore"
             app:layout_column="1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_row="1"
-            app:srcCompat="@drawable/piggysnake"
-            android:contentDescription="@string/piggysnake" />
+            app:srcCompat="@drawable/piggysnake" />
 
         <ImageView
             android:id="@+id/imageView6"
             android:layout_width="125dp"
             android:layout_height="140dp"
+            android:contentDescription="@string/piggysnake"
             android:onClick="increaseScore"
             app:layout_column="2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_row="1"
-            app:srcCompat="@drawable/piggysnake"
-            android:contentDescription="@string/piggysnake" />
+            app:srcCompat="@drawable/piggysnake" />
 
         <ImageView
             android:id="@+id/fallingleaf_two"
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:layout_centerInParent="true"
+            android:contentDescription="@string/greenleaf"
             android:src="@drawable/leaf_green"
             android:visibility="invisible"
             app:layout_column="1"
-            app:layout_row="2"
-            android:contentDescription="@string/greenleaf" />
+            app:layout_row="2" />
 
         <ImageView
             android:id="@+id/imageView7"
             android:layout_width="125dp"
             android:layout_height="140dp"
+            android:contentDescription="@string/piggysnake"
             android:onClick="increaseScore"
             app:layout_column="0"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_row="2"
-            app:srcCompat="@drawable/piggysnake"
-            android:contentDescription="@string/piggysnake" />
+            app:srcCompat="@drawable/piggysnake" />
 
         <ImageView
             android:id="@+id/imageView8"
             android:layout_width="125dp"
             android:layout_height="140dp"
+            android:contentDescription="@string/piggysnake"
             android:onClick="increaseScore"
             app:layout_column="1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_row="2"
-            app:srcCompat="@drawable/piggysnake"
-            android:contentDescription="@string/piggysnake" />
+            app:srcCompat="@drawable/piggysnake" />
 
         <ImageView
             android:id="@+id/fallingleaf_three"
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:layout_centerInParent="true"
+            android:contentDescription="@string/purpleleaf"
             android:src="@drawable/leaf_purple"
             android:visibility="invisible"
             app:layout_column="2"
-            app:layout_row="2"
-            android:contentDescription="@string/purpleleaf" />
+            app:layout_row="2" />
 
         <ImageView
             android:id="@+id/fallingleaf_four"
@@ -345,24 +359,24 @@
             android:layout_height="20dp"
             android:layout_centerInParent="true"
             android:layout_marginStart="36dp"
+            android:contentDescription="@string/yellowleaf"
             android:src="@drawable/leaf_yellow"
             android:visibility="invisible"
             app:layout_column="2"
-            app:layout_row="2"
-            android:contentDescription="@string/yellowleaf" />
+            app:layout_row="2" />
 
 
         <ImageView
             android:id="@+id/imageView9"
             android:layout_width="125dp"
             android:layout_height="140dp"
+            android:contentDescription="@string/piggysnake"
             android:onClick="increaseScore"
             app:layout_column="2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_row="2"
-            app:srcCompat="@drawable/piggysnake"
-            android:contentDescription="@string/piggysnake" />
+            app:srcCompat="@drawable/piggysnake" />
 
     </androidx.gridlayout.widget.GridLayout>
 
@@ -376,6 +390,7 @@
         android:layout_marginBottom="8dp"
         android:adjustViewBounds="true"
         android:backgroundTint="@color/colorAccent"
+        android:contentDescription="@string/playagain"
         android:onClick="doRestart"
         android:scaleType="fitCenter"
         android:visibility="visible"
@@ -384,8 +399,7 @@
         app:layout_constraintHorizontal_bias="0.08"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/gridLayout"
-        app:srcCompat="@drawable/repeat"
-        android:contentDescription="@string/playagain" />
+        app:srcCompat="@drawable/repeat" />
 
     <ImageView
         android:id="@+id/snowmanImageView"
@@ -393,13 +407,13 @@
         android:layout_height="88dp"
         android:layout_marginTop="2dp"
         android:layout_marginBottom="14dp"
+        android:contentDescription="@string/snowman"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/gridLayout"
         app:srcCompat="@drawable/snowman_trans"
-        tools:ignore="MissingConstraints"
-        android:contentDescription="@string/snowman" />
+        tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/scoreTextView"
