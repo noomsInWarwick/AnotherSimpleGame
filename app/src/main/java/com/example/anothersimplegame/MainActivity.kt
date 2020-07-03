@@ -1,5 +1,6 @@
 package com.example.anothersimplegame
 
+import android.app.FragmentTransaction
 import android.content.Context
 import android.os.*
 import android.os.VibrationEffect.createOneShot
@@ -8,7 +9,6 @@ import android.view.MotionEvent
 import android.view.View
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 import androidx.core.view.MotionEventCompat
 import com.example.anothersimplegame.R.drawable
 import com.example.anothersimplegame.imagesmanagers.ImagesManagerAutumn
@@ -65,9 +65,9 @@ class MainActivity : AppCompatActivity() {
         // getSupportActionBar()?.setDisplayShowTitleEnabled(false)
 
         //home navigation
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.hide()
-        window.statusBarColor = ContextCompat.getColor(this, R.color.colorAccent)
+        // supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        // supportActionBar?.hide()
+        // window.statusBarColor = ContextCompat.getColor(this, R.color.colorAccent)
 
         val displayMetrics = DisplayMetrics()
         windowManager.defaultDisplay.getMetrics(displayMetrics)
@@ -87,7 +87,6 @@ class MainActivity : AppCompatActivity() {
 
         prepareSnowman()
         initImagesList(bgImage)
-
 
         manageImages()
 
@@ -264,8 +263,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun restartTheGame() {
-        // finish()
-        finishAffinity()
+        finishAndRemoveTask()
         startActivity(intent)
     }
 
@@ -290,8 +288,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun changeSeasons(season: String) {
-        prefs!!.determineSeason(season)
-        prefs!!.writeBackgroundToUse()
+
+        if (!prefs!!.currentSeason.equals(season)) {
+            prefs!!.determineSeason(season)
+            prefs!!.writeBackgroundToUse()
+        }
         restartTheGame()
     }
 
@@ -374,9 +375,12 @@ class MainActivity : AppCompatActivity() {
 
     override fun onTouchEvent(event: MotionEvent): Boolean {
 
+        val ft: FragmentTransaction = fragmentManager.beginTransaction()
+
         val action: Int = MotionEventCompat.getActionMasked(event)
 
-//        return when (action) {
+
+        //        return when (action) {
 //            MotionEvent.ACTION_DOWN -> {
 //                if (supportActionBar!!.isShowing) {
 //                    supportActionBar?.hide()

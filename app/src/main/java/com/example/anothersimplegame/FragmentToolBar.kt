@@ -13,7 +13,7 @@ class FragmentToolBar : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_tool_bar, container, false)
+        return inflater.inflate(R.layout.fragment_tool_bar_constrained, container, false)
     }
 
     companion object {
