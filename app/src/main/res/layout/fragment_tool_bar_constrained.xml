@@ -3,19 +3,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorAccentLight"
     android:fillViewport="true"
-    tools:ignore="RtlHardcoded">
+    app:titleTextColor="@color/colorPrimary">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:background="@color/colorAccentLight"
+        android:backgroundTint="@color/colorAccentLight"
+        android:backgroundTintMode="src_over"
         android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/mainConstraint"
+        app:layout_constraintTop_toTopOf="parent"
         app:titleTextColor="@color/colorPrimaryDark">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -23,96 +25,96 @@
             android:layout_height="match_parent">
 
             <TextView
-            android:id="@+id/toolbarFragment"
-            style="@style/TextAppearance.AppCompat.Title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dog_detail_name_margin_top"
+                android:id="@+id/toolbarFragment"
+                style="@style/TextAppearance.AppCompat.Title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dog_detail_name_margin_top"
                 android:layout_marginEnd="200dp"
-            android:layout_marginBottom="0dp"
-            android:isScrollContainer="false"
-            android:scrollbarAlwaysDrawHorizontalTrack="false"
-            android:scrollbarAlwaysDrawVerticalTrack="false"
+                android:layout_marginBottom="0dp"
+                android:isScrollContainer="false"
+                android:scrollbarAlwaysDrawHorizontalTrack="false"
+                android:scrollbarAlwaysDrawVerticalTrack="false"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="HardcodedText" />
+                tools:ignore="HardcodedText" />
 
-        <ImageView
-            android:id="@+id/backarrow_image"
-            android:layout_width="wrap_content"
-            android:layout_height="@dimen/dog_detail_image_size"
-            android:layout_marginTop="@dimen/dog_detail_image_margin_vertical"
-            android:layout_marginBottom="@dimen/dog_detail_image_margin_vertical"
-            android:adjustViewBounds="true"
-            android:contentDescription="@null"
-            android:onClick="doBackArrow"
-            android:src="@drawable/backarrow_trans"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/winter_image"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            <ImageView
+                android:id="@+id/backarrow_image"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dog_detail_image_size"
+                android:layout_marginTop="@dimen/dog_detail_image_margin_vertical"
+                android:layout_marginBottom="@dimen/dog_detail_image_margin_vertical"
+                android:adjustViewBounds="true"
+                android:contentDescription="@null"
+                android:onClick="doBackArrow"
+                android:src="@drawable/backarrow_trans"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/winter_image"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
-            android:id="@+id/winter_image"
-            android:layout_width="wrap_content"
-            android:layout_height="@dimen/dog_detail_image_size"
-            android:layout_marginTop="@dimen/dog_detail_image_margin_vertical"
-            android:layout_marginBottom="@dimen/dog_detail_image_margin_vertical"
-            android:adjustViewBounds="true"
-            android:contentDescription="@null"
-            android:onClick="doWinter"
-            android:src="@drawable/wintertime_trans"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/spring_image"
-            app:layout_constraintStart_toEndOf="@+id/backarrow_image"
-            app:layout_constraintTop_toTopOf="parent" />
+            <ImageView
+                android:id="@+id/winter_image"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dog_detail_image_size"
+                android:layout_marginTop="@dimen/dog_detail_image_margin_vertical"
+                android:layout_marginBottom="@dimen/dog_detail_image_margin_vertical"
+                android:adjustViewBounds="true"
+                android:contentDescription="@null"
+                android:onClick="doWinter"
+                android:src="@drawable/wintertime_trans"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/spring_image"
+                app:layout_constraintStart_toEndOf="@+id/backarrow_image"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
-            android:id="@+id/spring_image"
-            android:layout_width="wrap_content"
-            android:layout_height="@dimen/dog_detail_image_size"
-            android:layout_marginTop="@dimen/dog_detail_image_margin_vertical"
-            android:layout_marginBottom="@dimen/dog_detail_image_margin_vertical"
-            android:adjustViewBounds="true"
-            android:contentDescription="@null"
-            android:onClick="doSpring"
-            android:src="@drawable/springtime_trans"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/summer_image"
-            app:layout_constraintStart_toEndOf="@id/winter_image"
-            app:layout_constraintTop_toTopOf="parent" />
+            <ImageView
+                android:id="@+id/spring_image"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dog_detail_image_size"
+                android:layout_marginTop="@dimen/dog_detail_image_margin_vertical"
+                android:layout_marginBottom="@dimen/dog_detail_image_margin_vertical"
+                android:adjustViewBounds="true"
+                android:contentDescription="@null"
+                android:onClick="doSpring"
+                android:src="@drawable/springtime_trans"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/summer_image"
+                app:layout_constraintStart_toEndOf="@id/winter_image"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
-            android:id="@+id/summer_image"
-            android:layout_width="wrap_content"
-            android:layout_height="@dimen/dog_detail_image_size"
-            android:layout_marginTop="@dimen/dog_detail_image_margin_vertical"
-            android:layout_marginBottom="@dimen/dog_detail_image_margin_vertical"
-            android:adjustViewBounds="true"
-            android:contentDescription="@null"
-            android:onClick="doSummer"
-            android:src="@drawable/summertime_trans"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/autumn_image"
-            app:layout_constraintStart_toEndOf="@+id/spring_image"
-            app:layout_constraintTop_toTopOf="parent" />
+            <ImageView
+                android:id="@+id/summer_image"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dog_detail_image_size"
+                android:layout_marginTop="@dimen/dog_detail_image_margin_vertical"
+                android:layout_marginBottom="@dimen/dog_detail_image_margin_vertical"
+                android:adjustViewBounds="true"
+                android:contentDescription="@null"
+                android:onClick="doSummer"
+                android:src="@drawable/summertime_trans"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/autumn_image"
+                app:layout_constraintStart_toEndOf="@+id/spring_image"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
-            android:id="@+id/autumn_image"
-            android:layout_width="wrap_content"
-            android:layout_height="@dimen/dog_detail_image_size"
-            android:layout_marginTop="@dimen/dog_detail_image_margin_vertical"
-            android:layout_marginBottom="@dimen/dog_detail_image_margin_vertical"
-            android:adjustViewBounds="true"
-            android:contentDescription="@null"
-            android:onClick="doAutumn"
-            android:src="@drawable/autumn_trans"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/summer_image"
-            app:layout_constraintTop_toTopOf="parent" />
+            <ImageView
+                android:id="@+id/autumn_image"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dog_detail_image_size"
+                android:layout_marginTop="@dimen/dog_detail_image_margin_vertical"
+                android:layout_marginBottom="@dimen/dog_detail_image_margin_vertical"
+                android:adjustViewBounds="true"
+                android:contentDescription="@null"
+                android:onClick="doAutumn"
+                android:src="@drawable/autumn_trans"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/summer_image"
+                app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.appcompat.widget.Toolbar>
 
