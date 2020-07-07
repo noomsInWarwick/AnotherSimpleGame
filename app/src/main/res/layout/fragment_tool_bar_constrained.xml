@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorAccentLight"
+    android:background="@android:color/transparent"
     android:fillViewport="true"
     app:titleTextColor="@color/colorPrimary">
 
@@ -11,9 +11,7 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/colorAccentLight"
-        android:backgroundTint="@color/colorAccentLight"
-        android:backgroundTintMode="src_over"
+        android:background="@android:color/transparent"
         android:minHeight="?attr/actionBarSize"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -52,23 +50,8 @@
                 android:onClick="doBackArrow"
                 android:src="@drawable/backarrow_trans"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/winter_image"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <ImageView
-                android:id="@+id/winter_image"
-                android:layout_width="wrap_content"
-                android:layout_height="@dimen/dog_detail_image_size"
-                android:layout_marginTop="@dimen/dog_detail_image_margin_vertical"
-                android:layout_marginBottom="@dimen/dog_detail_image_margin_vertical"
-                android:adjustViewBounds="true"
-                android:contentDescription="@null"
-                android:onClick="doWinter"
-                android:src="@drawable/wintertime_trans"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/spring_image"
-                app:layout_constraintStart_toEndOf="@+id/backarrow_image"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
@@ -83,7 +66,7 @@
                 android:src="@drawable/springtime_trans"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/summer_image"
-                app:layout_constraintStart_toEndOf="@id/winter_image"
+                app:layout_constraintStart_toEndOf="@+id/backarrow_image"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
@@ -98,7 +81,7 @@
                 android:src="@drawable/summertime_trans"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/autumn_image"
-                app:layout_constraintStart_toEndOf="@+id/spring_image"
+                app:layout_constraintStart_toEndOf="@id/spring_image"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
@@ -112,8 +95,23 @@
                 android:onClick="doAutumn"
                 android:src="@drawable/autumn_trans"
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/summer_image"
+                app:layout_constraintStart_toEndOf="@+id/winter_image"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/winter_image"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dog_detail_image_size"
+                android:layout_marginTop="@dimen/dog_detail_image_margin_vertical"
+                android:layout_marginBottom="@dimen/dog_detail_image_margin_vertical"
+                android:adjustViewBounds="true"
+                android:contentDescription="@null"
+                android:onClick="doWinter"
+                android:src="@drawable/wintertime_trans"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/summer_image"
+                app:layout_constraintStart_toEndOf="@+id/autumn_image"
                 app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.appcompat.widget.Toolbar>
