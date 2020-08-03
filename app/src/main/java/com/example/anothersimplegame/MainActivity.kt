@@ -16,6 +16,9 @@ import com.example.anothersimplegame.imagesmanagers.ImagesManagerFruits
 import com.example.anothersimplegame.imagesmanagers.ImagesManagerSnowman
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.Runnable
+import java.util.*
+import kotlin.collections.ArrayList
+import kotlin.concurrent.schedule
 import androidx.constraintlayout.widget.ConstraintLayout as ConstraintLayout1
 
 @Suppress("DEPRECATION")
@@ -34,6 +37,7 @@ class MainActivity : AppCompatActivity() {
     var displayedImageList = ArrayList<ImageView>()
     var fruitsList = ArrayList<ImageView?>()
     var randomIndexesList = ArrayList<Int>()
+    var timer: Timer? = null
 
     private var score: Int = 0
     private var nbrImagesDisplayed = 0
@@ -144,6 +148,13 @@ class MainActivity : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
         initRandomIndexes()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        Timer().schedule(50000) {
+            finishAndRemoveTask()
+        }
     }
 
     private fun prepareSnowman() {
@@ -376,7 +387,6 @@ class MainActivity : AppCompatActivity() {
     override fun onTouchEvent(event: MotionEvent): Boolean {
 
         val ft: FragmentTransaction = fragmentManager.beginTransaction()
-
         val action: Int = MotionEventCompat.getActionMasked(event)
 
 
