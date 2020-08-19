@@ -76,6 +76,7 @@ class MainActivity : AppCompatActivity() {
         val displayMetrics = DisplayMetrics()
         windowManager.defaultDisplay.getMetrics(displayMetrics)
         layoutWidth = displayMetrics.widthPixels
+        displayMetrics.xdpi
 
         playAgainButton.visibility = View.INVISIBLE
         score = 0
@@ -109,6 +110,7 @@ class MainActivity : AppCompatActivity() {
                 snowmanImagesManager.doSnowman(theSnowman)
                 snowmanImagesManager.setSnowmanVisibility(theSnowman, true)
                 snowmanImagesManager.fade(theSnowman, 10000)
+                System.out.println("############ displayMetrics.xdpi = " + displayMetrics.xdpi)
                 snowmanImagesManager.moveSnowman(theSnowman, layoutWidth)
             }
         }
@@ -118,7 +120,7 @@ class MainActivity : AppCompatActivity() {
             override fun onFinish() {
                 if (gameActive) {
                     timerTextView.text = INITIALIZESTRING
-                    imageView5.setImageDrawable(resources.getDrawable(drawable.piggysnake_smiley_old))
+                    imageView5.setImageDrawable(resources.getDrawable(drawable.piggysnake_smiley_all_done))
                     imageView5.visibility = View.VISIBLE
                     autumnImagesManager.fade(imageView5, 3000)
                     playAgainButton.visibility = View.VISIBLE
@@ -152,7 +154,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onPause() {
         super.onPause()
-        Timer().schedule(50000) {
+        Timer().schedule(300000) {
             finishAndRemoveTask()
         }
     }

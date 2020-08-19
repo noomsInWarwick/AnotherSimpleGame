@@ -63,10 +63,10 @@
 
     <androidx.gridlayout.widget.GridLayout
         android:id="@+id/gridLayout"
-        android:layout_width="381dp"
+        android:layout_width="wrap_content"
         android:layout_height="415dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
         app:layout_constraintBottom_toTopOf="@+id/snowmanImageView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.50"
@@ -75,7 +75,7 @@
 
         <ImageView
             android:id="@+id/imageView1"
-            android:layout_width="125dp"
+            android:layout_width="120dp"
             android:layout_height="140dp"
             android:contentDescription="@string/piggysnake"
             android:cropToPadding="false"
@@ -91,7 +91,7 @@
 
         <ImageView
             android:id="@+id/imageView2"
-            android:layout_width="125dp"
+            android:layout_width="120dp"
             android:layout_height="140dp"
             android:contentDescription="@string/piggysnake"
             android:onClick="increaseScore"
@@ -105,7 +105,7 @@
 
         <ImageView
             android:id="@+id/imageView3"
-            android:layout_width="125dp"
+            android:layout_width="120dp"
             android:layout_height="140dp"
             android:contentDescription="@string/piggysnake"
             android:onClick="increaseScore"
@@ -119,7 +119,7 @@
 
         <ImageView
             android:id="@+id/imageView4"
-            android:layout_width="125dp"
+            android:layout_width="120dp"
             android:layout_height="140dp"
             android:contentDescription="@string/piggysnake"
             android:onClick="increaseScore"
@@ -219,7 +219,7 @@
 
         <ImageView
             android:id="@+id/imageView5"
-            android:layout_width="125dp"
+            android:layout_width="120dp"
             android:layout_height="140dp"
             android:contentDescription="@string/piggysnake"
             android:onClick="increaseScore"
@@ -233,7 +233,7 @@
 
         <ImageView
             android:id="@+id/imageView6"
-            android:layout_width="125dp"
+            android:layout_width="120dp"
             android:layout_height="140dp"
             android:contentDescription="@string/piggysnake"
             android:onClick="increaseScore"
@@ -258,7 +258,7 @@
 
         <ImageView
             android:id="@+id/imageView7"
-            android:layout_width="125dp"
+            android:layout_width="120dp"
             android:layout_height="140dp"
             android:contentDescription="@string/piggysnake"
             android:onClick="increaseScore"
@@ -272,7 +272,7 @@
 
         <ImageView
             android:id="@+id/imageView8"
-            android:layout_width="125dp"
+            android:layout_width="120dp"
             android:layout_height="140dp"
             android:contentDescription="@string/piggysnake"
             android:onClick="increaseScore"
@@ -310,7 +310,7 @@
 
         <ImageView
             android:id="@+id/imageView9"
-            android:layout_width="125dp"
+            android:layout_width="120dp"
             android:layout_height="140dp"
             android:contentDescription="@string/piggysnake"
             android:onClick="increaseScore"
