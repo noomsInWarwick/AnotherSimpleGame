@@ -8,6 +8,7 @@ import android.util.DisplayMetrics
 import android.view.MotionEvent
 import android.view.View
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.MotionEventCompat
 import com.example.anothersimplegame.R.drawable
@@ -20,6 +21,8 @@ import java.util.*
 import kotlin.collections.ArrayList
 import kotlin.concurrent.schedule
 import androidx.constraintlayout.widget.ConstraintLayout as ConstraintLayout1
+
+//import kotlinx.android.synthetic.main.activity_main.imageView1 as imageView11
 
 @Suppress("DEPRECATION")
 class MainActivity : AppCompatActivity() {
@@ -53,6 +56,7 @@ class MainActivity : AppCompatActivity() {
     var snowmanImagesManager: ImagesManagerSnowman = ImagesManagerSnowman
     var fruitsImagesManager: ImagesManagerFruits = ImagesManagerFruits
     var layoutWidth = 0
+    var layoutHeight = 0
 
     private var fallingleafone: ImageView? = null
     private var fallingleaftwo: ImageView? = null
@@ -76,7 +80,12 @@ class MainActivity : AppCompatActivity() {
         val displayMetrics = DisplayMetrics()
         windowManager.defaultDisplay.getMetrics(displayMetrics)
         layoutWidth = displayMetrics.widthPixels
-        displayMetrics.xdpi
+        layoutHeight = displayMetrics.heightPixels
+        val ratioValueGridWidth = .319
+        val ratioValueGridHeight = .3125
+        val ratioValueHeight = .64
+        //Toast.makeText(this, "ratioValue = " + ratioValue, Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, "layoutHeight = " + layoutHeight, Toast.LENGTH_SHORT).show()
 
         playAgainButton.visibility = View.INVISIBLE
         score = 0
@@ -94,6 +103,20 @@ class MainActivity : AppCompatActivity() {
         initImagesList(bgImage)
 
         manageImages()
+
+        baseLinearLayout.getLayoutParams().height = (ratioValueHeight * layoutHeight).toInt()
+        val gridImageWidth = (ratioValueGridWidth * layoutWidth).toInt()
+
+        imageView1.getLayoutParams().width = gridImageWidth;
+        imageView2.getLayoutParams().width = gridImageWidth;
+        imageView3.getLayoutParams().width = gridImageWidth;
+        imageView4.getLayoutParams().width = gridImageWidth;
+        imageView5.getLayoutParams().width = gridImageWidth;
+        imageView6.getLayoutParams().width = gridImageWidth;
+        imageView7.getLayoutParams().width = gridImageWidth;
+        imageView9.getLayoutParams().width = gridImageWidth;
+
+        //layout_width="110dp"
 
         when (prefs!!.currentSeason) {
             Seasons.Spring -> {

@@ -41,7 +41,7 @@
         android:contentDescription="@string/orange"
         android:src="@drawable/fruit_orange_trans"
         android:visibility="invisible"
-        app:layout_constraintBottom_toTopOf="@+id/baseLinearLayout"
+        app:layout_constraintBottom_toTopOf="@+id/gridLayout"
         app:layout_constraintEnd_toStartOf="@+id/timerTextView"
         app:layout_constraintHorizontal_bias="0.8"
         app:layout_constraintStart_toStartOf="parent"
@@ -50,39 +50,35 @@
     <TextView
         android:id="@+id/timerTextView"
         android:layout_width="106dp"
-        android:layout_height="32dp"
+        android:layout_height="38dp"
         android:text="timer: 10"
-        android:textColor="@color/colorPrimaryDark"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/baseLinearLayout"
+        android:textColor="@color/colorPrimaryDark"
+        app:layout_constraintBottom_toTopOf="@+id/gridLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/verticalGuideline"
         app:layout_constraintTop_toBottomOf="@+id/horizontalGuideline" />
 
-    <LinearLayout
-        android:id="@+id/baseLinearLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="400dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/snowmanImageView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/timerTextView">
-
-        <androidx.gridlayout.widget.GridLayout
+    <!--    <androidx.gridlayout.widget.GridLayout
             android:id="@+id/gridLayout"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layoutMode="clipBounds">
+            android:layout_width="wrap_content"
+            android:layout_height="415dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:background="#F44336"
+            android:layoutMode="clipBounds"
+            app:layout_constraintBottom_toTopOf="@+id/snowmanImageView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.50"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/timerTextView">
 
             <ImageView
                 android:id="@+id/imageView1"
-                android:layout_width="110dp"
-                android:layout_height="133dp"
+                android:layout_width="120dp"
+                android:layout_height="140dp"
                 android:contentDescription="@string/piggysnake"
                 android:cropToPadding="false"
                 android:onClick="increaseScore"
@@ -97,8 +93,8 @@
 
             <ImageView
                 android:id="@+id/imageView2"
-                android:layout_width="110dp"
-                android:layout_height="133dp"
+                android:layout_width="120dp"
+                android:layout_height="140dp"
                 android:contentDescription="@string/piggysnake"
                 android:onClick="increaseScore"
                 android:paddingLeft="12dp"
@@ -111,11 +107,11 @@
 
             <ImageView
                 android:id="@+id/imageView3"
-                android:layout_width="110dp"
-                android:layout_height="133dp"
+                android:layout_width="120dp"
+                android:layout_height="140dp"
                 android:contentDescription="@string/piggysnake"
                 android:onClick="increaseScore"
-                android:paddingStart="12dp"
+                android:paddingLeft="12dp"
                 android:paddingRight="12dp"
                 app:layout_column="2"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -125,8 +121,8 @@
 
             <ImageView
                 android:id="@+id/imageView4"
-                android:layout_width="110dp"
-                android:layout_height="133dp"
+                android:layout_width="120dp"
+                android:layout_height="140dp"
                 android:contentDescription="@string/piggysnake"
                 android:onClick="increaseScore"
                 android:paddingLeft="12dp"
@@ -225,8 +221,8 @@
 
             <ImageView
                 android:id="@+id/imageView5"
-                android:layout_width="110dp"
-                android:layout_height="133dp"
+                android:layout_width="120dp"
+                android:layout_height="140dp"
                 android:contentDescription="@string/piggysnake"
                 android:onClick="increaseScore"
                 android:paddingLeft="12dp"
@@ -239,11 +235,11 @@
 
             <ImageView
                 android:id="@+id/imageView6"
-                android:layout_width="110dp"
-                android:layout_height="133dp"
+                android:layout_width="120dp"
+                android:layout_height="140dp"
                 android:contentDescription="@string/piggysnake"
                 android:onClick="increaseScore"
-                android:paddingStart="12dp"
+                android:paddingLeft="12dp"
                 android:paddingRight="12dp"
                 app:layout_column="2"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -254,7 +250,7 @@
             <ImageView
                 android:id="@+id/fallingleaf_two"
                 android:layout_width="20dp"
-                android:layout_height="12dp"
+                android:layout_height="20dp"
                 android:layout_centerInParent="true"
                 android:contentDescription="@string/greenleaf"
                 android:src="@drawable/leaf_green"
@@ -264,8 +260,8 @@
 
             <ImageView
                 android:id="@+id/imageView7"
-                android:layout_width="110dp"
-                android:layout_height="133dp"
+                android:layout_width="120dp"
+                android:layout_height="140dp"
                 android:contentDescription="@string/piggysnake"
                 android:onClick="increaseScore"
                 android:paddingLeft="12dp"
@@ -278,8 +274,8 @@
 
             <ImageView
                 android:id="@+id/imageView8"
-                android:layout_width="110dp"
-                android:layout_height="133dp"
+                android:layout_width="120dp"
+                android:layout_height="140dp"
                 android:contentDescription="@string/piggysnake"
                 android:onClick="increaseScore"
                 android:paddingLeft="12dp"
@@ -316,11 +312,11 @@
 
             <ImageView
                 android:id="@+id/imageView9"
-                android:layout_width="110dp"
-                android:layout_height="133dp"
+                android:layout_width="120dp"
+                android:layout_height="140dp"
                 android:contentDescription="@string/piggysnake"
                 android:onClick="increaseScore"
-                android:paddingStart="12dp"
+                android:paddingLeft="12dp"
                 android:paddingRight="12dp"
                 app:layout_column="2"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -329,28 +325,27 @@
                 app:srcCompat="@drawable/piggysnake" />
 
         </androidx.gridlayout.widget.GridLayout>
-    </LinearLayout>
 
-    <ImageButton
-        android:id="@+id/playAgainButton"
-        android:layout_width="68dp"
-        android:layout_height="79dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:adjustViewBounds="true"
-        android:backgroundTint="@color/colorAccent"
-        android:contentDescription="@string/playagain"
-        android:onClick="doRestart"
-        android:scaleType="fitCenter"
-        android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/scoreTextView"
-        app:layout_constraintHorizontal_bias="0.08"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/baseLinearLayout"
-        app:srcCompat="@drawable/repeat" />
+        <ImageButton
+            android:id="@+id/playAgainButton"
+            android:layout_width="68dp"
+            android:layout_height="79dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:adjustViewBounds="true"
+            android:backgroundTint="@color/colorAccent"
+            android:contentDescription="@string/playagain"
+            android:onClick="doRestart"
+            android:scaleType="fitCenter"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/scoreTextView"
+            app:layout_constraintHorizontal_bias="0.08"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/gridLayout"
+            app:srcCompat="@drawable/repeat" /> -->
 
     <ImageView
         android:id="@+id/snowmanImageView"
@@ -362,7 +357,7 @@
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/baseLinearLayout"
+        app:layout_constraintTop_toBottomOf="@+id/gridLayout"
         app:srcCompat="@drawable/snowman_trans"
         tools:ignore="MissingConstraints" />
 
@@ -379,7 +374,7 @@
         app:layout_constraintEnd_toStartOf="@+id/scoreValueView"
         app:layout_constraintHorizontal_bias="0.983"
         app:layout_constraintStart_toEndOf="@+id/verticalGuideline"
-        app:layout_constraintTop_toBottomOf="@+id/baseLinearLayout"
+        app:layout_constraintTop_toBottomOf="@+id/gridLayout"
         app:layout_constraintVertical_bias="0.583" />
 
     <TextView
@@ -396,7 +391,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_weight="2"
         app:layout_constraintStart_toEndOf="@+id/scoreTextView"
-        app:layout_constraintTop_toBottomOf="@+id/baseLinearLayout"
+        app:layout_constraintTop_toBottomOf="@+id/gridLayout"
         app:layout_constraintVertical_bias="0.509" />
 
     <androidx.constraintlayout.widget.Guideline
