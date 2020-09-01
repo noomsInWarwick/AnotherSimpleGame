@@ -28,12 +28,11 @@ import androidx.constraintlayout.widget.ConstraintLayout as ConstraintLayout1
 class MainActivity : AppCompatActivity() {
 
     companion object {
-        const val TIMELABEL = "Time: "
         const val WINTERLABEL = "Winter"
         const val SPRINGLABEL = "Spring"
         const val SUMMERLABEL = "Summer"
         const val AUTUMNLABEL = "Autumn"
-        const val INITIALIZESTRING = ""
+        const val INITIALIZESTRING = "You did so good!"
     }
 
     var imageList = ArrayList<ImageView>()
@@ -84,8 +83,8 @@ class MainActivity : AppCompatActivity() {
         val ratioValueGridWidth = .319
         val ratioValueGridHeight = .3125
         val ratioValueHeight = .64
-        //Toast.makeText(this, "ratioValue = " + ratioValue, Toast.LENGTH_SHORT).show()
-        Toast.makeText(this, "layoutHeight = " + layoutHeight, Toast.LENGTH_SHORT).show()
+        var TIMELABEL = resources.getString(R.string.time)
+
 
         playAgainButton.visibility = View.INVISIBLE
         score = 0
@@ -103,18 +102,31 @@ class MainActivity : AppCompatActivity() {
         initImagesList(bgImage)
 
         manageImages()
-
         baseLinearLayout.getLayoutParams().height = (ratioValueHeight * layoutHeight).toInt()
+        // baseLinearLayout.getLayoutParams().height = 550
         val gridImageWidth = (ratioValueGridWidth * layoutWidth).toInt()
+        val gridImageHeight = (ratioValueGridHeight * layoutHeight).toInt()
+
+        Toast.makeText(this, "gridImageHeight  = " + gridImageHeight, Toast.LENGTH_SHORT).show()
 
         imageView1.getLayoutParams().width = gridImageWidth;
+        // imageView1.getLayoutParams().height = gridImageHeight;
         imageView2.getLayoutParams().width = gridImageWidth;
+        // imageView2.getLayoutParams().height = gridImageHeight;
         imageView3.getLayoutParams().width = gridImageWidth;
+        // imageView3.getLayoutParams().height = gridImageHeight;
         imageView4.getLayoutParams().width = gridImageWidth;
+        // imageView4.getLayoutParams().height = gridImageHeight;
         imageView5.getLayoutParams().width = gridImageWidth;
+        //imageView5.getLayoutParams().height = gridImageHeight;
         imageView6.getLayoutParams().width = gridImageWidth;
+        //imageView6.getLayoutParams().height = gridImageHeight;
         imageView7.getLayoutParams().width = gridImageWidth;
+        //imageView7.getLayoutParams().height = gridImageHeight;
+        imageView8.getLayoutParams().width = gridImageWidth;
+        //imageView8.getLayoutParams().height = gridImageHeight;
         imageView9.getLayoutParams().width = gridImageWidth;
+        //imageView9.getLayoutParams().height = gridImageHeight;
 
         //layout_width="110dp"
 
@@ -164,7 +176,7 @@ class MainActivity : AppCompatActivity() {
                 if (isDone) {
                     onFinish()
                 } else {
-                    timerTextView.text = TIMELABEL + p0 / 3000
+                    timerTextView.text = TIMELABEL + " " + p0 / 3000
                 }
             }
         }.start()

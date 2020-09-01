@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Catch Piggy Snake</string>
     <string name="score">Score:  </string>
+    <string name="time">Time:  </string>
 
     <string name="winter"></string>
     <string name="spring"></string>

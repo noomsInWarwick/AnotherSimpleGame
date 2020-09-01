@@ -51,7 +51,7 @@
         android:id="@+id/timerTextView"
         android:layout_width="106dp"
         android:layout_height="32dp"
-        android:text="timer: 10"
+        android:text="@string/time"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="24sp"
         android:textStyle="bold"
