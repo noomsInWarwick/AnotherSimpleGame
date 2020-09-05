@@ -16,6 +16,7 @@ import com.example.anothersimplegame.imagesmanagers.ImagesManagerAutumn
 import com.example.anothersimplegame.imagesmanagers.ImagesManagerFruits
 import com.example.anothersimplegame.imagesmanagers.ImagesManagerSnowman
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.fragment_timer_n_messages.*
 import kotlinx.coroutines.Runnable
 import java.util.*
 import kotlin.collections.ArrayList
@@ -32,7 +33,7 @@ class MainActivity : AppCompatActivity() {
         const val SPRINGLABEL = "Spring"
         const val SUMMERLABEL = "Summer"
         const val AUTUMNLABEL = "Autumn"
-        const val INITIALIZESTRING = "You did so good!"
+        const val INITIALIZESTRING = "You did great!"
     }
 
     var imageList = ArrayList<ImageView>()
@@ -145,7 +146,6 @@ class MainActivity : AppCompatActivity() {
                 snowmanImagesManager.doSnowman(theSnowman)
                 snowmanImagesManager.setSnowmanVisibility(theSnowman, true)
                 snowmanImagesManager.fade(theSnowman, 10000)
-                System.out.println("############ displayMetrics.xdpi = " + displayMetrics.xdpi)
                 snowmanImagesManager.moveSnowman(theSnowman, layoutWidth)
             }
         }
@@ -154,7 +154,9 @@ class MainActivity : AppCompatActivity() {
 
             override fun onFinish() {
                 if (gameActive) {
-                    timerTextView.text = INITIALIZESTRING
+                    timerTextView.visibility = View.INVISIBLE
+                    niceMessageTextView.visibility = View.VISIBLE
+                    niceMessageTextView.text = resources.getString(R.string.niceMsg1)
                     imageView5.setImageDrawable(resources.getDrawable(drawable.piggysnake_smiley_all_done))
                     imageView5.visibility = View.VISIBLE
                     autumnImagesManager.fade(imageView5, 3000)

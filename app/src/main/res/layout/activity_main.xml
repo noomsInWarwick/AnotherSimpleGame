@@ -25,6 +25,22 @@
         app:layout_constraintVertical_bias="0.0"
         tools:layout="@layout/fragment_tool_bar_constrained" />
 
+    <fragment
+        android:id="@+id/timer_fragment"
+        class="com.example.anothersimplegame.FragmentTimerMessages"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="24dp"
+        android:background="@android:color/transparent"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/baseLinearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/details_fragment"
+        app:layout_constraintVertical_bias="0.0"
+        tools:layout="@layout/fragment_timer_n_messages" />
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/horizontalGuideline"
         android:layout_width="wrap_content"
@@ -42,24 +58,10 @@
         android:src="@drawable/fruit_orange_trans"
         android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/baseLinearLayout"
-        app:layout_constraintEnd_toStartOf="@+id/timerTextView"
+        app:layout_constraintEnd_toStartOf="@+id/timer_fragment"
         app:layout_constraintHorizontal_bias="0.8"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/mainConstraint" />
-
-    <TextView
-        android:id="@+id/timerTextView"
-        android:layout_width="106dp"
-        android:layout_height="32dp"
-        android:text="@string/time"
-        android:textColor="@color/colorPrimaryDark"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/baseLinearLayout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/verticalGuideline"
-        app:layout_constraintTop_toBottomOf="@+id/horizontalGuideline" />
 
     <LinearLayout
         android:id="@+id/baseLinearLayout"
@@ -71,7 +73,7 @@
         app:layout_constraintBottom_toTopOf="@+id/snowmanImageView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/timerTextView">
+        app:layout_constraintTop_toBottomOf="@+id/timer_fragment">
 
         <androidx.gridlayout.widget.GridLayout
             android:id="@+id/gridLayout"

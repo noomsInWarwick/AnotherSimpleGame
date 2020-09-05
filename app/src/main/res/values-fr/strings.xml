@@ -3,6 +3,12 @@
     <string name="score">Score:  </string>
     <string name="time">Time:  </string>
 
+    <string name="niceMsg1">You did great!  </string>
+    <string name="niceMsg2">That was fun!  </string>
+    <string name="niceMsg3">You are awesome!  </string>
+    <string name="niceMsg4">Let us play again!  </string>
+    <string name="niceMsg5">dunno  </string>
+
     <string name="winter"></string>
     <string name="spring"></string>
     <string name="summer"></string>
