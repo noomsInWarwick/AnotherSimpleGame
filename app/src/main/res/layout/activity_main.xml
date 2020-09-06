@@ -25,11 +25,19 @@
         app:layout_constraintVertical_bias="0.0"
         tools:layout="@layout/fragment_tool_bar_constrained" />
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horizontalGuideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#009688"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="84dp" />
+
     <fragment
         android:id="@+id/timer_fragment"
         class="com.example.anothersimplegame.FragmentTimerMessages"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="46dp"
         android:layout_marginTop="24dp"
         android:background="@android:color/transparent"
         android:orientation="horizontal"
@@ -40,13 +48,6 @@
         app:layout_constraintTop_toBottomOf="@+id/details_fragment"
         app:layout_constraintVertical_bias="0.0"
         tools:layout="@layout/fragment_timer_n_messages" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/horizontalGuideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="84dp" />
 
     <ImageView
         android:id="@+id/orangeSeven"
@@ -88,6 +89,7 @@
                 android:contentDescription="@string/piggysnake"
                 android:cropToPadding="false"
                 android:onClick="increaseScore"
+                android:paddingTop="18dp"
                 android:paddingLeft="12dp"
                 android:paddingRight="12dp"
                 android:soundEffectsEnabled="true"
@@ -103,6 +105,7 @@
                 android:layout_height="133dp"
                 android:contentDescription="@string/piggysnake"
                 android:onClick="increaseScore"
+                android:paddingTop="18dp"
                 android:paddingLeft="12dp"
                 android:paddingRight="12dp"
                 app:layout_column="1"
@@ -117,6 +120,7 @@
                 android:layout_height="133dp"
                 android:contentDescription="@string/piggysnake"
                 android:onClick="increaseScore"
+                android:paddingTop="18dp"
                 android:paddingStart="12dp"
                 android:paddingRight="12dp"
                 app:layout_column="2"
@@ -131,6 +135,7 @@
                 android:layout_height="133dp"
                 android:contentDescription="@string/piggysnake"
                 android:onClick="increaseScore"
+                android:paddingTop="18dp"
                 android:paddingLeft="12dp"
                 android:paddingRight="12dp"
                 app:layout_column="0"
@@ -231,6 +236,7 @@
                 android:layout_height="133dp"
                 android:contentDescription="@string/piggysnake"
                 android:onClick="increaseScore"
+                android:paddingTop="18dp"
                 android:paddingLeft="12dp"
                 android:paddingRight="12dp"
                 app:layout_column="1"
@@ -245,6 +251,7 @@
                 android:layout_height="133dp"
                 android:contentDescription="@string/piggysnake"
                 android:onClick="increaseScore"
+                android:paddingTop="18dp"
                 android:paddingStart="12dp"
                 android:paddingRight="12dp"
                 app:layout_column="2"
@@ -270,6 +277,7 @@
                 android:layout_height="133dp"
                 android:contentDescription="@string/piggysnake"
                 android:onClick="increaseScore"
+                android:paddingTop="18dp"
                 android:paddingLeft="12dp"
                 android:paddingRight="12dp"
                 app:layout_column="0"
@@ -284,6 +292,7 @@
                 android:layout_height="133dp"
                 android:contentDescription="@string/piggysnake"
                 android:onClick="increaseScore"
+                android:paddingTop="18dp"
                 android:paddingLeft="12dp"
                 android:paddingRight="12dp"
                 app:layout_column="1"
@@ -322,6 +331,7 @@
                 android:layout_height="133dp"
                 android:contentDescription="@string/piggysnake"
                 android:onClick="increaseScore"
+                android:paddingTop="18dp"
                 android:paddingStart="12dp"
                 android:paddingRight="12dp"
                 app:layout_column="2"

@@ -15,6 +15,7 @@ import com.example.anothersimplegame.R.drawable
 import com.example.anothersimplegame.imagesmanagers.ImagesManagerAutumn
 import com.example.anothersimplegame.imagesmanagers.ImagesManagerFruits
 import com.example.anothersimplegame.imagesmanagers.ImagesManagerSnowman
+import com.example.anothersimplegame.imagesmanagers.MessagesManager
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_timer_n_messages.*
 import kotlinx.coroutines.Runnable
@@ -33,7 +34,6 @@ class MainActivity : AppCompatActivity() {
         const val SPRINGLABEL = "Spring"
         const val SUMMERLABEL = "Summer"
         const val AUTUMNLABEL = "Autumn"
-        const val INITIALIZESTRING = "You did great!"
     }
 
     var imageList = ArrayList<ImageView>()
@@ -55,6 +55,7 @@ class MainActivity : AppCompatActivity() {
     var autumnImagesManager: ImagesManagerAutumn = ImagesManagerAutumn
     var snowmanImagesManager: ImagesManagerSnowman = ImagesManagerSnowman
     var fruitsImagesManager: ImagesManagerFruits = ImagesManagerFruits
+    var messagesManager: MessagesManager = MessagesManager
     var layoutWidth = 0
     var layoutHeight = 0
 
@@ -68,14 +69,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        //setting toolbar
-        // setSupportActionBar(findViewById(R.id.toolbar))
-        // getSupportActionBar()?.setDisplayShowTitleEnabled(false)
-
-        //home navigation
-        // supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        // supportActionBar?.hide()
-        // window.statusBarColor = ContextCompat.getColor(this, R.color.colorAccent)
 
         val displayMetrics = DisplayMetrics()
         windowManager.defaultDisplay.getMetrics(displayMetrics)
@@ -84,9 +77,9 @@ class MainActivity : AppCompatActivity() {
         val ratioValueGridWidth = .319
         val ratioValueGridHeight = .3125
         val ratioValueHeight = .64
+
         var TIMELABEL = resources.getString(R.string.time)
-
-
+        messagesManager.loadMessages(resources)
         playAgainButton.visibility = View.INVISIBLE
         score = 0
         nbrImagesDisplayed = 0
@@ -103,6 +96,7 @@ class MainActivity : AppCompatActivity() {
         initImagesList(bgImage)
 
         manageImages()
+
         baseLinearLayout.getLayoutParams().height = (ratioValueHeight * layoutHeight).toInt()
         // baseLinearLayout.getLayoutParams().height = 550
         val gridImageWidth = (ratioValueGridWidth * layoutWidth).toInt()
@@ -156,7 +150,7 @@ class MainActivity : AppCompatActivity() {
                 if (gameActive) {
                     timerTextView.visibility = View.INVISIBLE
                     niceMessageTextView.visibility = View.VISIBLE
-                    niceMessageTextView.text = resources.getString(R.string.niceMsg1)
+                    niceMessageTextView.text = messagesManager.getMessage()
                     imageView5.setImageDrawable(resources.getDrawable(drawable.piggysnake_smiley_all_done))
                     imageView5.visibility = View.VISIBLE
                     autumnImagesManager.fade(imageView5, 3000)
@@ -200,12 +194,6 @@ class MainActivity : AppCompatActivity() {
         theSnowman = findViewById(R.id.snowmanImageView)
         snowmanImagesManager.setSnowmanVisibility(theSnowman, false)
     }
-
-    //setting menu in action bar
-    //  override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-    //      menuInflater.inflate(R.menu.piggy_snake_menu, menu)
-    //      return super.onCreateOptionsMenu(menu)
-    //  }
 
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()
