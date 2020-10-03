@@ -11,7 +11,7 @@
 
     <fragment
         android:id="@+id/details_fragment"
-        class="com.example.anothersimplegame.FragmentToolBar"
+        class="com.example.anothersimplegame.fragments.FragmentToolBar"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginBottom="24dp"
@@ -35,12 +35,12 @@
 
     <fragment
         android:id="@+id/timer_fragment"
-        class="com.example.anothersimplegame.FragmentTimerMessages"
+        class="com.example.anothersimplegame.fragments.FragmentTimerMessages"
         android:layout_width="0dp"
         android:layout_height="46dp"
-        android:layout_marginTop="24dp"
-        android:background="@android:color/transparent"
+        android:background="?android:attr/colorMultiSelectHighlight"
         android:orientation="horizontal"
+        android:textAlignment="center"
         app:layout_constraintBottom_toTopOf="@+id/baseLinearLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -48,21 +48,6 @@
         app:layout_constraintTop_toBottomOf="@+id/details_fragment"
         app:layout_constraintVertical_bias="0.0"
         tools:layout="@layout/fragment_timer_n_messages" />
-
-    <ImageView
-        android:id="@+id/orangeSeven"
-        android:layout_width="15dp"
-        android:layout_height="15dp"
-        android:layout_centerInParent="true"
-        android:layout_marginStart="35dp"
-        android:contentDescription="@string/orange"
-        android:src="@drawable/fruit_orange_trans"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toTopOf="@+id/baseLinearLayout"
-        app:layout_constraintEnd_toStartOf="@+id/timer_fragment"
-        app:layout_constraintHorizontal_bias="0.8"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/mainConstraint" />
 
     <LinearLayout
         android:id="@+id/baseLinearLayout"
@@ -89,8 +74,8 @@
                 android:contentDescription="@string/piggysnake"
                 android:cropToPadding="false"
                 android:onClick="increaseScore"
-                android:paddingTop="18dp"
                 android:paddingLeft="12dp"
+                android:paddingTop="18dp"
                 android:paddingRight="12dp"
                 android:soundEffectsEnabled="true"
                 app:layout_column="0"
@@ -105,8 +90,8 @@
                 android:layout_height="133dp"
                 android:contentDescription="@string/piggysnake"
                 android:onClick="increaseScore"
-                android:paddingTop="18dp"
                 android:paddingLeft="12dp"
+                android:paddingTop="18dp"
                 android:paddingRight="12dp"
                 app:layout_column="1"
                 app:layout_constraintEnd_toEndOf="@id/imageView3"
@@ -120,8 +105,8 @@
                 android:layout_height="133dp"
                 android:contentDescription="@string/piggysnake"
                 android:onClick="increaseScore"
-                android:paddingTop="18dp"
                 android:paddingStart="12dp"
+                android:paddingTop="18dp"
                 android:paddingRight="12dp"
                 app:layout_column="2"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -135,8 +120,8 @@
                 android:layout_height="133dp"
                 android:contentDescription="@string/piggysnake"
                 android:onClick="increaseScore"
-                android:paddingTop="18dp"
                 android:paddingLeft="12dp"
+                android:paddingTop="18dp"
                 android:paddingRight="12dp"
                 app:layout_column="0"
                 app:layout_constraintEnd_toEndOf="@id/imageView5"
@@ -236,8 +221,8 @@
                 android:layout_height="133dp"
                 android:contentDescription="@string/piggysnake"
                 android:onClick="increaseScore"
-                android:paddingTop="18dp"
                 android:paddingLeft="12dp"
+                android:paddingTop="18dp"
                 android:paddingRight="12dp"
                 app:layout_column="1"
                 app:layout_constraintEnd_toEndOf="@id/imageView6"
@@ -251,8 +236,8 @@
                 android:layout_height="133dp"
                 android:contentDescription="@string/piggysnake"
                 android:onClick="increaseScore"
-                android:paddingTop="18dp"
                 android:paddingStart="12dp"
+                android:paddingTop="18dp"
                 android:paddingRight="12dp"
                 app:layout_column="2"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -277,8 +262,8 @@
                 android:layout_height="133dp"
                 android:contentDescription="@string/piggysnake"
                 android:onClick="increaseScore"
-                android:paddingTop="18dp"
                 android:paddingLeft="12dp"
+                android:paddingTop="18dp"
                 android:paddingRight="12dp"
                 app:layout_column="0"
                 app:layout_constraintEnd_toEndOf="@id/imageView8"
@@ -292,8 +277,8 @@
                 android:layout_height="133dp"
                 android:contentDescription="@string/piggysnake"
                 android:onClick="increaseScore"
-                android:paddingTop="18dp"
                 android:paddingLeft="12dp"
+                android:paddingTop="18dp"
                 android:paddingRight="12dp"
                 app:layout_column="1"
                 app:layout_constraintEnd_toEndOf="@id/imageView9"
@@ -331,8 +316,8 @@
                 android:layout_height="133dp"
                 android:contentDescription="@string/piggysnake"
                 android:onClick="increaseScore"
-                android:paddingTop="18dp"
                 android:paddingStart="12dp"
+                android:paddingTop="18dp"
                 android:paddingRight="12dp"
                 app:layout_column="2"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -343,40 +328,22 @@
         </androidx.gridlayout.widget.GridLayout>
     </LinearLayout>
 
-    <ImageButton
-        android:id="@+id/playAgainButton"
-        android:layout_width="68dp"
-        android:layout_height="79dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:adjustViewBounds="true"
-        android:backgroundTint="@color/colorAccent"
-        android:contentDescription="@string/playagain"
-        android:onClick="doRestart"
-        android:scaleType="fitCenter"
+    <fragment
+        android:id="@+id/snowman_fragment"
+        class="com.example.anothersimplegame.fragments.FragmentSnowman"
+        android:layout_width="0dp"
+        android:layout_height="90dp"
+        android:background="?android:attr/colorMultiSelectHighlight"
+        android:orientation="horizontal"
+        android:textAlignment="center"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/scoreTextView"
-        app:layout_constraintHorizontal_bias="0.08"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/baseLinearLayout"
-        app:srcCompat="@drawable/repeat" />
-
-    <ImageView
-        android:id="@+id/snowmanImageView"
-        android:layout_width="93dp"
-        android:layout_height="88dp"
-        android:layout_marginTop="2dp"
-        android:layout_marginBottom="14dp"
-        android:contentDescription="@string/snowman"
-        android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/baseLinearLayout"
-        app:srcCompat="@drawable/snowman_trans"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintVertical_bias="0.644"
+        tools:layout="@layout/fragment_snowman" />
 
     <TextView
         android:id="@+id/scoreTextView"
@@ -412,11 +379,19 @@
         app:layout_constraintVertical_bias="0.509" />
 
     <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horizontalGuideline_bottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#009688"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="700dp" />
+
+    <androidx.constraintlayout.widget.Guideline
         android:id="@+id/verticalGuideline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_begin="129dp" />
-
+        app:layout_constraintGuide_begin="0dp"
+        app:layout_constraintGuide_percent=".35" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

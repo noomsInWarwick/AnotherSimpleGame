@@ -2,6 +2,8 @@ package com.example.anothersimplegame
 
 import android.app.FragmentTransaction
 import android.content.Context
+import android.graphics.Color
+import android.graphics.drawable.Drawable
 import android.os.*
 import android.os.VibrationEffect.createOneShot
 import android.util.DisplayMetrics
@@ -17,14 +19,13 @@ import com.example.anothersimplegame.imagesmanagers.ImagesManagerFruits
 import com.example.anothersimplegame.imagesmanagers.ImagesManagerSnowman
 import com.example.anothersimplegame.imagesmanagers.MessagesManager
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.fragment_snowman.*
 import kotlinx.android.synthetic.main.fragment_timer_n_messages.*
 import kotlinx.coroutines.Runnable
 import java.util.*
 import kotlin.collections.ArrayList
 import kotlin.concurrent.schedule
 import androidx.constraintlayout.widget.ConstraintLayout as ConstraintLayout1
-
-//import kotlinx.android.synthetic.main.activity_main.imageView1 as imageView11
 
 @Suppress("DEPRECATION")
 class MainActivity : AppCompatActivity() {
@@ -41,6 +42,7 @@ class MainActivity : AppCompatActivity() {
     var fruitsList = ArrayList<ImageView?>()
     var randomIndexesList = ArrayList<Int>()
     var timer: Timer? = null
+    var messageBackgroundColor = Color.BLUE
 
     private var score: Int = 0
     private var nbrImagesDisplayed = 0
@@ -64,6 +66,9 @@ class MainActivity : AppCompatActivity() {
     private var fallingleafthree: ImageView? = null
     private var fallingleaffour: ImageView? = null
     private var theSnowman: ImageView? = null
+
+    private var endOfGameImage: Drawable? = null
+
     private var prefs: PiggySnakePreferencesReader? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -91,6 +96,7 @@ class MainActivity : AppCompatActivity() {
         val bgImage = prefs!!.bgImage
 
         setBackground(context, bgImage)
+        horizontalGuideline_bottom.setGuidelineBegin(500)
 
         prepareSnowman()
         initImagesList(bgImage)
@@ -98,45 +104,51 @@ class MainActivity : AppCompatActivity() {
         manageImages()
 
         baseLinearLayout.getLayoutParams().height = (ratioValueHeight * layoutHeight).toInt()
-        // baseLinearLayout.getLayoutParams().height = 550
+
         val gridImageWidth = (ratioValueGridWidth * layoutWidth).toInt()
-        val gridImageHeight = (ratioValueGridHeight * layoutHeight).toInt()
+        val gridImageHeight =
+            (ratioValueGridHeight * baseLinearLayout.getLayoutParams().height).toInt()
 
-        Toast.makeText(this, "gridImageHeight  = " + gridImageHeight, Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, "layoutHeight = " + layoutHeight, Toast.LENGTH_SHORT).show()
 
-        imageView1.getLayoutParams().width = gridImageWidth;
-        // imageView1.getLayoutParams().height = gridImageHeight;
-        imageView2.getLayoutParams().width = gridImageWidth;
-        // imageView2.getLayoutParams().height = gridImageHeight;
-        imageView3.getLayoutParams().width = gridImageWidth;
-        // imageView3.getLayoutParams().height = gridImageHeight;
-        imageView4.getLayoutParams().width = gridImageWidth;
-        // imageView4.getLayoutParams().height = gridImageHeight;
-        imageView5.getLayoutParams().width = gridImageWidth;
-        //imageView5.getLayoutParams().height = gridImageHeight;
-        imageView6.getLayoutParams().width = gridImageWidth;
-        //imageView6.getLayoutParams().height = gridImageHeight;
-        imageView7.getLayoutParams().width = gridImageWidth;
-        //imageView7.getLayoutParams().height = gridImageHeight;
-        imageView8.getLayoutParams().width = gridImageWidth;
-        //imageView8.getLayoutParams().height = gridImageHeight;
-        imageView9.getLayoutParams().width = gridImageWidth;
-        //imageView9.getLayoutParams().height = gridImageHeight;
-
-        //layout_width="110dp"
-
+        imageView1.getLayoutParams().width = gridImageWidth
+        imageView1.getLayoutParams().height = gridImageHeight
+        imageView2.getLayoutParams().width = gridImageWidth
+        imageView2.getLayoutParams().height = gridImageHeight
+        imageView3.getLayoutParams().width = gridImageWidth
+        imageView3.getLayoutParams().height = gridImageHeight
+        imageView4.getLayoutParams().width = gridImageWidth
+        imageView4.getLayoutParams().height = gridImageHeight
+        imageView5.getLayoutParams().width = gridImageWidth
+        imageView5.getLayoutParams().height = gridImageHeight
+        imageView6.getLayoutParams().width = gridImageWidth
+        imageView6.getLayoutParams().height = gridImageHeight
+        imageView7.getLayoutParams().width = gridImageWidth
+        imageView7.getLayoutParams().height = gridImageHeight
+        imageView8.getLayoutParams().width = gridImageWidth
+        imageView8.getLayoutParams().height = gridImageHeight
+        imageView9.getLayoutParams().width = gridImageWidth
+        imageView9.getLayoutParams().height = gridImageHeight
         when (prefs!!.currentSeason) {
             Seasons.Spring -> {
+                endOfGameImage = this.resources.getDrawable(drawable.endofgame_star_trans)
+                messageBackgroundColor = Color.GREEN
             }
             Seasons.Summer -> {
+                messageBackgroundColor = Color.YELLOW
+                endOfGameImage = this.resources.getDrawable(drawable.endofgame_icecream_trans)
                 prepareSummerFruits()
             }
             Seasons.Autumn -> {
+                endOfGameImage = this.resources.getDrawable(drawable.endofgame_splat_trans)
+                messageBackgroundColor = Color.parseColor("#FF9800")
                 prepareAutumnLeaves()
                 setLeavesVisibility()
                 descendingLeaves()
             }
             Seasons.Winter -> {
+                endOfGameImage = this.resources.getDrawable(drawable.endofgame_splat_trans)
+                messageBackgroundColor = Color.CYAN
                 snowmanImagesManager.doSnowman(theSnowman)
                 snowmanImagesManager.setSnowmanVisibility(theSnowman, true)
                 snowmanImagesManager.fade(theSnowman, 10000)
@@ -151,7 +163,9 @@ class MainActivity : AppCompatActivity() {
                     timerTextView.visibility = View.INVISIBLE
                     niceMessageTextView.visibility = View.VISIBLE
                     niceMessageTextView.text = messagesManager.getMessage()
-                    imageView5.setImageDrawable(resources.getDrawable(drawable.piggysnake_smiley_all_done))
+                    // imageView5.setImageDrawable(resources.getDrawable(drawable.endofgame_icecream_trans))
+                    //  imageView5.setImageDrawable(resources.getDrawable(drawable.endofgame_star_trans))
+                    imageView5.setImageDrawable(endOfGameImage)
                     imageView5.visibility = View.VISIBLE
                     autumnImagesManager.fade(imageView5, 3000)
                     playAgainButton.visibility = View.VISIBLE
@@ -160,6 +174,7 @@ class MainActivity : AppCompatActivity() {
                     randomIndexesList.clear()
                     imageList.clear()
                     displayedImageList.clear()
+                    fragment_message_toolbar.setBackgroundColor(messageBackgroundColor)
                 }
 
                 handler.removeCallbacks(runnable)

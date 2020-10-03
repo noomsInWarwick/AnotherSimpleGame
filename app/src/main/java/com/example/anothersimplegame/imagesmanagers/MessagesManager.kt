@@ -14,6 +14,7 @@ object MessagesManager {
         messagesList.add(resources.getString(R.string.niceMsg2))
         messagesList.add(resources.getString(R.string.niceMsg3))
         messagesList.add(resources.getString(R.string.niceMsg4))
+        messagesList.add(resources.getString(R.string.niceMsg5))
     }
 
     fun getMessage(): String {

@@ -1,13 +1,13 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/transparent"
     android:fillViewport="true"
     app:titleTextColor="@color/colorPrimary">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/fragment_message_toolbar"
+        android:id="@+id/fragment_snowman_toolbar"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:minHeight="?attr/actionBarSize"
@@ -30,45 +30,44 @@
                 app:layout_constraintGuide_percent=".001" />
 
             <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/timeVerticalGuideline"
+                android:id="@+id/verticalGuideline_middle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:textAlignment="center"
-                app:layout_constraintGuide_begin="0dp"
+                app:layout_constraintGuide_begin="40dp"
                 app:layout_constraintGuide_percent=".35" />
 
-            <TextView
-                android:id="@+id/timerTextView"
-                android:layout_width="150dp"
-                android:layout_height="36dp"
-                android:text="@string/niceMsg1"
-                android:textAlignment="center"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="24sp"
-                android:textStyle="bold"
+            <ImageView
+                android:id="@+id/snowmanImageView"
+                android:layout_width="78dp"
+                android:layout_height="85dp"
+                android:layout_marginBottom="12dp"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/snowman"
+                android:visibility="visible"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toEndOf="@+id/timeVerticalGuideline"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintStart_toStartOf="@+id/verticalGuideline"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/snowman_trans"
+                tools:ignore="MissingConstraints" />
 
-            <TextView
-                android:id="@+id/niceMessageTextView"
-                android:layout_width="0dp"
-                android:layout_height="36dp"
-                android:gravity="center"
-                android:text="@string/niceMsg1"
-                android:textAlignment="center"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="24sp"
-                android:textStyle="bold"
-                android:visibility="invisible"
+            <ImageButton
+                android:id="@+id/playAgainButton"
+                android:layout_width="68dp"
+                android:layout_height="80dp"
+                android:adjustViewBounds="true"
+                android:backgroundTint="@color/colorAccent"
+                android:contentDescription="@string/playagain"
+                android:onClick="doRestart"
+                android:scaleType="fitCenter"
+                android:visibility="visible"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toEndOf="@+id/verticalGuideline"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintEnd_toStartOf="@+id/verticalGuideline_middle"
+                app:layout_constraintHorizontal_bias="0.09"
+                app:layout_constraintStart_toStartOf="@+id/verticalGuideline"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/repeat" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.appcompat.widget.Toolbar>
