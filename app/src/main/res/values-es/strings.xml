@@ -3,25 +3,9 @@
     <string name="score">calificar:  </string>
     <string name="time">tiempo:  </string>
 
-    <string name="niceMsg1">You did great!  </string>
-    <string name="niceMsg2">That was fun!  </string>
-    <string name="niceMsg3">You are awesome!  </string>
-    <string name="niceMsg4">Let\'s play again!  </string>
-    <string name="niceMsg5">Today is a good day!  </string>
-
-    <string name="winter"></string>
-    <string name="spring"></string>
-    <string name="summer"></string>
-    <string name="autumn"></string>
-    <string name="orange"></string>
-    <string name="piggysnake"></string>
-    <string name="redleaf"></string>
-    <string name="greenleaf"></string>
-    <string name="purpleleaf"></string>
-    <string name="yellowleaf"></string>
-    <string name="playagain"></string>
-    <string name="snowman"></string>
-
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="description_format">%1$s\n\n%2$s</string>
+    <string name="niceMsg1">¡Lo hiciste genial!</string>
+    <string name="niceMsg2">¡Eso fue divertido!</string>
+    <string name="niceMsg3">¡Eres asombroso</string>
+    <string name="niceMsg4">¡Juguemos otra vez!</string>
+    <string name="niceMsg5">¡Atrapaste a Piggy Snake!</string>
 </resources>
