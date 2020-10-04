@@ -45,7 +45,6 @@ class PiggySnakePreferencesReader(context: Context) {
     fun setBackground(): Int {
 
         var dr: Int = R.drawable.piggy_backdrop
-
         when (currentSeason) {
             Spring -> dr = R.drawable.piggy_backdrop_spring
             Summer -> dr = R.drawable.piggy_backdrop
@@ -53,14 +52,12 @@ class PiggySnakePreferencesReader(context: Context) {
             Winter -> dr = R.drawable.piggy_backdrop_winter
             else -> R.drawable.piggy_backdrop
         }
-
         return dr
     }
 
     fun setPiggySnakeImage(): Int {
 
         var dr: Int = R.drawable.piggysnake
-
         when (currentSeason) {
             Spring -> dr = R.drawable.piggysnake
             Summer -> dr = R.drawable.piggysnakedoessummer
@@ -68,7 +65,19 @@ class PiggySnakePreferencesReader(context: Context) {
             Winter -> dr = R.drawable.piggysnakedoeswinter
             else -> dr = R.drawable.piggysnake
         }
+        return dr
+    }
 
+    fun getEndOfGameImage(): Int {
+
+        var dr = R.drawable.endofgame_splat_trans
+        when (currentSeason) {
+            Spring -> dr = R.drawable.endofgame_star_trans
+            Summer -> dr = R.drawable.endofgame_icecream_trans
+            Autumn -> dr = R.drawable.endofgame_splat_trans
+            Winter -> dr = R.drawable.endofgame_snowman_trans
+            else -> R.drawable.endofgame_splat_trans
+        }
         return dr
     }
 }

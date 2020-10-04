@@ -10,7 +10,6 @@ import android.util.DisplayMetrics
 import android.view.MotionEvent
 import android.view.View
 import android.widget.ImageView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.MotionEventCompat
 import com.example.anothersimplegame.R.drawable
@@ -109,8 +108,6 @@ class MainActivity : AppCompatActivity() {
         val gridImageHeight =
             (ratioValueGridHeight * baseLinearLayout.getLayoutParams().height).toInt()
 
-        Toast.makeText(this, "layoutHeight = " + layoutHeight, Toast.LENGTH_SHORT).show()
-
         imageView1.getLayoutParams().width = gridImageWidth
         imageView1.getLayoutParams().height = gridImageHeight
         imageView2.getLayoutParams().width = gridImageWidth
@@ -131,23 +128,19 @@ class MainActivity : AppCompatActivity() {
         imageView9.getLayoutParams().height = gridImageHeight
         when (prefs!!.currentSeason) {
             Seasons.Spring -> {
-                endOfGameImage = this.resources.getDrawable(drawable.endofgame_star_trans)
                 messageBackgroundColor = Color.GREEN
             }
             Seasons.Summer -> {
                 messageBackgroundColor = Color.YELLOW
-                endOfGameImage = this.resources.getDrawable(drawable.endofgame_icecream_trans)
                 prepareSummerFruits()
             }
             Seasons.Autumn -> {
-                endOfGameImage = this.resources.getDrawable(drawable.endofgame_splat_trans)
                 messageBackgroundColor = Color.parseColor("#FF9800")
                 prepareAutumnLeaves()
                 setLeavesVisibility()
                 descendingLeaves()
             }
             Seasons.Winter -> {
-                endOfGameImage = this.resources.getDrawable(drawable.endofgame_splat_trans)
                 messageBackgroundColor = Color.CYAN
                 snowmanImagesManager.doSnowman(theSnowman)
                 snowmanImagesManager.setSnowmanVisibility(theSnowman, true)
@@ -163,9 +156,7 @@ class MainActivity : AppCompatActivity() {
                     timerTextView.visibility = View.INVISIBLE
                     niceMessageTextView.visibility = View.VISIBLE
                     niceMessageTextView.text = messagesManager.getMessage()
-                    // imageView5.setImageDrawable(resources.getDrawable(drawable.endofgame_icecream_trans))
-                    //  imageView5.setImageDrawable(resources.getDrawable(drawable.endofgame_star_trans))
-                    imageView5.setImageDrawable(endOfGameImage)
+                    imageView5.setImageDrawable(resources.getDrawable(prefs!!.getEndOfGameImage()))
                     imageView5.visibility = View.VISIBLE
                     autumnImagesManager.fade(imageView5, 3000)
                     playAgainButton.visibility = View.VISIBLE
@@ -430,28 +421,6 @@ class MainActivity : AppCompatActivity() {
 
         val ft: FragmentTransaction = fragmentManager.beginTransaction()
         val action: Int = MotionEventCompat.getActionMasked(event)
-
-
-        //        return when (action) {
-//            MotionEvent.ACTION_DOWN -> {
-//                if (supportActionBar!!.isShowing) {
-//                    supportActionBar?.hide()
-//                    //    Toast.makeText(this, "Chewy is good  <80 ", Toast.LENGTH_SHORT).show()
-//                } else {
-//                    supportActionBar?.show()
-//                    //    Toast.makeText(this, "Chey is rad =:0", Toast.LENGTH_SHORT).show()
-//                }
-//                true
-//            }
-//            MotionEvent.ACTION_MOVE -> {
-//                false
-//            }
-//            MotionEvent.ACTION_UP -> {
-//                false
-//            }
-//            else -> false
-//        }
-
         return false
     }
 
