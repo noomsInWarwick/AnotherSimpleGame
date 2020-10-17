@@ -10,6 +10,7 @@ import android.util.DisplayMetrics
 import android.view.MotionEvent
 import android.view.View
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.MotionEventCompat
 import com.example.anothersimplegame.R.drawable
@@ -78,9 +79,19 @@ class MainActivity : AppCompatActivity() {
         windowManager.defaultDisplay.getMetrics(displayMetrics)
         layoutWidth = displayMetrics.widthPixels
         layoutHeight = displayMetrics.heightPixels
+
+        Toast.makeText(
+            this,
+            "layoutHeight = " + layoutHeight + ", layoutWidth = " + layoutWidth, Toast.LENGTH_LONG
+        ).show()
+
+
         val ratioValueGridWidth = .319
         val ratioValueGridHeight = .3125
         val ratioValueHeight = .64
+        val ratioScoreHeight = .15
+        val ratioScoreWidth = .25
+
 
         var TIMELABEL = resources.getString(R.string.time)
         messagesManager.loadMessages(resources)
@@ -107,6 +118,10 @@ class MainActivity : AppCompatActivity() {
         val gridImageWidth = (ratioValueGridWidth * layoutWidth).toInt()
         val gridImageHeight =
             (ratioValueGridHeight * baseLinearLayout.getLayoutParams().height).toInt()
+
+        //  scoreTextView.getLayoutParams().width = (ratioScoreWidth * layoutWidth).toInt()
+        //  scoreTextView.getLayoutParams().height = (ratioScoreHeight * layoutHeight).toInt()
+        //scoreTextView.autoSizeMaxTextSize???????
 
         imageView1.getLayoutParams().width = gridImageWidth
         imageView1.getLayoutParams().height = gridImageHeight

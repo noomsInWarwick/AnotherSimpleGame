@@ -347,7 +347,7 @@
 
     <TextView
         android:id="@+id/scoreTextView"
-        android:layout_width="82dp"
+        android:layout_width="100dp"
         android:layout_height="35dp"
         android:gravity="right"
         android:text="@string/score"
@@ -359,16 +359,18 @@
         app:layout_constraintHorizontal_bias="0.983"
         app:layout_constraintStart_toEndOf="@+id/verticalGuideline"
         app:layout_constraintTop_toBottomOf="@+id/baseLinearLayout"
-        app:layout_constraintVertical_bias="0.583" />
+        app:layout_constraintVertical_bias="0.583"
+        android:maxLines="1"
+        app:autoSizeTextType="uniform" />
 
     <TextView
         android:id="@+id/scoreValueView"
         android:layout_width="0dp"
-        android:layout_height="46dp"
+        android:layout_height="86dp"
         android:gravity="left"
         android:paddingLeft="15dp"
         android:textColor="@color/colorPrimaryDark"
-        android:textSize="30sp"
+        android:textSize="40sp"
         android:textStyle="bold"
         app:layout_constraintBaseline_toBaselineOf="@id/scoreTextView"
         app:layout_constraintBottom_toBottomOf="parent"
