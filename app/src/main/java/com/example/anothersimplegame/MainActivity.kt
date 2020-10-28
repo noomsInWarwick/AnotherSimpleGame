@@ -7,6 +7,7 @@ import android.graphics.drawable.Drawable
 import android.os.*
 import android.os.VibrationEffect.createOneShot
 import android.util.DisplayMetrics
+import android.util.TypedValue
 import android.view.MotionEvent
 import android.view.View
 import android.widget.ImageView
@@ -53,6 +54,7 @@ class MainActivity : AppCompatActivity() {
     var randomIdx = 0
     var gameActive = true
     var countDownTimer = 30000L
+    var spValue = 40F
     var isDone = false
     var autumnImagesManager: ImagesManagerAutumn = ImagesManagerAutumn
     var snowmanImagesManager: ImagesManagerSnowman = ImagesManagerSnowman
@@ -90,7 +92,10 @@ class MainActivity : AppCompatActivity() {
         val ratioValueGridHeight = .3125
         val ratioValueHeight = .64
         val ratioScoreHeight = .15
-        val ratioScoreWidth = .25
+        val ratioScoreWidth = .33
+        //val ratioScoreWidth = .25
+        //val ratioSP = .021
+        val ratioSP = .019
 
 
         var TIMELABEL = resources.getString(R.string.time)
@@ -119,9 +124,19 @@ class MainActivity : AppCompatActivity() {
         val gridImageHeight =
             (ratioValueGridHeight * baseLinearLayout.getLayoutParams().height).toInt()
 
-        //  scoreTextView.getLayoutParams().width = (ratioScoreWidth * layoutWidth).toInt()
-        //  scoreTextView.getLayoutParams().height = (ratioScoreHeight * layoutHeight).toInt()
-        //scoreTextView.autoSizeMaxTextSize???????
+        scoreTextView.getLayoutParams().width = (ratioScoreWidth * layoutWidth).toInt()
+        scoreTextView.getLayoutParams().height = (ratioScoreHeight * layoutHeight).toInt()
+
+        scoreTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP, (layoutHeight * ratioSP).toFloat())
+        scoreValueView.setTextSize(TypedValue.COMPLEX_UNIT_SP, (layoutHeight * ratioSP).toFloat())
+        niceMessageTextView.setTextSize(
+            TypedValue.COMPLEX_UNIT_SP,
+            (layoutHeight * ratioSP).toFloat()
+        )
+        timerTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP, (layoutHeight * ratioSP).toFloat())
+        snowmanImageView.getLayoutParams().height = (layoutHeight * .20).toInt()
+        playAgainButton.getLayoutParams().height = (layoutHeight * .114).toInt()
+        playAgainButton.getLayoutParams().width = (layoutHeight * .10).toInt()
 
         imageView1.getLayoutParams().width = gridImageWidth
         imageView1.getLayoutParams().height = gridImageHeight
@@ -309,7 +324,7 @@ class MainActivity : AppCompatActivity() {
         if (gameActive) {
             vibrate()
             score++
-            scoreValueView.text = score.toString()
+            scoreTextView.text = resources.getString(R.string.score) + " " + score.toString()
             displayedImageList.add(imageList[imageList.indexOf(view)])
             view.setEnabled(false)
             handler.removeCallbacks(runnable)
