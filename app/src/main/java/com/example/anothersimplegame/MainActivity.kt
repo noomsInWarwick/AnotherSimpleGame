@@ -92,8 +92,6 @@ class MainActivity : AppCompatActivity() {
         val ratioValueHeight = .64
         val ratioScoreHeight = .15
         val ratioScoreWidth = .33
-        //val ratioScoreWidth = .25
-        //val ratioSP = .021
         val ratioSP = .025
 
 
@@ -123,13 +121,6 @@ class MainActivity : AppCompatActivity() {
         val gridImageHeight =
             (ratioValueGridHeight * baseLinearLayout.getLayoutParams().height).toInt()
 
-        //     scoreTextView.getLayoutParams().width = (ratioScoreWidth * layoutWidth).toInt()
-        //     scoreTextView.getLayoutParams().height = (ratioScoreHeight * layoutHeight).toInt()
-
-        //    scoreTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP, (layoutHeight * ratioSP).toFloat())
-        //scoreValueView.setTextSize(TypedValue.COMPLEX_UNIT_SP, (layoutHeight * ratioSP).toFloat())
-        //niceMessageTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP, (layoutHeight * ratioSP).toFloat())
-        //  timerTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP, (layoutHeight * ratioSP).toFloat())
         snowmanImageView.getLayoutParams().height = (layoutHeight * .20).toInt()
         playAgainButton.getLayoutParams().height = (layoutHeight * .114).toInt()
         playAgainButton.getLayoutParams().width = (layoutHeight * .10).toInt()

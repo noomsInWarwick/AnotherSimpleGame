@@ -2,6 +2,11 @@
     <dimen name="text_font_size">20sp</dimen>
     <dimen name="ps_toolbar_height">36dp</dimen>
     <dimen name="ps_toolbar_image_size">30dp</dimen>
+    <dimen name="ps_baselayout_height">340dp</dimen>
+    <dimen name="ps_baselayout_width">240dp</dimen>
+
+    <dimen name="ps_snowman_fragment_image_height">42dp</dimen>
+    <dimen name="ps_snowman_fragment_image_width">42dp</dimen>
 
     <dimen name="ps_image_size">80dp</dimen>
     <dimen name="ps_detail_image_margin_vertical">24dp</dimen>

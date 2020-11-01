@@ -1,8 +1,13 @@
 <resources>
     <dimen name="text_font_size">24sp</dimen>
     <dimen name="ps_toolbar_height">40dp</dimen>
-
     <dimen name="ps_toolbar_image_size">40dp</dimen>
+    <dimen name="ps_baselayout_height">400dp</dimen>
+    <dimen name="ps_baselayout_width">800dp</dimen>
+
+    <dimen name="ps_snowman_fragment_image_height">30dp</dimen>
+    <dimen name="ps_snowman_fragment_image_width">30dp</dimen>
+
     <dimen name="ps_image_size">24dp</dimen>
     <dimen name="ps_detail_image_margin_vertical">24dp</dimen>
     <dimen name="ps_detail_name_margin_top">24dp</dimen>

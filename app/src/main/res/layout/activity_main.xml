@@ -13,7 +13,7 @@
         android:id="@+id/details_fragment"
         class="com.example.anothersimplegame.fragments.FragmentToolBar"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="@dimen/ps_toolbar_height"
         android:layout_marginBottom="24dp"
         android:background="@android:color/transparent"
         android:orientation="horizontal"
@@ -51,8 +51,8 @@
 
     <LinearLayout
         android:id="@+id/baseLinearLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="400dp"
+        android:layout_width="@dimen/ps_baselayout_width"
+        android:layout_height="@dimen/ps_baselayout_height"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
         android:orientation="horizontal"
@@ -63,8 +63,8 @@
 
         <androidx.gridlayout.widget.GridLayout
             android:id="@+id/gridLayout"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="@dimen/ps_baselayout_width"
+            android:layout_height="@dimen/ps_baselayout_height"
             android:layoutMode="clipBounds">
 
             <ImageView
@@ -332,7 +332,7 @@
         android:id="@+id/snowman_fragment"
         class="com.example.anothersimplegame.fragments.FragmentSnowman"
         android:layout_width="0dp"
-        android:layout_height="190dp"
+        android:layout_height="@dimen/ps_image_size"
         android:background="?android:attr/colorMultiSelectHighlight"
         android:orientation="horizontal"
         android:textAlignment="center"
@@ -349,7 +349,7 @@
         android:id="@+id/scoreTextView"
         android:layout_width="120dp"
         android:layout_height="90dp"
-        android:gravity="right"
+        android:gravity="center"
         android:maxLines="1"
         android:text="@string/score"
         android:textColor="@color/colorPrimaryDark"
