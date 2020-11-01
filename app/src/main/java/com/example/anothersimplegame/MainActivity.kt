@@ -7,7 +7,6 @@ import android.graphics.drawable.Drawable
 import android.os.*
 import android.os.VibrationEffect.createOneShot
 import android.util.DisplayMetrics
-import android.util.TypedValue
 import android.view.MotionEvent
 import android.view.View
 import android.widget.ImageView
@@ -95,7 +94,7 @@ class MainActivity : AppCompatActivity() {
         val ratioScoreWidth = .33
         //val ratioScoreWidth = .25
         //val ratioSP = .021
-        val ratioSP = .019
+        val ratioSP = .025
 
 
         var TIMELABEL = resources.getString(R.string.time)
@@ -124,38 +123,17 @@ class MainActivity : AppCompatActivity() {
         val gridImageHeight =
             (ratioValueGridHeight * baseLinearLayout.getLayoutParams().height).toInt()
 
-        scoreTextView.getLayoutParams().width = (ratioScoreWidth * layoutWidth).toInt()
-        scoreTextView.getLayoutParams().height = (ratioScoreHeight * layoutHeight).toInt()
+        //     scoreTextView.getLayoutParams().width = (ratioScoreWidth * layoutWidth).toInt()
+        //     scoreTextView.getLayoutParams().height = (ratioScoreHeight * layoutHeight).toInt()
 
-        scoreTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP, (layoutHeight * ratioSP).toFloat())
-        scoreValueView.setTextSize(TypedValue.COMPLEX_UNIT_SP, (layoutHeight * ratioSP).toFloat())
-        niceMessageTextView.setTextSize(
-            TypedValue.COMPLEX_UNIT_SP,
-            (layoutHeight * ratioSP).toFloat()
-        )
-        timerTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP, (layoutHeight * ratioSP).toFloat())
+        //    scoreTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP, (layoutHeight * ratioSP).toFloat())
+        //scoreValueView.setTextSize(TypedValue.COMPLEX_UNIT_SP, (layoutHeight * ratioSP).toFloat())
+        //niceMessageTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP, (layoutHeight * ratioSP).toFloat())
+        //  timerTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP, (layoutHeight * ratioSP).toFloat())
         snowmanImageView.getLayoutParams().height = (layoutHeight * .20).toInt()
         playAgainButton.getLayoutParams().height = (layoutHeight * .114).toInt()
         playAgainButton.getLayoutParams().width = (layoutHeight * .10).toInt()
 
-        imageView1.getLayoutParams().width = gridImageWidth
-        imageView1.getLayoutParams().height = gridImageHeight
-        imageView2.getLayoutParams().width = gridImageWidth
-        imageView2.getLayoutParams().height = gridImageHeight
-        imageView3.getLayoutParams().width = gridImageWidth
-        imageView3.getLayoutParams().height = gridImageHeight
-        imageView4.getLayoutParams().width = gridImageWidth
-        imageView4.getLayoutParams().height = gridImageHeight
-        imageView5.getLayoutParams().width = gridImageWidth
-        imageView5.getLayoutParams().height = gridImageHeight
-        imageView6.getLayoutParams().width = gridImageWidth
-        imageView6.getLayoutParams().height = gridImageHeight
-        imageView7.getLayoutParams().width = gridImageWidth
-        imageView7.getLayoutParams().height = gridImageHeight
-        imageView8.getLayoutParams().width = gridImageWidth
-        imageView8.getLayoutParams().height = gridImageHeight
-        imageView9.getLayoutParams().width = gridImageWidth
-        imageView9.getLayoutParams().height = gridImageHeight
         when (prefs!!.currentSeason) {
             Seasons.Spring -> {
                 messageBackgroundColor = Color.GREEN

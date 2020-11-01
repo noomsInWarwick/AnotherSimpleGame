@@ -1,5 +1,5 @@
 <resources>
-    <dimen name="text_font_size">26sp</dimen>
+    <dimen name="text_font_size">24sp</dimen>
     <dimen name="ps_toolbar_height">40dp</dimen>
 
     <dimen name="ps_toolbar_image_size">40dp</dimen>
