@@ -1,400 +1,195 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mainConstraint"
     android:layout_width="wrap_content"
     android:layout_height="match_parent"
     android:background="@drawable/piggy_backdrop_autumn"
+    android:orientation="vertical"
     app:titleTextColor="@color/colorAccentLight"
     tools:context=".MainActivity">
 
     <fragment
         android:id="@+id/details_fragment"
         class="com.example.anothersimplegame.fragments.FragmentToolBar"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="@dimen/ps_toolbar_height"
         android:layout_marginBottom="24dp"
         android:background="@android:color/transparent"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/horizontalGuideline"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
         tools:layout="@layout/fragment_tool_bar_constrained" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/horizontalGuideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="#009688"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="104dp" />
-
-    <fragment
-        android:id="@+id/timer_fragment"
-        class="com.example.anothersimplegame.fragments.FragmentTimerMessages"
-        android:layout_width="0dp"
-        android:layout_height="@dimen/ps_toolbar_height"
-        android:background="?android:attr/colorMultiSelectHighlight"
-        android:orientation="horizontal"
-        android:textAlignment="center"
-        app:layout_constraintBottom_toTopOf="@+id/baseLinearLayout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/details_fragment"
-        app:layout_constraintVertical_bias="0.0"
-        tools:layout="@layout/fragment_timer_n_messages" />
-
     <LinearLayout
-        android:id="@+id/baseLinearLayout"
-        android:layout_width="@dimen/ps_baselayout_width"
-        android:layout_height="@dimen/ps_baselayout_height"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/snowmanImageView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/timer_fragment">
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/ps_toolbar_height"
+        android:orientation="horizontal">
 
-        <androidx.gridlayout.widget.GridLayout
-            android:id="@+id/gridLayout"
-            android:layout_width="@dimen/ps_baselayout_width"
-            android:layout_height="@dimen/ps_baselayout_height"
-            android:layoutMode="clipBounds">
-
-            <ImageView
-                android:id="@+id/imageView1"
-                android:layout_width="@dimen/ps_image_size"
-                android:layout_height="@dimen/ps_image_size"
-                android:contentDescription="@string/piggysnake"
-                android:cropToPadding="false"
-                android:onClick="increaseScore"
-                android:paddingLeft="12dp"
-                android:paddingTop="18dp"
-                android:paddingRight="12dp"
-                android:soundEffectsEnabled="true"
-                app:layout_column="0"
-                app:layout_constraintEnd_toEndOf="@id/imageView2"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_row="0"
-                app:srcCompat="@drawable/piggysnake" />
-
-            <ImageView
-                android:id="@+id/imageView2"
-                android:layout_width="@dimen/ps_image_size"
-                android:layout_height="@dimen/ps_image_size"
-                android:contentDescription="@string/piggysnake"
-                android:onClick="increaseScore"
-                android:paddingLeft="12dp"
-                android:paddingTop="18dp"
-                android:paddingRight="12dp"
-                app:layout_column="1"
-                app:layout_constraintEnd_toEndOf="@id/imageView3"
-                app:layout_constraintStart_toStartOf="@id/imageView1"
-                app:layout_row="0"
-                app:srcCompat="@drawable/piggysnake" />
-
-            <ImageView
-                android:id="@+id/imageView3"
-                android:layout_width="@dimen/ps_image_size"
-                android:layout_height="@dimen/ps_image_size"
-                android:contentDescription="@string/piggysnake"
-                android:onClick="increaseScore"
-                android:paddingStart="12dp"
-                android:paddingTop="18dp"
-                android:paddingRight="12dp"
-                app:layout_column="2"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@id/imageView2"
-                app:layout_row="0"
-                app:srcCompat="@drawable/piggysnake" />
-
-            <ImageView
-                android:id="@+id/imageView4"
-                android:layout_width="@dimen/ps_image_size"
-                android:layout_height="@dimen/ps_image_size"
-                android:contentDescription="@string/piggysnake"
-                android:onClick="increaseScore"
-                android:paddingLeft="12dp"
-                android:paddingTop="18dp"
-                android:paddingRight="12dp"
-                app:layout_column="0"
-                app:layout_constraintEnd_toEndOf="@id/imageView5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_row="1"
-                app:srcCompat="@drawable/piggysnake" />
-
-            <ImageView
-                android:id="@+id/fallingleaf_one"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:layout_centerInParent="true"
-                android:layout_marginStart="36dp"
-                android:contentDescription="@string/redleaf"
-                android:src="@drawable/leaf_red"
-                android:visibility="invisible"
-                app:layout_column="0"
-                app:layout_row="2" />
-
-            <ImageView
-                android:id="@+id/orangeOne"
-                android:layout_width="15dp"
-                android:layout_height="15dp"
-                android:layout_centerInParent="true"
-                android:layout_marginStart="56dp"
-                android:contentDescription="@string/orange"
-                android:src="@drawable/fruit_orange_trans"
-                android:visibility="invisible"
-                app:layout_column="0"
-                app:layout_row="0" />
-
-            <ImageView
-                android:id="@+id/orangeTwo"
-                android:layout_width="15dp"
-                android:layout_height="15dp"
-                android:layout_centerInParent="true"
-                android:layout_marginStart="25dp"
-                android:layout_marginTop="45dp"
-                android:contentDescription="@string/orange"
-                android:src="@drawable/fruit_orange_trans"
-                android:visibility="invisible"
-                app:layout_column="1"
-                app:layout_row="0" />
-
-            <ImageView
-                android:id="@+id/orangeThree"
-                android:layout_width="15dp"
-                android:layout_height="15dp"
-                android:layout_centerInParent="true"
-                android:layout_marginTop="20dp"
-                android:contentDescription="@string/orange"
-                android:src="@drawable/fruit_orange_trans"
-                android:visibility="invisible"
-                app:layout_column="2"
-                app:layout_row="0" />
-
-            <ImageView
-                android:id="@+id/orangeFour"
-                android:layout_width="15dp"
-                android:layout_height="15dp"
-                android:layout_centerInParent="true"
-                android:layout_marginStart="36dp"
-                android:contentDescription="@string/orange"
-                android:src="@drawable/fruit_orange_trans"
-                android:visibility="invisible"
-                app:layout_column="0"
-                app:layout_row="1" />
-
-            <ImageView
-                android:id="@+id/orangeFive"
-                android:layout_width="15dp"
-                android:layout_height="15dp"
-                android:layout_centerInParent="true"
-                android:layout_marginStart="46dp"
-                android:layout_marginTop="22dp"
-                android:contentDescription="@string/orange"
-                android:src="@drawable/fruit_orange_trans"
-                android:visibility="invisible"
-                app:layout_column="2"
-                app:layout_row="1" />
-
-            <ImageView
-                android:id="@+id/orangeSix"
-                android:layout_width="15dp"
-                android:layout_height="15dp"
-                android:layout_centerInParent="true"
-                android:layout_marginStart="16dp"
-                android:contentDescription="@string/orange"
-                android:src="@drawable/fruit_orange_trans"
-                android:visibility="invisible"
-                app:layout_column="2"
-                app:layout_row="2" />
-
-            <ImageView
-                android:id="@+id/imageView5"
-                android:layout_width="@dimen/ps_image_size"
-                android:layout_height="@dimen/ps_image_size"
-                android:contentDescription="@string/piggysnake"
-                android:onClick="increaseScore"
-                android:paddingLeft="12dp"
-                android:paddingTop="18dp"
-                android:paddingRight="12dp"
-                app:layout_column="1"
-                app:layout_constraintEnd_toEndOf="@id/imageView6"
-                app:layout_constraintStart_toStartOf="@id/imageView4"
-                app:layout_row="1"
-                app:srcCompat="@drawable/piggysnake" />
-
-            <ImageView
-                android:id="@+id/imageView6"
-                android:layout_width="@dimen/ps_image_size"
-                android:layout_height="@dimen/ps_image_size"
-                android:contentDescription="@string/piggysnake"
-                android:onClick="increaseScore"
-                android:paddingStart="12dp"
-                android:paddingTop="18dp"
-                android:paddingRight="12dp"
-                app:layout_column="2"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@id/imageView5"
-                app:layout_row="1"
-                app:srcCompat="@drawable/piggysnake" />
-
-            <ImageView
-                android:id="@+id/fallingleaf_two"
-                android:layout_width="20dp"
-                android:layout_height="12dp"
-                android:layout_centerInParent="true"
-                android:contentDescription="@string/greenleaf"
-                android:src="@drawable/leaf_green"
-                android:visibility="invisible"
-                app:layout_column="1"
-                app:layout_row="2" />
-
-            <ImageView
-                android:id="@+id/imageView7"
-                android:layout_width="@dimen/ps_image_size"
-                android:layout_height="@dimen/ps_image_size"
-                android:contentDescription="@string/piggysnake"
-                android:onClick="increaseScore"
-                android:paddingLeft="12dp"
-                android:paddingTop="18dp"
-                android:paddingRight="12dp"
-                app:layout_column="0"
-                app:layout_constraintEnd_toEndOf="@id/imageView8"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_row="2"
-                app:srcCompat="@drawable/piggysnake" />
-
-            <ImageView
-                android:id="@+id/imageView8"
-                android:layout_width="@dimen/ps_image_size"
-                android:layout_height="@dimen/ps_image_size"
-                android:contentDescription="@string/piggysnake"
-                android:onClick="increaseScore"
-                android:paddingLeft="12dp"
-                android:paddingTop="18dp"
-                android:paddingRight="12dp"
-                app:layout_column="1"
-                app:layout_constraintEnd_toEndOf="@id/imageView9"
-                app:layout_constraintStart_toStartOf="@id/imageView7"
-                app:layout_row="2"
-                app:srcCompat="@drawable/piggysnake" />
-
-            <ImageView
-                android:id="@+id/fallingleaf_three"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:layout_centerInParent="true"
-                android:contentDescription="@string/purpleleaf"
-                android:src="@drawable/leaf_purple"
-                android:visibility="invisible"
-                app:layout_column="2"
-                app:layout_row="2" />
-
-            <ImageView
-                android:id="@+id/fallingleaf_four"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:layout_centerInParent="true"
-                android:layout_marginStart="36dp"
-                android:contentDescription="@string/yellowleaf"
-                android:src="@drawable/leaf_yellow"
-                android:visibility="invisible"
-                app:layout_column="2"
-                app:layout_row="2" />
-
-
-            <ImageView
-                android:id="@+id/imageView9"
-                android:layout_width="@dimen/ps_image_size"
-                android:layout_height="@dimen/ps_image_size"
-                android:contentDescription="@string/piggysnake"
-                android:onClick="increaseScore"
-                android:paddingStart="12dp"
-                android:paddingTop="18dp"
-                android:paddingRight="12dp"
-                app:layout_column="2"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@id/imageView8"
-                app:layout_row="2"
-                app:srcCompat="@drawable/piggysnake" />
-
-        </androidx.gridlayout.widget.GridLayout>
+        <fragment
+            android:id="@+id/timer_fragment"
+            class="com.example.anothersimplegame.fragments.FragmentTimerMessages"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="?android:attr/colorMultiSelectHighlight"
+            android:orientation="horizontal"
+            android:textAlignment="center"
+            tools:layout="@layout/fragment_timer_n_messages" />
     </LinearLayout>
 
-    <fragment
-        android:id="@+id/snowman_fragment"
-        class="com.example.anothersimplegame.fragments.FragmentSnowman"
-        android:layout_width="0dp"
-        android:layout_height="@dimen/ps_image_size"
-        android:background="?android:attr/colorMultiSelectHighlight"
-        android:orientation="horizontal"
-        android:textAlignment="center"
-        android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/baseLinearLayout"
-        app:layout_constraintVertical_bias="0.644"
-        tools:layout="@layout/fragment_snowman" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:orientation="horizontal"></LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="2dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="2dp"
+            android:layout_weight="1"
+            android:onClick="increaseScore"
+            app:srcCompat="@drawable/piggysnake" />
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="2dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="2dp"
+            android:layout_weight="1"
+            android:onClick="increaseScore"
+            app:srcCompat="@drawable/piggysnake" />
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="2dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="2dp"
+            android:layout_weight="1"
+            android:onClick="increaseScore"
+            app:srcCompat="@drawable/piggysnake" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginTop="2dp"
+            android:layout_weight="1"
+            android:onClick="increaseScore"
+            app:srcCompat="@drawable/piggysnake" />
+
+        <ImageView
+            android:id="@+id/imageView5"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginTop="2dp"
+            android:layout_weight="1"
+            android:onClick="increaseScore"
+            app:srcCompat="@drawable/piggysnake" />
+
+        <ImageView
+            android:id="@+id/imageView6"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginTop="2dp"
+            android:layout_weight="1"
+            android:onClick="increaseScore"
+            app:srcCompat="@drawable/piggysnake" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/imageView7"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginTop="2dp"
+            android:layout_weight="1"
+            android:onClick="increaseScore"
+            app:srcCompat="@drawable/piggysnake" />
+
+        <ImageView
+            android:id="@+id/imageView8"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginTop="2dp"
+            android:layout_weight="1"
+            android:onClick="increaseScore"
+            app:srcCompat="@drawable/piggysnake" />
+
+        <ImageView
+            android:id="@+id/imageView9"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginTop="2dp"
+            android:layout_weight="1"
+            android:onClick="increaseScore"
+            app:srcCompat="@drawable/piggysnake" />
+    </LinearLayout>
 
     <TextView
         android:id="@+id/scoreTextView"
-        android:layout_width="120dp"
-        android:layout_height="90dp"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
         android:gravity="center"
         android:maxLines="1"
         android:text="@string/score"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="@dimen/text_font_size"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/scoreValueView"
-        app:layout_constraintHorizontal_bias="0.983"
-        app:layout_constraintStart_toEndOf="@+id/verticalGuideline"
-        app:layout_constraintTop_toBottomOf="@+id/baseLinearLayout"
-        app:layout_constraintVertical_bias="0.560"
         android:visibility="visible" />
 
-    <!-- <TextView
-        android:id="@+id/scoreValueView"
-        android:layout_width="0dp"
-        android:layout_height="90dp"
-        android:gravity="left"
-        android:paddingLeft="10dp"
-        android:textColor="@color/colorPrimaryDark"
-        android:textSize="40sp"
-        android:textStyle="bold"
-        app:layout_constraintBaseline_toBaselineOf="@id/scoreTextView"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_weight="2"
-        app:layout_constraintStart_toEndOf="@+id/scoreTextView"
-        app:layout_constraintTop_toBottomOf="@+id/baseLinearLayout"
-        app:layout_constraintVertical_bias="0.509"
-        android:visibility="invisible" /> -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:layout_marginBottom="5dp"
+        android:orientation="horizontal">
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/horizontalGuideline_bottom"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="#009688"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="700dp" />
+        <fragment
+            android:id="@+id/start_again_fragment"
+            class="com.example.anothersimplegame.fragments.FragmentStartAgain"
+            android:layout_width="70dp"
+            android:layout_height="match_parent"
+            android:layout_marginTop="2dp"
+            android:background="?android:attr/colorMultiSelectHighlight"
+            android:orientation="horizontal"
+            android:textAlignment="center"
+            android:visibility="visible"
+            tools:layout="@layout/fragment_start_again" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/verticalGuideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="0dp"
-        app:layout_constraintGuide_percent=".30" />
+        <fragment
+            android:id="@+id/snowman_fragment"
+            class="com.example.anothersimplegame.fragments.FragmentSnowman"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginTop="2dp"
+            android:background="?android:attr/colorMultiSelectHighlight"
+            android:orientation="horizontal"
+            android:textAlignment="textStart"
+            android:visibility="visible"
+            tools:layout="@layout/fragment_snowman" />
+    </LinearLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

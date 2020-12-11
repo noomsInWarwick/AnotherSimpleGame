@@ -20,12 +20,14 @@ import com.example.anothersimplegame.imagesmanagers.ImagesManagerSnowman
 import com.example.anothersimplegame.imagesmanagers.MessagesManager
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_snowman.*
+import kotlinx.android.synthetic.main.fragment_start_again.*
 import kotlinx.android.synthetic.main.fragment_timer_n_messages.*
 import kotlinx.coroutines.Runnable
 import java.util.*
 import kotlin.collections.ArrayList
 import kotlin.concurrent.schedule
-import androidx.constraintlayout.widget.ConstraintLayout as ConstraintLayout1
+//import androidx.constraintlayout.widget.ConstraintLayout as ConstraintLayout1
+import android.widget.LinearLayout as LinearLayout1
 
 @Suppress("DEPRECATION")
 class MainActivity : AppCompatActivity() {
@@ -86,14 +88,12 @@ class MainActivity : AppCompatActivity() {
             "layoutHeight = " + layoutHeight + ", layoutWidth = " + layoutWidth, Toast.LENGTH_LONG
         ).show()
 
-
-        val ratioValueGridWidth = .319
-        val ratioValueGridHeight = .3125
-        val ratioValueHeight = .64
-        val ratioScoreHeight = .15
-        val ratioScoreWidth = .33
-        val ratioSP = .025
-
+//        val ratioValueGridWidth = .319
+//        val ratioValueGridHeight = .3125
+//        val ratioValueHeight = .64
+//        val ratioScoreHeight = .15
+//        val ratioScoreWidth = .33
+//        val ratioSP = .025
 
         var TIMELABEL = resources.getString(R.string.time)
         messagesManager.loadMessages(resources)
@@ -108,22 +108,23 @@ class MainActivity : AppCompatActivity() {
         val bgImage = prefs!!.bgImage
 
         setBackground(context, bgImage)
-        horizontalGuideline_bottom.setGuidelineBegin(500)
+        // horizontalGuideline_bottom.setGuidelineBegin(500)
 
         prepareSnowman()
         initImagesList(bgImage)
 
         manageImages()
 
-        baseLinearLayout.getLayoutParams().height = (ratioValueHeight * layoutHeight).toInt()
+        //       baseLinearLayout.getLayoutParams().height = (ratioValueHeight * layoutHeight).toInt()
 
-        val gridImageWidth = (ratioValueGridWidth * layoutWidth).toInt()
-        val gridImageHeight =
-            (ratioValueGridHeight * baseLinearLayout.getLayoutParams().height).toInt()
 
-        snowmanImageView.getLayoutParams().height = (layoutHeight * .20).toInt()
-        playAgainButton.getLayoutParams().height = (layoutHeight * .114).toInt()
-        playAgainButton.getLayoutParams().width = (layoutHeight * .10).toInt()
+//        val gridImageWidth = (ratioValueGridWidth * layoutWidth).toInt()
+//        val gridImageHeight =
+//            (ratioValueGridHeight * baseLinearLayout.getLayoutParams().height).toInt()
+
+//        snowmanImageView.getLayoutParams().height = (layoutHeight * .20).toInt()
+//        playAgainButton.getLayoutParams().height = (layoutHeight * .114).toInt()
+//        playAgainButton.getLayoutParams().width = (layoutHeight * .10).toInt()
 
         when (prefs!!.currentSeason) {
             Seasons.Spring -> {
@@ -208,7 +209,8 @@ class MainActivity : AppCompatActivity() {
     private fun setBackground(
         context: Context, bgImage: String?
     ) {
-        val rl: ConstraintLayout1
+        // val rl: ConstraintLayout1
+        val rl: LinearLayout1
         rl = findViewById(R.id.mainConstraint)
         prefs!!.determineSeason(bgImage)
         rl.setBackgroundResource(prefs!!.setBackground())
@@ -231,7 +233,7 @@ class MainActivity : AppCompatActivity() {
                         imageList[displayedIdx].maxWidth = 75
                         // set image that overlaps with piggy snake image to be invisible whan at the selected spot.
                         if (displayedIdx == 1) {
-                            orangeTwo.visibility = View.INVISIBLE
+                            //  orangeTwo.visibility = View.INVISIBLE
                         }
                     }
                 }
@@ -261,10 +263,14 @@ class MainActivity : AppCompatActivity() {
 
     private fun prepareAutumnLeaves() {
 
-        fallingleafone = findViewById(R.id.fallingleaf_one)
-        fallingleaftwo = findViewById(R.id.fallingleaf_two)
-        fallingleafthree = findViewById(R.id.fallingleaf_three)
-        fallingleaffour = findViewById(R.id.fallingleaf_four)
+//        fallingleafone = findViewById(R.id.fallingleaf_one)
+//        fallingleaftwo = findViewById(R.id.fallingleaf_two)
+//        fallingleafthree = findViewById(R.id.fallingleaf_three)
+//        fallingleaffour = findViewById(R.id.fallingleaf_four)
+        fallingleafone = findViewById(R.id.spring_image)
+        fallingleaftwo = findViewById(R.id.spring_image)
+        fallingleafthree = findViewById(R.id.spring_image)
+        fallingleaffour = findViewById(R.id.spring_image)
     }
 
     private fun setLeavesVisibility() {
@@ -373,13 +379,19 @@ class MainActivity : AppCompatActivity() {
     private fun prepareSummerFruits() {
 
         fruitsList = arrayListOf(
-            findViewById(R.id.orangeOne),
-            findViewById(R.id.orangeTwo),
-            findViewById(R.id.orangeThree),
-            findViewById(R.id.orangeFour),
-            findViewById(R.id.orangeFive),
-            findViewById(R.id.orangeSix),
-            findViewById(R.id.orangeSeven)
+//            findViewById(R.id.orangeOne),
+//            findViewById(R.id.orangeTwo),
+//            findViewById(R.id.orangeThree),
+//            findViewById(R.id.orangeFour),
+//            findViewById(R.id.orangeFive),
+//            findViewById(R.id.orangeSix)
+            findViewById(R.id.spring_image),
+            findViewById(R.id.spring_image),
+            findViewById(R.id.spring_image),
+            findViewById(R.id.spring_image),
+            findViewById(R.id.spring_image),
+            findViewById(R.id.spring_image)
+            //   findViewById(R.id.orangeSeven)
         )
 
         fruitsImagesManager.doTheFruit(

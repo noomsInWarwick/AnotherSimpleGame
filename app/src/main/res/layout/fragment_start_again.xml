@@ -5,13 +5,15 @@
     android:fillViewport="false"
     app:titleTextColor="@color/colorPrimary">
 
-    <ImageView
-        android:id="@+id/snowmanImageView"
+    <ImageButton
+        android:id="@+id/playAgainButton"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:contentDescription="@string/snowman"
-        android:scaleType="fitStart"
+        android:backgroundTint="@color/colorAccent"
+        android:contentDescription="@string/playagain"
+        android:onClick="doRestart"
+        android:scaleType="fitCenter"
         android:visibility="visible"
-        app:srcCompat="@drawable/snowman_trans" />
+        app:srcCompat="@drawable/repeat" />
 </LinearLayout>
