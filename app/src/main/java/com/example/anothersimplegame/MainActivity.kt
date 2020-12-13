@@ -14,19 +14,15 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.MotionEventCompat
 import com.example.anothersimplegame.R.drawable
-import com.example.anothersimplegame.imagesmanagers.ImagesManagerAutumn
-import com.example.anothersimplegame.imagesmanagers.ImagesManagerFruits
-import com.example.anothersimplegame.imagesmanagers.ImagesManagerSnowman
-import com.example.anothersimplegame.imagesmanagers.MessagesManager
+import com.example.anothersimplegame.imagesmanagers.*
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.fragment_snowman.*
+import kotlinx.android.synthetic.main.fragment_season_character.*
 import kotlinx.android.synthetic.main.fragment_start_again.*
 import kotlinx.android.synthetic.main.fragment_timer_n_messages.*
 import kotlinx.coroutines.Runnable
 import java.util.*
 import kotlin.collections.ArrayList
 import kotlin.concurrent.schedule
-//import androidx.constraintlayout.widget.ConstraintLayout as ConstraintLayout1
 import android.widget.LinearLayout as LinearLayout1
 
 @Suppress("DEPRECATION")
@@ -58,7 +54,7 @@ class MainActivity : AppCompatActivity() {
     var spValue = 40F
     var isDone = false
     var autumnImagesManager: ImagesManagerAutumn = ImagesManagerAutumn
-    var snowmanImagesManager: ImagesManagerSnowman = ImagesManagerSnowman
+    var seasonCharacterImagesManager: ImagesManagerSeasonCharacter = ImagesManagerSeasonCharacter
     var fruitsImagesManager: ImagesManagerFruits = ImagesManagerFruits
     var messagesManager: MessagesManager = MessagesManager
     var layoutWidth = 0
@@ -68,8 +64,7 @@ class MainActivity : AppCompatActivity() {
     private var fallingleaftwo: ImageView? = null
     private var fallingleafthree: ImageView? = null
     private var fallingleaffour: ImageView? = null
-    private var theSnowman: ImageView? = null
-
+    private lateinit var theSeasonCharacter: ImageView
     private var endOfGameImage: Drawable? = null
 
     private var prefs: PiggySnakePreferencesReader? = null
@@ -108,20 +103,12 @@ class MainActivity : AppCompatActivity() {
         val bgImage = prefs!!.bgImage
 
         setBackground(context, bgImage)
-        // horizontalGuideline_bottom.setGuidelineBegin(500)
 
-        prepareSnowman()
+        prepareSeasonCharacter(prefs!!.currentSeason, layoutWidth)
         initImagesList(bgImage)
-
         manageImages()
 
         //       baseLinearLayout.getLayoutParams().height = (ratioValueHeight * layoutHeight).toInt()
-
-
-//        val gridImageWidth = (ratioValueGridWidth * layoutWidth).toInt()
-//        val gridImageHeight =
-//            (ratioValueGridHeight * baseLinearLayout.getLayoutParams().height).toInt()
-
 //        snowmanImageView.getLayoutParams().height = (layoutHeight * .20).toInt()
 //        playAgainButton.getLayoutParams().height = (layoutHeight * .114).toInt()
 //        playAgainButton.getLayoutParams().width = (layoutHeight * .10).toInt()
@@ -142,10 +129,6 @@ class MainActivity : AppCompatActivity() {
             }
             Seasons.Winter -> {
                 messageBackgroundColor = Color.CYAN
-                snowmanImagesManager.doSnowman(theSnowman)
-                snowmanImagesManager.setSnowmanVisibility(theSnowman, true)
-                snowmanImagesManager.fade(theSnowman, 10000)
-                snowmanImagesManager.moveSnowman(theSnowman, layoutWidth)
             }
         }
 
@@ -196,9 +179,29 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun prepareSnowman() {
-        theSnowman = findViewById(R.id.snowmanImageView)
-        snowmanImagesManager.setSnowmanVisibility(theSnowman, false)
+    private fun prepareSeasonCharacter(currentSeason: Seasons, layoutWidth: Int) {
+
+        theSeasonCharacter = findViewById(R.id.snowmanImageView)
+
+        seasonCharacterImagesManager.doSeasonCharacter(theSeasonCharacter)
+        seasonCharacterImagesManager.setSeasonCharacterVisibility(theSeasonCharacter, true)
+        seasonCharacterImagesManager.fade(theSeasonCharacter, 10000)
+        seasonCharacterImagesManager.moveSeasonCharacter(theSeasonCharacter, layoutWidth)
+
+        when (prefs!!.currentSeason) {
+            Seasons.Spring -> {
+                theSeasonCharacter.setImageDrawable(getResources().getDrawable(R.drawable.pumpkin_transparent))
+            }
+            Seasons.Summer -> {
+                theSeasonCharacter.setImageDrawable(getResources().getDrawable(R.drawable.pumpkin_transparent))
+            }
+            Seasons.Autumn -> {
+                theSeasonCharacter.setImageDrawable(getResources().getDrawable(R.drawable.pumpkin_transparent))
+            }
+            Seasons.Winter -> {
+                theSeasonCharacter.setImageDrawable(getResources().getDrawable(R.drawable.snowman_trans))
+            }
+        }
     }
 
     override fun onSupportNavigateUp(): Boolean {
@@ -209,7 +212,6 @@ class MainActivity : AppCompatActivity() {
     private fun setBackground(
         context: Context, bgImage: String?
     ) {
-        // val rl: ConstraintLayout1
         val rl: LinearLayout1
         rl = findViewById(R.id.mainConstraint)
         prefs!!.determineSeason(bgImage)
@@ -263,14 +265,13 @@ class MainActivity : AppCompatActivity() {
 
     private fun prepareAutumnLeaves() {
 
-//        fallingleafone = findViewById(R.id.fallingleaf_one)
+        fallingleafone = findViewById(R.id.fallingleaf_one)
 //        fallingleaftwo = findViewById(R.id.fallingleaf_two)
 //        fallingleafthree = findViewById(R.id.fallingleaf_three)
 //        fallingleaffour = findViewById(R.id.fallingleaf_four)
-        fallingleafone = findViewById(R.id.spring_image)
-        fallingleaftwo = findViewById(R.id.spring_image)
-        fallingleafthree = findViewById(R.id.spring_image)
-        fallingleaffour = findViewById(R.id.spring_image)
+        fallingleaftwo = findViewById(R.id.fallingleaf_two)
+        fallingleafthree = findViewById(R.id.fallingleaf_one)
+        fallingleaffour = findViewById(R.id.fallingleaf_one)
     }
 
     private fun setLeavesVisibility() {

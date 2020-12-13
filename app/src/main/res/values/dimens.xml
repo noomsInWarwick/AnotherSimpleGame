@@ -1,6 +1,6 @@
 <resources>
     <dimen name="text_font_size">35sp</dimen>
-    <dimen name="ps_toolbar_height">60dp</dimen>
+    <dimen name="ps_toolbar_height">70dp</dimen>
     <dimen name="ps_toolbar_image_size">30dp</dimen>
     <dimen name="ps_baselayout_height">400dp</dimen>
     <dimen name="ps_baselayout_width">800dp</dimen>

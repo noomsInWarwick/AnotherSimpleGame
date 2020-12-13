@@ -36,10 +36,30 @@
             tools:layout="@layout/fragment_timer_n_messages" />
     </LinearLayout>
 
+    <!-- <Space
+         android:layout_width="match_parent"
+         android:layout_height="25dp"></Space> -->
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="20dp"
-        android:orientation="horizontal"></LinearLayout>
+        android:layout_height="25dp">
+
+        <ImageView
+            android:id="@+id/fallingleaf_one"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:contentDescription="@string/redleaf"
+            android:src="@drawable/leaf_red"
+            android:visibility="invisible" />
+
+        <ImageView
+            android:id="@+id/fallingleaf_two"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:contentDescription="@string/greenleaf"
+            android:src="@drawable/leaf_green"
+            android:visibility="invisible" />
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -56,6 +76,8 @@
             android:layout_marginEnd="2dp"
             android:layout_weight="1"
             android:onClick="increaseScore"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
             app:srcCompat="@drawable/piggysnake" />
 
         <ImageView
@@ -67,6 +89,8 @@
             android:layout_marginEnd="2dp"
             android:layout_weight="1"
             android:onClick="increaseScore"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
             app:srcCompat="@drawable/piggysnake" />
 
         <ImageView
@@ -78,6 +102,8 @@
             android:layout_marginEnd="2dp"
             android:layout_weight="1"
             android:onClick="increaseScore"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
             app:srcCompat="@drawable/piggysnake" />
     </LinearLayout>
 
@@ -94,6 +120,8 @@
             android:layout_marginTop="2dp"
             android:layout_weight="1"
             android:onClick="increaseScore"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
             app:srcCompat="@drawable/piggysnake" />
 
         <ImageView
@@ -103,6 +131,8 @@
             android:layout_marginTop="2dp"
             android:layout_weight="1"
             android:onClick="increaseScore"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
             app:srcCompat="@drawable/piggysnake" />
 
         <ImageView
@@ -112,6 +142,8 @@
             android:layout_marginTop="2dp"
             android:layout_weight="1"
             android:onClick="increaseScore"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
             app:srcCompat="@drawable/piggysnake" />
     </LinearLayout>
 
@@ -128,6 +160,8 @@
             android:layout_marginTop="2dp"
             android:layout_weight="1"
             android:onClick="increaseScore"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
             app:srcCompat="@drawable/piggysnake" />
 
         <ImageView
@@ -137,6 +171,8 @@
             android:layout_marginTop="2dp"
             android:layout_weight="1"
             android:onClick="increaseScore"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
             app:srcCompat="@drawable/piggysnake" />
 
         <ImageView
@@ -146,8 +182,14 @@
             android:layout_marginTop="2dp"
             android:layout_weight="1"
             android:onClick="increaseScore"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
             app:srcCompat="@drawable/piggysnake" />
     </LinearLayout>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="15dp" />
 
     <TextView
         android:id="@+id/scoreTextView"
@@ -181,7 +223,7 @@
 
         <fragment
             android:id="@+id/snowman_fragment"
-            class="com.example.anothersimplegame.fragments.FragmentSnowman"
+            class="com.example.anothersimplegame.fragments.FragmentSeasonCharacter"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginTop="2dp"
@@ -189,7 +231,7 @@
             android:orientation="horizontal"
             android:textAlignment="textStart"
             android:visibility="visible"
-            tools:layout="@layout/fragment_snowman" />
+            tools:layout="@layout/fragment_season_character" />
     </LinearLayout>
 
 </LinearLayout>

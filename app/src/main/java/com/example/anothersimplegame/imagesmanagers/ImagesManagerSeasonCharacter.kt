@@ -6,25 +6,25 @@ import android.os.CountDownTimer
 import android.view.View
 import android.widget.ImageView
 
-object ImagesManagerSnowman {
+object ImagesManagerSeasonCharacter {
 
-    var snowmanTimer = 30000L
+    var seasonCharacterTimer = 30000L
 
-    fun setSnowmanVisibility(snowman: ImageView?, isVisible: Boolean) {
+    fun setSeasonCharacterVisibility(seasonCharacter: ImageView?, isVisible: Boolean) {
 
         if (isVisible) {
-            snowman!!.visibility = View.VISIBLE
+            seasonCharacter!!.visibility = View.VISIBLE
         } else {
-            snowman!!.visibility = View.INVISIBLE
+            seasonCharacter!!.visibility = View.INVISIBLE
         }
     }
 
-    fun moveSnowman(image: ImageView?, layoutWidth: Int) {
+    fun moveSeasonCharacter(image: ImageView?, layoutWidth: Int) {
 
         val adjustedWidth = layoutWidth * .7
-
         val tx = ValueAnimator.ofFloat(0f, adjustedWidth.toFloat())
         val mDuration = 40000 //in millis
+
         tx.duration = mDuration.toLong()
         tx.addUpdateListener { animation ->
             image!!.translationX = animation.animatedValue as Float
@@ -44,15 +44,14 @@ object ImagesManagerSnowman {
         fade.reverse()
     }
 
-    fun doSnowman(snowmanImage: ImageView?) {
-        object : CountDownTimer(snowmanTimer, 3000) {
+    fun doSeasonCharacter(seasonCharacterImage: ImageView?) {
+        object : CountDownTimer(seasonCharacterTimer, 3000) {
 
             override fun onFinish() {
-                fadeAway(snowmanImage, 8000)
+                fadeAway(seasonCharacterImage, 8000)
             }
 
             override fun onTick(p0: Long) {
-
             }
         }.start()
     }

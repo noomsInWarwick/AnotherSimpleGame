@@ -7,20 +7,20 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.anothersimplegame.R
 
-class FragmentSnowman : Fragment() {
+class FragmentSeasonCharacter : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_snowman, container, false)
+        return inflater.inflate(R.layout.fragment_season_character, container, false)
     }
 
     companion object {
         @JvmStatic
-        fun newInstance(): FragmentSnowman {
-            return FragmentSnowman()
+        fun newInstance(): FragmentSeasonCharacter {
+            return FragmentSeasonCharacter()
         }
     }
 
