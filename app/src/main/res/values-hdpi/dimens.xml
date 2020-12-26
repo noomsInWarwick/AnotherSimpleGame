@@ -1,12 +1,14 @@
 <resources>
-    <dimen name="text_font_size">35sp</dimen>
-    <dimen name="ps_toolbar_height">40dp</dimen>
-    <dimen name="ps_toolbar_image_size">40dp</dimen>
-    <dimen name="ps_baselayout_height">400dp</dimen>
+    <dimen name="text_font_size">25sp</dimen>
+    <dimen name="ps_toolbar_height">35dp</dimen>
+    <dimen name="ps_toolbar_image_size">35dp</dimen>
+    <dimen name="ps_baselayout_height">474dp</dimen>
     <dimen name="ps_baselayout_width">800dp</dimen>
 
-    <dimen name="ps_snowman_fragment_image_height">30dp</dimen>
-    <dimen name="ps_snowman_fragment_image_width">30dp</dimen>
+    <dimen name="ps_message_spaces_height">10dp</dimen>
+
+    <dimen name="ps_snowman_fragment_image_height">55dp</dimen>
+    <dimen name="ps_snowman_fragment_image_width">55dp</dimen>
 
     <dimen name="ps_score_width">800dp</dimen>
     <dimen name="ps_bottom_constraintGuide_begin">750dp</dimen>

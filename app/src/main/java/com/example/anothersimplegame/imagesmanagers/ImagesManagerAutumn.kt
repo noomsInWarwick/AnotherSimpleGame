@@ -96,7 +96,8 @@ object ImagesManagerAutumn {
 
     private fun rotate(image: ImageView?, fallDuration: Long) {
 
-        fade(image, 3000)
+        //fade(image, 3000)
+        fade(image, 8000)
 
         val rotate = ObjectAnimator.ofFloat(image, View.ROTATION, -180f, 0f)
         rotate.duration = fallDuration

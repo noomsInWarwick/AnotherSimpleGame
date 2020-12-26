@@ -10,7 +10,6 @@ import android.util.DisplayMetrics
 import android.view.MotionEvent
 import android.view.View
 import android.widget.ImageView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.MotionEventCompat
 import com.example.anothersimplegame.R.drawable
@@ -78,10 +77,10 @@ class MainActivity : AppCompatActivity() {
         layoutWidth = displayMetrics.widthPixels
         layoutHeight = displayMetrics.heightPixels
 
-        Toast.makeText(
-            this,
-            "layoutHeight = " + layoutHeight + ", layoutWidth = " + layoutWidth, Toast.LENGTH_LONG
-        ).show()
+//        Toast.makeText(
+//            this,
+//            "layoutHeight = " + layoutHeight + ", layoutWidth = " + layoutWidth, Toast.LENGTH_LONG
+//        ).show()
 
 //        val ratioValueGridWidth = .319
 //        val ratioValueGridHeight = .3125
@@ -190,10 +189,10 @@ class MainActivity : AppCompatActivity() {
 
         when (prefs!!.currentSeason) {
             Seasons.Spring -> {
-                theSeasonCharacter.setImageDrawable(getResources().getDrawable(R.drawable.pumpkin_transparent))
+                theSeasonCharacter.setImageDrawable(getResources().getDrawable(R.drawable.ladybug_transparent))
             }
             Seasons.Summer -> {
-                theSeasonCharacter.setImageDrawable(getResources().getDrawable(R.drawable.pumpkin_transparent))
+                theSeasonCharacter.setImageDrawable(getResources().getDrawable(R.drawable.bumble_transparent))
             }
             Seasons.Autumn -> {
                 theSeasonCharacter.setImageDrawable(getResources().getDrawable(R.drawable.pumpkin_transparent))
@@ -264,14 +263,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun prepareAutumnLeaves() {
-
         fallingleafone = findViewById(R.id.fallingleaf_one)
-//        fallingleaftwo = findViewById(R.id.fallingleaf_two)
-//        fallingleafthree = findViewById(R.id.fallingleaf_three)
-//        fallingleaffour = findViewById(R.id.fallingleaf_four)
         fallingleaftwo = findViewById(R.id.fallingleaf_two)
-        fallingleafthree = findViewById(R.id.fallingleaf_one)
-        fallingleaffour = findViewById(R.id.fallingleaf_one)
+        fallingleafthree = findViewById(R.id.fallingleaf_three)
+        fallingleaffour = findViewById(R.id.fallingleaf_four)
     }
 
     private fun setLeavesVisibility() {
@@ -380,19 +375,13 @@ class MainActivity : AppCompatActivity() {
     private fun prepareSummerFruits() {
 
         fruitsList = arrayListOf(
-//            findViewById(R.id.orangeOne),
-//            findViewById(R.id.orangeTwo),
-//            findViewById(R.id.orangeThree),
-//            findViewById(R.id.orangeFour),
-//            findViewById(R.id.orangeFive),
-//            findViewById(R.id.orangeSix)
-            findViewById(R.id.spring_image),
-            findViewById(R.id.spring_image),
-            findViewById(R.id.spring_image),
-            findViewById(R.id.spring_image),
-            findViewById(R.id.spring_image),
-            findViewById(R.id.spring_image)
-            //   findViewById(R.id.orangeSeven)
+            findViewById(R.id.orangeOne),
+            findViewById(R.id.orangeTwo),
+            findViewById(R.id.orangeThree),
+            findViewById(R.id.orangeFour),
+            findViewById(R.id.orangeFive),
+            findViewById(R.id.orangeSix),
+            findViewById(R.id.orangeSeven)
         )
 
         fruitsImagesManager.doTheFruit(
