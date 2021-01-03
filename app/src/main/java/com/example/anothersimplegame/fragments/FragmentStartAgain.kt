@@ -23,5 +23,4 @@ class FragmentStartAgain : Fragment() {
             return FragmentStartAgain()
         }
     }
-
 }
