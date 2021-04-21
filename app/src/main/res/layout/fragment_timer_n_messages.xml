@@ -57,7 +57,7 @@
             <TextView
                 android:id="@+id/niceMessageTextView"
                 android:layout_width="0dp"
-                android:layout_height="60dp"
+                android:layout_height="@dimen/ps_nice_message_text_height"
                 android:gravity="center"
                 android:paddingBottom="5dp"
                 android:text="@string/niceMsg1"

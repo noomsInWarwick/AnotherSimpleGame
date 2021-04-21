@@ -45,6 +45,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="?android:attr/colorMultiSelectHighlight"
+            android:baselineAligned="false"
             android:orientation="horizontal"
             android:textAlignment="center"
             tools:layout="@layout/fragment_timer_n_messages" />
