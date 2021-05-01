@@ -8,4 +8,13 @@
     <string name="niceMsg3">Tu es incroyable!</string>
     <string name="niceMsg4">Jouons encore!</string>
     <string name="niceMsg5">Vous avez attrapé Piggy Snake!</string>
+
+    <string name="orange"></string>
+    <string name="piggysnake"></string>
+    <string name="redleaf"></string>
+    <string name="greenleaf"></string>
+    <string name="purpleleaf"></string>
+    <string name="yellowleaf"></string>
+    <string name="playagain"></string>
+    <string name="snowman"></string>
 </resources>

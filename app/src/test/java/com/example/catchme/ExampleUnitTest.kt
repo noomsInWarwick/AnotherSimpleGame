@@ -1,4 +1,4 @@
-package com.example.anothersimplegame
+package com.example.catchme
 
 import org.junit.Assert.assertEquals
 import org.junit.Test

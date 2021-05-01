@@ -12,7 +12,7 @@
 
     <fragment
         android:id="@+id/details_fragment"
-        class="com.example.anothersimplegame.fragments.FragmentToolBar"
+        class="com.piggysnake.catchme.fragments.FragmentToolBar"
         android:layout_width="match_parent"
         android:layout_height="@dimen/ps_toolbar_height"
         android:layout_marginBottom="24dp"
@@ -41,7 +41,7 @@
 
         <fragment
             android:id="@+id/timer_fragment"
-            class="com.example.anothersimplegame.fragments.FragmentTimerMessages"
+            class="com.piggysnake.catchme.fragments.FragmentTimerMessages"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="?android:attr/colorMultiSelectHighlight"
@@ -321,7 +321,7 @@
 
         <fragment
             android:id="@+id/start_again_fragment"
-            class="com.example.anothersimplegame.fragments.FragmentStartAgain"
+            class="com.piggysnake.catchme.fragments.FragmentStartAgain"
             android:layout_width="@dimen/ps_snowman_fragment_image_width"
             android:layout_height="match_parent"
             android:layout_marginTop="2dp"
@@ -333,7 +333,7 @@
 
         <fragment
             android:id="@+id/snowman_fragment"
-            class="com.example.anothersimplegame.fragments.FragmentSeasonCharacter"
+            class="com.piggysnake.catchme.fragments.FragmentSeasonCharacter"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginTop="2dp"

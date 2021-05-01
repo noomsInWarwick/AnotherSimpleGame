@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Catch Piggy Snake</string>
+    <string name="app_name">Atrapar la Serpiente Guarra</string>
     <string name="score">calificar:  </string>
     <string name="time">tiempo:  </string>
 
@@ -7,5 +7,14 @@
     <string name="niceMsg2">¡Eso fue divertido!</string>
     <string name="niceMsg3">¡Eres asombroso</string>
     <string name="niceMsg4">¡Juguemos otra vez!</string>
-    <string name="niceMsg5">¡Atrapaste a Piggy Snake!</string>
+    <string name="niceMsg5">¡Atrapaste a Piggy!</string>
+
+    <string name="orange"></string>
+    <string name="piggysnake"></string>
+    <string name="redleaf"></string>
+    <string name="greenleaf"></string>
+    <string name="purpleleaf"></string>
+    <string name="yellowleaf"></string>
+    <string name="playagain"></string>
+    <string name="snowman"></string>
 </resources>

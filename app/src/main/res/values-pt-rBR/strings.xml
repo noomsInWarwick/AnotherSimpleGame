@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Catch Piggy Snake</string>
-    <string name="score">Score:  </string>
-    <string name="time">Time:  </string>
+    <string name="score">A Contagem: "</string>
+    <string name="time">Tempo:  </string>
 
     <string name="niceMsg1">Você foi ótimo!</string>
     <string name="niceMsg2">Foi divertido! </string>

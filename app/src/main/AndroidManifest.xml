@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.anothersimplegame">
+    package="com.piggysnake.catchme">
 
     <uses-permission android:name="android.permission.VIBRATE" />
     <application
@@ -10,7 +10,7 @@
         android:roundIcon="@mipmap/piggy_snake_launcher_round"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivity"
+            android:name="com.piggysnake.catchme.MainActivity"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBar"
             tools:ignore="LockedOrientationActivity">
