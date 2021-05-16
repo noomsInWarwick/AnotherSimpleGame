@@ -6,7 +6,7 @@ import android.os.Looper
 import android.view.View
 import android.view.animation.AccelerateInterpolator
 import android.widget.ImageView
-import kotlinx.coroutines.Runnable
+import kotlinx.coroutines.*
 
 object ImagesManagerAutumn {
 
@@ -21,16 +21,48 @@ object ImagesManagerAutumn {
         leafThree: ImageView?,
         leafFour: ImageView?
     ) {
-        imageRunnable = object : Runnable {
-            override fun run() {
-                leafNumber = descendingLeaves(
-                    leafOne, leafTwo,
-                    leafThree, leafFour, leafNumber
-                )
-                handler.postDelayed(imageRunnable, 9000L)
-            }
+        //    imageRunnable = object : Runnable {
+        //        override fun run() {
+        //            leafNumber = descendingLeaves(
+        //                leafOne, leafTwo,
+        //                leafThree, leafFour, leafNumber
+        //            )
+        //            handler.postDelayed(imageRunnable, 9000L)
+        //        }
+        //    }
+        //    handler.post(imageRunnable)
+
+        GlobalScope.launch(context = Dispatchers.Main) {
+
+
+            leafNumber = descendingLeaves(
+                leafOne, leafTwo,
+                leafThree, leafFour, leafNumber
+            )
+
+            delay(5000)
+
+            leafNumber = descendingLeaves(
+                leafOne, leafTwo,
+                leafThree, leafFour, leafNumber
+            )
+
+            delay(5000)
+
+            leafNumber = descendingLeaves(
+                leafOne, leafTwo,
+                leafThree, leafFour, leafNumber
+            )
+
+            delay(5000)
+
+            leafNumber = descendingLeaves(
+                leafOne, leafTwo,
+                leafThree, leafFour, leafNumber
+            )
+
+            // cancel()
         }
-        handler.post(imageRunnable)
     }
 
     fun setLeavesVisibility(
