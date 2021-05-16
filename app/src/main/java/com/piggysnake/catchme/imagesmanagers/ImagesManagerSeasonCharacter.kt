@@ -11,7 +11,6 @@ object ImagesManagerSeasonCharacter {
     var seasonCharacterTimer = 30000L
 
     fun setSeasonCharacterVisibility(seasonCharacter: ImageView?, isVisible: Boolean) {
-
         if (isVisible) {
             seasonCharacter!!.visibility = View.VISIBLE
         } else {
@@ -46,11 +45,9 @@ object ImagesManagerSeasonCharacter {
 
     fun doSeasonCharacter(seasonCharacterImage: ImageView?) {
         object : CountDownTimer(seasonCharacterTimer, 3000) {
-
             override fun onFinish() {
                 fadeAway(seasonCharacterImage, 8000)
             }
-
             override fun onTick(p0: Long) {
             }
         }.start()
