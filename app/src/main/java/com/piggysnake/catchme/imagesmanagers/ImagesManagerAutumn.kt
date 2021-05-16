@@ -1,18 +1,12 @@
 package com.piggysnake.catchme.imagesmanagers
 
 import android.animation.ObjectAnimator
-import android.os.Handler
-import android.os.Looper
 import android.view.View
 import android.view.animation.AccelerateInterpolator
 import android.widget.ImageView
 import kotlinx.coroutines.*
 
 object ImagesManagerAutumn {
-
-    var imageRunnable: Runnable = Runnable {}
-    var handler: Handler = Handler()
-    val mainLooper = Looper.getMainLooper()
 
     var leafNumber = 1
 
@@ -21,47 +15,17 @@ object ImagesManagerAutumn {
         leafThree: ImageView?,
         leafFour: ImageView?
     ) {
-        //    imageRunnable = object : Runnable {
-        //        override fun run() {
-        //            leafNumber = descendingLeaves(
-        //                leafOne, leafTwo,
-        //                leafThree, leafFour, leafNumber
-        //            )
-        //            handler.postDelayed(imageRunnable, 9000L)
-        //        }
-        //    }
-        //    handler.post(imageRunnable)
-
         GlobalScope.launch(context = Dispatchers.Main) {
-
-
-            leafNumber = descendingLeaves(
-                leafOne, leafTwo,
-                leafThree, leafFour, leafNumber
-            )
-
-            delay(5000)
-
-            leafNumber = descendingLeaves(
-                leafOne, leafTwo,
-                leafThree, leafFour, leafNumber
-            )
-
-            delay(5000)
-
-            leafNumber = descendingLeaves(
-                leafOne, leafTwo,
-                leafThree, leafFour, leafNumber
-            )
-
-            delay(5000)
-
-            leafNumber = descendingLeaves(
-                leafOne, leafTwo,
-                leafThree, leafFour, leafNumber
-            )
-
-            // cancel()
+            var iterCounter = 0
+            while (iterCounter < 5) {
+                leafNumber = descendingLeaves(
+                    leafOne, leafTwo,
+                    leafThree, leafFour, leafNumber
+                )
+                delay(9000)
+                iterCounter++
+            }
+            cancel()
         }
     }
 
@@ -150,6 +114,5 @@ object ImagesManagerAutumn {
     }
 
     fun cleanUp() {
-        handler.removeCallbacks(imageRunnable)
     }
 }
