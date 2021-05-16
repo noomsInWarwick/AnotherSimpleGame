@@ -2,6 +2,7 @@ package com.piggysnake.catchme.imagesmanagers
 
 import android.animation.ObjectAnimator
 import android.os.Handler
+import android.os.Looper
 import android.view.View
 import android.view.animation.AccelerateInterpolator
 import android.widget.ImageView
@@ -11,6 +12,7 @@ object ImagesManagerAutumn {
 
     var imageRunnable: Runnable = Runnable {}
     var handler: Handler = Handler()
+    val mainLooper = Looper.getMainLooper()
 
     var leafNumber = 1
 
@@ -19,7 +21,6 @@ object ImagesManagerAutumn {
         leafThree: ImageView?,
         leafFour: ImageView?
     ) {
-
         imageRunnable = object : Runnable {
             override fun run() {
                 leafNumber = descendingLeaves(
@@ -29,7 +30,6 @@ object ImagesManagerAutumn {
                 handler.postDelayed(imageRunnable, 9000L)
             }
         }
-
         handler.post(imageRunnable)
     }
 

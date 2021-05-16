@@ -50,6 +50,7 @@ class MainActivity : AppCompatActivity() {
     var randomIdx = 0
     var gameActive = true
     var countDownTimer = 30000L
+    var inactivityTimer: CountDownTimer? = null
     var spValue = 40F
     var isDone = false
     var autumnImagesManager: ImagesManagerAutumn = ImagesManagerAutumn
@@ -79,18 +80,6 @@ class MainActivity : AppCompatActivity() {
         layoutWidth = displayMetrics.widthPixels
         layoutHeight = displayMetrics.heightPixels
 
-//        Toast.makeText(
-//            this,
-//            "layoutHeight = " + layoutHeight + ", layoutWidth = " + layoutWidth, Toast.LENGTH_LONG
-//        ).show()
-
-//        val ratioValueGridWidth = .319
-//        val ratioValueGridHeight = .3125
-//        val ratioValueHeight = .64
-//        val ratioScoreHeight = .15
-//        val ratioScoreWidth = .33
-//        val ratioSP = .025
-
         var TIMELABEL = resources.getString(R.string.time)
         messagesManager.loadMessages(resources)
         playAgainButton.visibility = View.INVISIBLE
@@ -105,14 +94,9 @@ class MainActivity : AppCompatActivity() {
 
         setBackground(context, bgImage)
 
-        prepareSeasonCharacter(prefs!!.currentSeason, layoutWidth)
+        prepareSeasonCharacter(layoutWidth)
         initImagesList(bgImage)
         manageImages()
-
-        //       baseLinearLayout.getLayoutParams().height = (ratioValueHeight * layoutHeight).toInt()
-//        snowmanImageView.getLayoutParams().height = (layoutHeight * .20).toInt()
-//        playAgainButton.getLayoutParams().height = (layoutHeight * .114).toInt()
-//        playAgainButton.getLayoutParams().width = (layoutHeight * .10).toInt()
 
         when (prefs!!.currentSeason) {
             Seasons.Spring -> {
@@ -166,6 +150,15 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }.start()
+
+        inactivityTimer = object : CountDownTimer(300000, 1000) {
+            override fun onTick(millisUntilFinished: Long) {
+            }
+
+            override fun onFinish() {
+                finishAndRemoveTask()
+            }
+        }.start()
     }
 
     override fun onStart() {
@@ -180,7 +173,13 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun prepareSeasonCharacter(currentSeason: Seasons, layoutWidth: Int) {
+    override fun onUserInteraction() {
+        inactivityTimer!!.cancel()
+        inactivityTimer!!.start()
+    }
+
+
+    private fun prepareSeasonCharacter(layoutWidth: Int) {
 
         theSeasonCharacter = findViewById(R.id.snowmanImageView)
 
