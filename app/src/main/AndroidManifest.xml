@@ -4,21 +4,28 @@
     package="com.piggysnake.catchme">
 
     <uses-permission android:name="android.permission.VIBRATE" />
+
     <application
         android:icon="@mipmap/piggy_snake_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/piggy_snake_launcher_round"
         android:theme="@style/AppTheme">
-        <activity
-            android:name="com.piggysnake.catchme.MainActivity"
+        <activity android:name=".GameBoardActivity">
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBar"
-            tools:ignore="LockedOrientationActivity">
+        </activity>
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/NoActionBar"
+            tools:ignore="LockedOrientationActivity"></activity>
+        <activity android:name=".PiggySnakeSplash">
+            android:screenOrientation="portrait"
+            android:theme="@style/NoActionBar"
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
     </application>
 

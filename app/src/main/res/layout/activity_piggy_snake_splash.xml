@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mainConstraint"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#00BCD4"
+    android:orientation="vertical"
+    app:titleTextColor="@color/colorAccentLight"
+    tools:context=".PiggySnakeSplash">
+
+    <TextView
+        android:id="@+id/tv_app_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/app_name"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="@dimen/ps_main_header_text_size"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:id="@+id/ll_header_spacer_row"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:orientation="horizontal"></LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_first_image_row"
+        android:layout_width="match_parent"
+        android:layout_height="95dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/iv_bumble"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            app:srcCompat="@drawable/rsz_thebumblebee"
+            android:onClick="doStartGame" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_second_image_row"
+        android:layout_width="match_parent"
+        android:layout_height="95dp"
+        android:gravity="center|center_horizontal|center_vertical"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal|left"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/iv_pumpkin"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                app:srcCompat="@drawable/rsz_thepumpkin"
+                android:onClick="doStartGame" />
+        </LinearLayout>
+
+        <Space
+            android:layout_width="60dp"
+            android:layout_height="match_parent">
+
+        </Space>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="right|center_horizontal"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/iv_star"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                app:srcCompat="@drawable/rsz_thestar"
+                android:onClick="doStartGame" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_center_image_row"
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/piggysnake_smiley_trans"
+            android:onClick="doStartGame" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_third_image_row"
+        android:layout_width="match_parent"
+        android:layout_height="95dp"
+        android:gravity="center|center_horizontal|center_vertical"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal|left"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/iv_splat"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                app:srcCompat="@drawable/rsz_thesplat"
+                android:onClick="doStartGame" />
+        </LinearLayout>
+
+        <Space
+            android:layout_width="60dp"
+            android:layout_height="match_parent">
+
+        </Space>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="right|center_horizontal"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/iv_icecream"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                app:srcCompat="@drawable/rsz_theicecream"
+                android:onClick="doStartGame" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_last_image_row"
+        android:layout_width="match_parent"
+        android:layout_height="95dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/iv_redbug"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            app:srcCompat="@drawable/rsz_theredbug"
+            android:onClick="doStartGame" />
+    </LinearLayout>
+
+
+</LinearLayout>

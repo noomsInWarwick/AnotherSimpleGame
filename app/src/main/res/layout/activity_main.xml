@@ -1,347 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/mainConstraint"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/piggy_backdrop_autumn"
+    android:background="@drawable/piggy_backdrop"
+    android:gravity="top"
     android:orientation="vertical"
-    app:titleTextColor="@color/colorAccentLight"
     tools:context=".MainActivity">
 
-    <fragment
-        android:id="@+id/details_fragment"
-        class="com.piggysnake.catchme.fragments.FragmentToolBar"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/ps_toolbar_height"
-        android:layout_marginBottom="24dp"
-        android:background="@android:color/transparent"
-        android:orientation="horizontal"
-        tools:layout="@layout/fragment_tool_bar_constrained" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/ps_message_spaces_height"
-        android:orientation="horizontal">
-
-        <ImageView
-            android:id="@+id/orangeOne"
-            android:layout_width="45dp"
-            android:layout_height="match_parent"
-            android:paddingStart="25dp"
-            android:src="@drawable/fruit_orange_trans"
-            android:visibility="invisible" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/ps_toolbar_height"
-        android:orientation="horizontal">
-
-        <fragment
-            android:id="@+id/timer_fragment"
-            class="com.piggysnake.catchme.fragments.FragmentTimerMessages"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="?android:attr/colorMultiSelectHighlight"
-            android:baselineAligned="false"
-            android:orientation="horizontal"
-            android:textAlignment="center"
-            tools:layout="@layout/fragment_timer_n_messages" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="15dp">
-
-        <Space
-            android:layout_width="65dp"
-            android:layout_height="wrap_content" />
-
-        <ImageView
-            android:id="@+id/orangeTwo"
-            android:layout_width="45dp"
-            android:layout_height="15dp"
-            android:paddingStart="25dp"
-            android:paddingTop="5dp"
-            android:src="@drawable/fruit_orange_trans"
-            android:visibility="invisible" />
-
-        <Space
-            android:layout_width="125dp"
-            android:layout_height="wrap_content" />
-
-        <ImageView
-            android:id="@+id/orangeFour"
-            android:layout_width="45dp"
-            android:layout_height="15dp"
-            android:contentDescription="@string/orange"
-            android:paddingBottom="5dp"
-            android:src="@drawable/fruit_orange_trans"
-            android:visibility="invisible" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/ps_baselayout_height"
-        android:layout_weight="1"
-        android:orientation="horizontal">
-
-        <LinearLayout
-            android:layout_width="200dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="vertical">
-
-            <ImageView
-                android:id="@+id/imageView1"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginStart="2dp"
-                android:layout_marginTop="2dp"
-                android:layout_marginEnd="2dp"
-                android:layout_weight="1"
-                android:onClick="increaseScore"
-                android:paddingStart="10dp"
-                android:paddingEnd="10dp"
-                app:srcCompat="@drawable/piggysnake" />
-
-            <ImageView
-                android:id="@+id/orangeSix"
-                android:layout_width="match_parent"
-                android:layout_height="15dp"
-                android:paddingStart="25dp"
-                android:src="@drawable/fruit_orange_trans"
-                android:visibility="invisible" />
-
-            <ImageView
-                android:id="@+id/imageView2"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginStart="2dp"
-                android:layout_marginTop="2dp"
-                android:layout_marginEnd="2dp"
-                android:layout_weight="1"
-                android:onClick="increaseScore"
-                android:paddingStart="10dp"
-                android:paddingEnd="10dp"
-                app:srcCompat="@drawable/piggysnake" />
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="15dp" />
-
-            <ImageView
-                android:id="@+id/imageView3"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginStart="2dp"
-                android:layout_marginTop="2dp"
-                android:layout_marginEnd="2dp"
-                android:layout_weight="1"
-                android:onClick="increaseScore"
-                android:paddingStart="10dp"
-                android:paddingEnd="10dp"
-                app:srcCompat="@drawable/piggysnake" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="20dp"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <ImageView
-                android:id="@+id/fallingleaf_one"
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:src="@drawable/leaf_red"
-                android:visibility="invisible" />
-
-            <ImageView
-                android:id="@+id/fallingleaf_three"
-                android:layout_width="match_parent"
-                android:layout_height="180dp"
-                android:src="@drawable/leaf_purple"
-                android:visibility="invisible" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="200dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="vertical">
-
-            <ImageView
-                android:id="@+id/imageView4"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="2dp"
-                android:layout_weight="1"
-                android:onClick="increaseScore"
-                android:paddingStart="10dp"
-                android:paddingEnd="10dp"
-                app:srcCompat="@drawable/piggysnake" />
-
-            <ImageView
-                android:id="@+id/orangeFive"
-                android:layout_width="match_parent"
-                android:layout_height="15dp"
-                android:paddingStart="35dp"
-                android:paddingBottom="5dp"
-                android:src="@drawable/fruit_orange_trans"
-                android:visibility="invisible" />
-
-            <ImageView
-                android:id="@+id/imageView5"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="2dp"
-                android:layout_weight="1"
-                android:onClick="increaseScore"
-                android:paddingStart="10dp"
-                android:paddingEnd="10dp"
-                app:srcCompat="@drawable/piggysnake" />
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="15dp" />
-
-            <ImageView
-                android:id="@+id/imageView6"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="2dp"
-                android:layout_weight="1"
-                android:onClick="increaseScore"
-                android:paddingStart="10dp"
-                android:paddingEnd="10dp"
-                app:srcCompat="@drawable/piggysnake" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="20dp"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <ImageView
-                android:id="@+id/fallingleaf_two"
-                android:layout_width="match_parent"
-                android:layout_height="180dp"
-                android:src="@drawable/leaf_green"
-                android:visibility="invisible" />
-
-            <ImageView
-                android:id="@+id/fallingleaf_four"
-                android:layout_width="match_parent"
-                android:layout_height="180dp"
-                android:src="@drawable/leaf_yellow"
-                android:visibility="invisible" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="200dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="vertical">
-
-            <ImageView
-                android:id="@+id/imageView7"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="2dp"
-                android:layout_weight="1"
-                android:onClick="increaseScore"
-                android:paddingStart="10dp"
-                android:paddingEnd="10dp"
-                app:srcCompat="@drawable/piggysnake" />
-
-            <ImageView
-                android:id="@+id/orangeThree"
-                android:layout_width="match_parent"
-                android:layout_height="15dp"
-                android:paddingStart="25dp"
-                android:src="@drawable/fruit_orange_trans"
-                android:visibility="invisible" />
-
-            <ImageView
-                android:id="@+id/imageView8"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="2dp"
-                android:layout_weight="1"
-                android:onClick="increaseScore"
-                android:paddingStart="10dp"
-                android:paddingEnd="10dp"
-                app:srcCompat="@drawable/piggysnake" />
-
-            <ImageView
-                android:id="@+id/orangeSeven"
-                android:layout_width="match_parent"
-                android:layout_height="15dp"
-                android:paddingStart="5dp"
-                android:paddingBottom="5dp"
-                android:src="@drawable/fruit_orange_trans"
-                android:visibility="invisible" />
-
-            <ImageView
-                android:id="@+id/imageView9"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="2dp"
-                android:layout_weight="1"
-                android:onClick="increaseScore"
-                android:paddingStart="10dp"
-                android:paddingEnd="10dp"
-                app:srcCompat="@drawable/piggysnake" />
-        </LinearLayout>
-    </LinearLayout>
-
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="15dp" />
-
     <TextView
-        android:id="@+id/scoreTextView"
+        android:id="@+id/tv_app_name"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/ps_score_textview_height"
+        android:layout_height="wrap_content"
         android:gravity="center"
-        android:maxLines="1"
-        android:text="@string/score"
+        android:text="@string/app_name"
         android:textColor="@color/colorPrimaryDark"
-        android:textSize="@dimen/text_font_size"
-        android:textStyle="bold"
-        android:visibility="visible" />
+        android:textSize="@dimen/ps_main_header_text_size"
+        android:textStyle="bold" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/ps_snowman_fragment_image_height"
-        android:layout_marginBottom="5dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingTop="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/ps_start_spacer_one_height"
+            android:gravity="center_horizontal|center_vertical"
+            android:orientation="horizontal"></LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/ps_main_common_margin_top"
+            android:gravity="center_horizontal|center_vertical"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/startGameButton"
+                android:layout_width="@dimen/ps_main_startbutton_width"
+                android:layout_height="@dimen/ps_main_startbutton_height"
+                android:background="@drawable/round_button_border_bg"
+                android:gravity="center"
+                android:onClick="startGame"
+                android:padding="@dimen/ps_start_button_padding"
+                android:text="@string/start"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/ps_start_button_text_size"
+                android:textStyle="bold"
+                tools:ignore="OnClick" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/ps_start_spacer_two_height"></LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/ps_main_exit_bar_height"
+        android:gravity="center|center_horizontal|center_vertical"
         android:orientation="horizontal">
 
-        <fragment
-            android:id="@+id/start_again_fragment"
-            class="com.piggysnake.catchme.fragments.FragmentStartAgain"
-            android:layout_width="@dimen/ps_snowman_fragment_image_width"
-            android:layout_height="match_parent"
-            android:layout_marginTop="2dp"
-            android:background="?android:attr/colorMultiSelectHighlight"
-            android:orientation="horizontal"
-            android:textAlignment="center"
-            android:visibility="visible"
-            tools:layout="@layout/fragment_start_again" />
+        <ImageView
+            android:id="@+id/iv_exit_game"
+            android:layout_width="@dimen/ps_exit_width"
+            android:layout_height="@dimen/ps_exit_height"
+            android:layout_gravity="start"
+            android:contentDescription="@string/goodbye"
+            android:onClick="exitGame"
+            android:src="@drawable/trn_red_x"
+            tools:ignore="OnClick" />
 
-        <fragment
-            android:id="@+id/snowman_fragment"
-            class="com.piggysnake.catchme.fragments.FragmentSeasonCharacter"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginTop="2dp"
-            android:background="?android:attr/colorMultiSelectHighlight"
-            android:orientation="horizontal"
-            android:textAlignment="textStart"
-            android:visibility="visible"
-            tools:layout="@layout/fragment_season_character" />
+        <Space
+            android:layout_width="@dimen/ps_exit_spacer_middle"
+            android:layout_height="@dimen/ps_exit_height" />
+
+        <ImageView
+            android:id="@+id/iv_reset"
+            android:layout_width="@dimen/ps_exit_width"
+            android:layout_height="@dimen/ps_exit_height"
+            android:layout_gravity="start"
+            android:contentDescription="@string/reset"
+            android:onClick="resetSelected"
+            android:src="@drawable/trn_green_replay" />
+
     </LinearLayout>
+
 
 </LinearLayout>
