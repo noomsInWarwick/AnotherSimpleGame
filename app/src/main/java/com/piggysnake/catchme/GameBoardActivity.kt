@@ -15,6 +15,7 @@ import androidx.core.view.MotionEventCompat
 import com.piggysnake.catchme.R.drawable
 import com.piggysnake.catchme.imagesmanagers.*
 import kotlinx.android.synthetic.main.activity_game_board.*
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_season_character.*
 import kotlinx.android.synthetic.main.fragment_start_again.*
 import kotlinx.android.synthetic.main.fragment_timer_n_messages.*
