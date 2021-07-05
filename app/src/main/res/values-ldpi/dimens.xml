@@ -27,17 +27,21 @@
     <dimen name="ps_nice_message_text_height">60dp</dimen>
     <dimen name="ps_main_startbutton_height">120dp</dimen>
     <dimen name="ps_main_startbutton_width">120dp</dimen>
-    <dimen name="ps_exit_height">60dp</dimen>
-    <dimen name="ps_exit_width">60dp</dimen>
-    <dimen name="ps_start_spacer_one_height">25dp</dimen>
     <dimen name="ps_main_common_margin_top">20dp</dimen>
-    <dimen name="ps_exit_spacer_middle">30dp</dimen>
-    <dimen name="ps_main_exit_bar_height">30dp</dimen>
-    <dimen name="ps_exit_padding_top">20dp</dimen>
     <dimen name="ps_start_button_padding">20dp</dimen>
-    <dimen name="ps_start_spacer_two_height">55dp</dimen>
 
-    <dimen name="splash_header_spacer_height">25dp</dimen>
-    <dimen name="image_row_height">95dp</dimen>
-    <dimen name="center_image_row_height">135dp</dimen>
+    <dimen name="ps_exit_padding_top">20dp</dimen>
+    <dimen name="ps_exit_spacer_middle">30dp</dimen>
+    <dimen name="ps_exit_height">45dp</dimen>
+    <dimen name="ps_exit_width">45dp</dimen>
+    <dimen name="ps_main_exit_bar_height">50dp</dimen>
+
+    <dimen name="ps_start_spacer_one_height">100dp</dimen>
+    <dimen name="ps_start_spacer_two_height">180dp</dimen>
+
+    <dimen name="splash_header_spacer_height">15dp</dimen>
+    <dimen name="image_row_height">88dp</dimen>
+    <dimen name="center_image_row_height">118dp</dimen>
+    <dimen name="image_row_spacer">60dp</dimen>
+    <dimen name="timer_text_view_height">60dp</dimen>
 </resources>

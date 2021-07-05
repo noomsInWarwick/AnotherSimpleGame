@@ -38,7 +38,9 @@
     <dimen name="ps_start_spacer_one_height">185dp</dimen>
     <dimen name="ps_start_spacer_two_height">295dp</dimen>
 
-    <dimen name="splash_header_spacer_height">27dp</dimen>
+    <dimen name="splash_header_spacer_height">21dp</dimen>
     <dimen name="image_row_height">137dp</dimen>
     <dimen name="center_image_row_height">155dp</dimen>
+    <dimen name="image_row_spacer">100dp</dimen>
+    <dimen name="timer_text_view_height">60dp</dimen>
 </resources>

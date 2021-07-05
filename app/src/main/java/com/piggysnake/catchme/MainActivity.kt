@@ -13,6 +13,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : AppCompatActivity() {
 
     private lateinit var startGameBinding: ActivityMainBinding
+    private var countDownTimer: CountDownTimer? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,6 +25,17 @@ class MainActivity : AppCompatActivity() {
         window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
 
         startGameButton.startAnimation(AnimationUtils.loadAnimation(this, R.anim.shake))
+
+        // set for an exit after 5 minutes of inactivity.
+        countDownTimer = object : CountDownTimer(300000, 1000) {
+            override fun onTick(millisUntilFinished: Long) {
+            }
+
+            override fun onFinish() {
+                Thread.sleep(2000)
+                finishAndRemoveTask()
+            }
+        }.start()
     }
 
     fun startGame(view: View) {

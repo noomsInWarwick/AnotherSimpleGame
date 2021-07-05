@@ -37,8 +37,8 @@
             android:id="@+id/iv_bumble"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            app:srcCompat="@drawable/rsz_thebumblebee"
-            android:onClick="doStartGame" />
+            android:onClick="doStartGame"
+            app:srcCompat="@drawable/rsz_thebumblebee" />
     </LinearLayout>
 
     <LinearLayout
@@ -56,14 +56,14 @@
 
             <ImageView
                 android:id="@+id/iv_pumpkin"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:onClick="doStartGame"
                 app:srcCompat="@drawable/rsz_thepumpkin" />
         </LinearLayout>
 
         <Space
-            android:layout_width="60dp"
+            android:layout_width="@dimen/image_row_spacer"
             android:layout_height="match_parent">
 
         </Space>
@@ -120,7 +120,7 @@
         </LinearLayout>
 
         <Space
-            android:layout_width="60dp"
+            android:layout_width="@dimen/image_row_spacer"
             android:layout_height="match_parent">
 
         </Space>

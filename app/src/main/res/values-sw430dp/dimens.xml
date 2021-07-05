@@ -40,4 +40,6 @@
     <dimen name="splash_header_spacer_height">25dp</dimen>
     <dimen name="image_row_height">135dp</dimen>
     <dimen name="center_image_row_height">170dp</dimen>
+    <dimen name="image_row_spacer">60dp</dimen>
+    <dimen name="timer_text_view_height">60dp</dimen>
 </resources>
