@@ -16,5 +16,13 @@
     <string name="purpleleaf"></string>
     <string name="yellowleaf"></string>
     <string name="playagain"></string>
-    <string name="snowman"></string>
+
+    <string name="snowman">bonhomme de neige</string>
+    <string name="redbug">insecte rouge</string>
+    <string name="bumblebee">bourdon</string>
+    <string name="pumpkin">citrouille</string>
+
+    <string name="start">Start</string>
+    <string name="reset">Reset</string>
+    <string name="goodbye">Goodbye</string>
 </resources>

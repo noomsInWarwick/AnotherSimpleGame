@@ -16,5 +16,13 @@
     <string name="purpleleaf"></string>
     <string name="yellowleaf"></string>
     <string name="playagain"></string>
-    <string name="snowman"></string>
+
+    <string name="snowman">Monigote de Nieve</string>
+    <string name="redbug">Insecto Rojo</string>
+    <string name="bumblebee">Abejorro</string>
+    <string name="pumpkin">Calabaza</string>
+
+    <string name="start">Empezar</string>
+    <string name="reset">Reset</string>
+    <string name="goodbye">Goodbye</string>
 </resources>

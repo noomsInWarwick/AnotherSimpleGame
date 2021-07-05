@@ -24,8 +24,6 @@ class MainActivity : AppCompatActivity() {
         // To hide the status bar.
         window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
 
-        startGameButton.startAnimation(AnimationUtils.loadAnimation(this, R.anim.shake))
-
         // set for an exit after 5 minutes of inactivity.
         countDownTimer = object : CountDownTimer(300000, 1000) {
             override fun onTick(millisUntilFinished: Long) {
@@ -36,6 +34,15 @@ class MainActivity : AppCompatActivity() {
                 finishAndRemoveTask()
             }
         }.start()
+    }
+
+    override fun onStart() {
+        super.onStart()
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            Handler().postDelayed({
+                startGameButton.startAnimation(AnimationUtils.loadAnimation(this, R.anim.shake))
+            }, 2000)
+        }
     }
 
     fun startGame(view: View) {

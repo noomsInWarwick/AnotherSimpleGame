@@ -13,5 +13,6 @@
         android:contentDescription="@string/snowman"
         android:scaleType="fitStart"
         android:visibility="visible"
-        app:srcCompat="@drawable/snowman_trans" />
+        app:srcCompat="@drawable/snowman_trans"
+        android:onClick="sayFriendName" />
 </LinearLayout>

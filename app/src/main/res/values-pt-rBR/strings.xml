@@ -8,4 +8,21 @@
     <string name="niceMsg3">Você é demais!</string>
     <string name="niceMsg4">Vamos jogar de novo!</string>
     <string name="niceMsg5">Você pegou Piggy Snake</string>
+
+    <string name="orange"></string>
+    <string name="piggysnake"></string>
+    <string name="redleaf"></string>
+    <string name="greenleaf"></string>
+    <string name="purpleleaf"></string>
+    <string name="yellowleaf"></string>
+    <string name="playagain"></string>
+
+    <string name="snowman">Boneco de neve</string>
+    <string name="redbug">Bug vermelho</string>
+    <string name="bumblebee">Abelha</string>
+    <string name="pumpkin">Abóbora</string>
+
+    <string name="start">Começar</string>
+    <string name="reset">Reset</string>
+    <string name="goodbye">Goodbye</string>
 </resources>

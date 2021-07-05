@@ -1,17 +1,18 @@
 package com.piggysnake.catchme
 
-import android.app.FragmentTransaction
 import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.Drawable
 import android.os.*
 import android.os.VibrationEffect.createOneShot
+import android.speech.tts.TextToSpeech
+import android.speech.tts.TextToSpeech.*
 import android.util.DisplayMetrics
+import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.MotionEventCompat
 import com.piggysnake.catchme.R.drawable
 import com.piggysnake.catchme.imagesmanagers.*
 import kotlinx.android.synthetic.main.activity_game_board.*
@@ -26,7 +27,7 @@ import kotlin.concurrent.schedule
 import android.widget.LinearLayout as LinearLayout1
 
 @Suppress("DEPRECATION")
-class GameBoardActivity : AppCompatActivity() {
+class GameBoardActivity : AppCompatActivity(), OnInitListener {
 
     companion object {
         const val WINTERLABEL = "Winter"
@@ -42,6 +43,7 @@ class GameBoardActivity : AppCompatActivity() {
     var timer: Timer? = null
     var messageBackgroundColor = Color.BLUE
 
+    private var textToSpeech: TextToSpeech? = null
     private var score: Int = 0
     private var nbrImagesDisplayed = 0
     var imageTimer = 3000L
@@ -60,6 +62,7 @@ class GameBoardActivity : AppCompatActivity() {
     var messagesManager: MessagesManager = MessagesManager
     var layoutWidth = 0
     var layoutHeight = 0
+    private var seasonFriendName = "snowman"
 
     private var fallingleafone: ImageView? = null
     private var fallingleaftwo: ImageView? = null
@@ -160,6 +163,8 @@ class GameBoardActivity : AppCompatActivity() {
                 finishAndRemoveTask()
             }
         }.start()
+
+        textToSpeech = TextToSpeech(this, this)
     }
 
     override fun onStart() {
@@ -192,15 +197,19 @@ class GameBoardActivity : AppCompatActivity() {
         when (prefs!!.currentSeason) {
             Seasons.Spring -> {
                 theSeasonCharacter.setImageDrawable(getResources().getDrawable(R.drawable.ladybug_transparent))
+                seasonFriendName = "red bug"
             }
             Seasons.Summer -> {
                 theSeasonCharacter.setImageDrawable(getResources().getDrawable(R.drawable.bumble_transparent))
+                seasonFriendName = "bumble bee"
             }
             Seasons.Autumn -> {
                 theSeasonCharacter.setImageDrawable(getResources().getDrawable(R.drawable.pumpkin_transparent))
+                seasonFriendName = "pumpkin"
             }
             Seasons.Winter -> {
                 theSeasonCharacter.setImageDrawable(getResources().getDrawable(R.drawable.snowman_trans))
+                seasonFriendName = "snowman"
             }
         }
     }
@@ -421,10 +430,26 @@ class GameBoardActivity : AppCompatActivity() {
 
 
     override fun onTouchEvent(event: MotionEvent): Boolean {
-
-        val ft: FragmentTransaction = fragmentManager.beginTransaction()
-        val action: Int = MotionEventCompat.getActionMasked(event)
         return false
+    }
+
+    override fun onInit(status: Int) {
+        if (status == TextToSpeech.SUCCESS) {
+            val result = textToSpeech!!.setLanguage(Locale.getDefault())
+            if (result == TextToSpeech.LANG_MISSING_DATA || result == TextToSpeech.LANG_NOT_SUPPORTED) {
+                Log.e("TTS", "The specified language is not supported.")
+            }
+        } else {
+            Log.e("TTS", "Unable to initialize the TextToSpeech functionality.")
+        }
+    }
+
+    fun sayFriendName(view: View) {
+        doTalk(seasonFriendName)
+    }
+
+    private fun doTalk(text: String) {
+        textToSpeech!!.speak(text, TextToSpeech.QUEUE_FLUSH, null, "")
     }
 
 }
