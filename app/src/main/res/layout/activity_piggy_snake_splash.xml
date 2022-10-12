@@ -38,7 +38,8 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:onClick="doStartGame"
-            app:srcCompat="@drawable/rsz_thebumblebee" />
+            app:srcCompat="@drawable/rsz_thebumblebee"
+            android:contentDescription="@string/bumblebee" />
     </LinearLayout>
 
     <LinearLayout
@@ -51,7 +52,7 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_gravity="center_horizontal|left"
+            android:layout_gravity="center_horizontal|start"
             android:orientation="horizontal">
 
             <ImageView
@@ -59,7 +60,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:onClick="doStartGame"
-                app:srcCompat="@drawable/rsz_thepumpkin" />
+                app:srcCompat="@drawable/rsz_thepumpkin"
+                android:contentDescription="@string/pumpkin" />
         </LinearLayout>
 
         <Space
@@ -71,7 +73,7 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:gravity="right|center_horizontal"
+            android:gravity="end|center_horizontal"
             android:orientation="horizontal">
 
             <ImageView
@@ -79,7 +81,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:onClick="doStartGame"
-                app:srcCompat="@drawable/rsz_thestar" />
+                app:srcCompat="@drawable/rsz_thestar"
+                android:contentDescription="@string/star" />
         </LinearLayout>
     </LinearLayout>
 
@@ -95,7 +98,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="doStartGame"
-            app:srcCompat="@drawable/piggysnake_smiley_trans" />
+            app:srcCompat="@drawable/piggysnake_smiley_trans"
+            android:contentDescription="@string/piggysnake" />
     </LinearLayout>
 
     <LinearLayout
@@ -108,7 +112,7 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_gravity="center_horizontal|left"
+            android:layout_gravity="center_horizontal|start"
             android:orientation="horizontal">
 
             <ImageView
@@ -116,7 +120,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:onClick="doStartGame"
-                app:srcCompat="@drawable/rsz_thesplat" />
+                app:srcCompat="@drawable/rsz_thesplat"
+                android:contentDescription="@string/splat" />
         </LinearLayout>
 
         <Space
@@ -128,7 +133,7 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:gravity="right|center_horizontal"
+            android:gravity="end|center_horizontal"
             android:orientation="horizontal">
 
             <ImageView
@@ -136,7 +141,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:onClick="doStartGame"
-                app:srcCompat="@drawable/rsz_theicecream" />
+                app:srcCompat="@drawable/rsz_theicecream"
+                android:contentDescription="@string/icecream" />
         </LinearLayout>
     </LinearLayout>
 

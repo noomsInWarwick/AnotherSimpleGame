@@ -43,7 +43,6 @@
                 android:layout_height="@dimen/ps_main_startbutton_height"
                 android:background="@drawable/round_button_border_bg"
                 android:gravity="center"
-                android:onClick="startGame"
                 android:padding="@dimen/ps_start_button_padding"
                 android:text="@string/start"
                 android:textColor="@android:color/white"
@@ -71,22 +70,8 @@
             android:layout_height="@dimen/ps_exit_height"
             android:layout_gravity="start"
             android:contentDescription="@string/goodbye"
-            android:onClick="exitGame"
             android:src="@drawable/trn_red_x"
             tools:ignore="OnClick" />
-
-        <Space
-            android:layout_width="@dimen/ps_exit_spacer_middle"
-            android:layout_height="@dimen/ps_exit_height" />
-
-        <ImageView
-            android:id="@+id/iv_reset"
-            android:layout_width="@dimen/ps_exit_width"
-            android:layout_height="@dimen/ps_exit_height"
-            android:layout_gravity="start"
-            android:contentDescription="@string/reset"
-            android:onClick="resetSelected"
-            android:src="@drawable/trn_green_replay" />
 
     </LinearLayout>
 

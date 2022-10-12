@@ -25,6 +25,7 @@
             tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".PiggySnakeSplash"
+            android:exported="true"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBar">
             <intent-filter>

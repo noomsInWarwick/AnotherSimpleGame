@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Atrapar la Serpiente Guarra</string>
+    <string name="app_name">Catch Piggy Snake</string>
     <string name="score">calificar:  </string>
     <string name="time">tiempo:  </string>
 
@@ -16,13 +16,20 @@
     <string name="purpleleaf"></string>
     <string name="yellowleaf"></string>
     <string name="playagain"></string>
+    <string name="snowflake"></string>
+    <string name="sun"></string>
+    <string name="flower"></string>
 
     <string name="snowman">Monigote de Nieve</string>
     <string name="redbug">Insecto Rojo</string>
     <string name="bumblebee">Abejorro</string>
     <string name="pumpkin">Calabaza</string>
+    <string name="star">Estrella</string>
+    <string name="icecream">Helado</string>
 
     <string name="start">Empezar</string>
     <string name="reset">Reset</string>
     <string name="goodbye">Goodbye</string>
+    <string name="splat">splat</string>
+
 </resources>

@@ -16,13 +16,20 @@
     <string name="purpleleaf"></string>
     <string name="yellowleaf"></string>
     <string name="playagain"></string>
+    <string name="snowflake"></string>
+    <string name="sun"></string>
+    <string name="flower"></string>
 
     <string name="snowman">Boneco de neve</string>
     <string name="redbug">Bug vermelho</string>
     <string name="bumblebee">Abelha</string>
     <string name="pumpkin">Abóbora</string>
+    <string name="star">Estrela</string>
+    <string name="icecream">Sorvete</string>
 
     <string name="start">Começar</string>
     <string name="reset">Reset</string>
     <string name="goodbye">Goodbye</string>
+    <string name="splat">splat</string>
+
 </resources>

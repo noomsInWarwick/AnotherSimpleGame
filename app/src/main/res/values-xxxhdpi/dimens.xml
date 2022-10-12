@@ -1,5 +1,5 @@
 <resources>
-    <dimen name="text_font_size">35sp</dimen>
+    <dimen name="score_text_font_size">35sp</dimen>
     <dimen name="ps_main_header_text_size">24sp</dimen>
 
     <dimen name="ps_toolbar_height">60dp</dimen>
@@ -36,9 +36,11 @@
     <dimen name="ps_start_button_padding">20dp</dimen>
     <dimen name="ps_start_button_text_size">22sp</dimen>
     <dimen name="ps_start_spacer_two_height">55dp</dimen>
+
     <dimen name="splash_header_spacer_height">25dp</dimen>
     <dimen name="image_row_height">95dp</dimen>
     <dimen name="center_image_row_height">135dp</dimen>
     <dimen name="image_row_spacer">60dp</dimen>
+
     <dimen name="timer_text_view_height">60dp</dimen>
 </resources>

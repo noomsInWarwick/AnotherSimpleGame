@@ -12,7 +12,6 @@
         android:layout_weight="1"
         android:backgroundTint="@color/colorAccent"
         android:contentDescription="@string/playagain"
-        android:onClick="doRestart"
         android:scaleType="fitCenter"
         android:visibility="visible"
         app:srcCompat="@drawable/repeat" />

@@ -2,11 +2,10 @@ package com.piggysnake.catchme
 
 import android.content.Context
 import android.graphics.Color
-import android.graphics.drawable.Drawable
 import android.os.*
 import android.os.VibrationEffect.createOneShot
 import android.speech.tts.TextToSpeech
-import android.speech.tts.TextToSpeech.*
+import android.speech.tts.TextToSpeech.OnInitListener
 import android.util.DisplayMetrics
 import android.util.Log
 import android.view.MotionEvent
@@ -14,20 +13,22 @@ import android.view.View
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import com.piggysnake.catchme.R.drawable
-import com.piggysnake.catchme.imagesmanagers.*
+import com.piggysnake.catchme.imagesmanagers.ImagesManagerAutumn
+import com.piggysnake.catchme.imagesmanagers.ImagesManagerFruits
+import com.piggysnake.catchme.imagesmanagers.ImagesManagerSeasonCharacter
+import com.piggysnake.catchme.imagesmanagers.MessagesManager
 import kotlinx.android.synthetic.main.activity_game_board.*
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.fragment_season_character.*
 import kotlinx.android.synthetic.main.fragment_start_again.*
 import kotlinx.android.synthetic.main.fragment_timer_n_messages.*
+import kotlinx.android.synthetic.main.fragment_tool_bar_constrained.*
 import kotlinx.coroutines.Runnable
 import java.util.*
-import kotlin.collections.ArrayList
 import kotlin.concurrent.schedule
 import android.widget.LinearLayout as LinearLayout1
 
 @Suppress("DEPRECATION")
-class GameBoardActivity : AppCompatActivity(), OnInitListener {
+class
+GameBoardActivity : AppCompatActivity(), OnInitListener {
 
     companion object {
         const val WINTERLABEL = "Winter"
@@ -46,32 +47,37 @@ class GameBoardActivity : AppCompatActivity(), OnInitListener {
     private var textToSpeech: TextToSpeech? = null
     private var score: Int = 0
     private var nbrImagesDisplayed = 0
-    var imageTimer = 3000L
-    var handler: Handler = Handler()
-    var runnable: Runnable = Runnable {}
-    var displayedIdx = 0
-    var randomIdx = 0
-    var gameActive = true
-    var countDownTimer = 30000L
-    var inactivityTimer: CountDownTimer? = null
-    var spValue = 40F
+    private var imageTimer = 3000L
+    private var handler: Handler = Handler()
+    private var runnable: Runnable = Runnable {}
+    private var displayedIdx = 0
+    private var randomIdx = 0
+    private var gameActive = true
+    private var okToTalk = true
+    private var countDownTimer = 30000L
+    private var inactivityTimer: CountDownTimer? = null
+
+    // var spValue = 40F
     var isDone = false
     var autumnImagesManager: ImagesManagerAutumn = ImagesManagerAutumn
-    var seasonCharacterImagesManager: ImagesManagerSeasonCharacter = ImagesManagerSeasonCharacter
-    var fruitsImagesManager: ImagesManagerFruits = ImagesManagerFruits
+    private var seasonCharacterImagesManager: ImagesManagerSeasonCharacter =
+        ImagesManagerSeasonCharacter
+    private var fruitsImagesManager: ImagesManagerFruits = ImagesManagerFruits
     var messagesManager: MessagesManager = MessagesManager
-    var layoutWidth = 0
-    var layoutHeight = 0
+    private var layoutWidth = 0
+    private var layoutHeight = 0
     private var seasonFriendName = "snowman"
+    private var endOfGameFriendName = "snowman"
 
     private var fallingleafone: ImageView? = null
     private var fallingleaftwo: ImageView? = null
     private var fallingleafthree: ImageView? = null
     private var fallingleaffour: ImageView? = null
     private lateinit var theSeasonCharacter: ImageView
-    private var endOfGameImage: Drawable? = null
+    // private var endOfGameImage: Drawable? = null
 
     private var prefs: PiggySnakePreferencesReader? = null
+    private var messagesQueue: Queue<String> = LinkedList<String>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -84,7 +90,7 @@ class GameBoardActivity : AppCompatActivity(), OnInitListener {
         layoutWidth = displayMetrics.widthPixels
         layoutHeight = displayMetrics.heightPixels
 
-        var TIMELABEL = resources.getString(R.string.time)
+        val TIMELABEL = resources.getString(R.string.time)
         messagesManager.loadMessages(resources)
         playAgainButton.visibility = View.INVISIBLE
         score = 0
@@ -126,10 +132,15 @@ class GameBoardActivity : AppCompatActivity(), OnInitListener {
             override fun onFinish() {
                 if (gameActive) {
                     timerTextView.visibility = View.INVISIBLE
-                    niceMessageTextView.visibility = View.VISIBLE
-                    niceMessageTextView.text = messagesManager.getMessage()
+                    if (niceMessageTextView != null) {
+                        niceMessageTextView.visibility = View.VISIBLE
+                        val endMessage = messagesManager.getMessage()
+                        niceMessageTextView.text = endMessage
+                        doTalk(endMessage)
+                    }
                     imageView5.setImageDrawable(resources.getDrawable(prefs!!.getEndOfGameImage()))
                     imageView5.visibility = View.VISIBLE
+                    imageView5.isEnabled = true
                     autumnImagesManager.fade(imageView5, 3000)
                     playAgainButton.visibility = View.VISIBLE
                     gameActive = false
@@ -137,7 +148,9 @@ class GameBoardActivity : AppCompatActivity(), OnInitListener {
                     randomIndexesList.clear()
                     imageList.clear()
                     displayedImageList.clear()
-                    fragment_message_toolbar.setBackgroundColor(messageBackgroundColor)
+                    if (fragment_message_toolbar != null) {
+                        fragment_message_toolbar.setBackgroundColor(messageBackgroundColor)
+                    }
                 }
 
                 handler.removeCallbacks(runnable)
@@ -165,6 +178,78 @@ class GameBoardActivity : AppCompatActivity(), OnInitListener {
         }.start()
 
         textToSpeech = TextToSpeech(this, this)
+
+        // ### listeners
+        backarrow_image.setOnClickListener {
+            finishAndRemoveTask()
+        }
+        spring_image.setOnClickListener {
+            changeSeasons(SPRINGLABEL)
+        }
+        summer_image.setOnClickListener {
+            changeSeasons(SUMMERLABEL)
+        }
+        autumn_image.setOnClickListener {
+            changeSeasons(AUTUMNLABEL)
+        }
+        winter_image.setOnClickListener {
+            changeSeasons(WINTERLABEL)
+        }
+        playAgainButton.setOnClickListener {
+            finishAndRemoveTask()
+            startActivity(intent)
+        }
+
+        imageView1.setOnClickListener(object : View.OnClickListener {
+            override fun onClick(view: View) {
+                increaseScore(view)
+            }
+        })
+        imageView2.setOnClickListener(object : View.OnClickListener {
+            override fun onClick(view: View) {
+                increaseScore(view)
+            }
+        })
+        imageView3.setOnClickListener(object : View.OnClickListener {
+            override fun onClick(view: View) {
+                increaseScore(view)
+            }
+        })
+        imageView4.setOnClickListener(object : View.OnClickListener {
+            override fun onClick(view: View) {
+                increaseScore(view)
+            }
+        })
+        imageView5.setOnClickListener(object : View.OnClickListener {
+            override fun onClick(view: View) {
+                if (gameActive) {
+                    increaseScore(view)
+                } else {
+                    sayEndOfGameFriendName(view)
+                    vibrate()
+                }
+            }
+        })
+        imageView6.setOnClickListener(object : View.OnClickListener {
+            override fun onClick(view: View) {
+                increaseScore(view)
+            }
+        })
+        imageView7.setOnClickListener(object : View.OnClickListener {
+            override fun onClick(view: View) {
+                increaseScore(view)
+            }
+        })
+        imageView8.setOnClickListener(object : View.OnClickListener {
+            override fun onClick(view: View) {
+                increaseScore(view)
+            }
+        })
+        imageView9.setOnClickListener(object : View.OnClickListener {
+            override fun onClick(view: View) {
+                increaseScore(view)
+            }
+        })
     }
 
     override fun onStart() {
@@ -198,18 +283,22 @@ class GameBoardActivity : AppCompatActivity(), OnInitListener {
             Seasons.Spring -> {
                 theSeasonCharacter.setImageDrawable(getResources().getDrawable(R.drawable.ladybug_transparent))
                 seasonFriendName = "red bug"
+                endOfGameFriendName = resources.getString(R.string.star)
             }
             Seasons.Summer -> {
                 theSeasonCharacter.setImageDrawable(getResources().getDrawable(R.drawable.bumble_transparent))
                 seasonFriendName = "bumble bee"
+                endOfGameFriendName = resources.getString(R.string.icecream)
             }
             Seasons.Autumn -> {
                 theSeasonCharacter.setImageDrawable(getResources().getDrawable(R.drawable.pumpkin_transparent))
                 seasonFriendName = "pumpkin"
+                endOfGameFriendName = resources.getString(R.string.splat)
             }
             Seasons.Winter -> {
                 theSeasonCharacter.setImageDrawable(getResources().getDrawable(R.drawable.snowman_trans))
                 seasonFriendName = "snowman"
+                endOfGameFriendName = resources.getString(R.string.snowman)
             }
         }
     }
@@ -230,44 +319,41 @@ class GameBoardActivity : AppCompatActivity(), OnInitListener {
 
     private fun manageImages() {
 
-        runnable = object : Runnable {
-            override fun run() {
-
-                if (nbrImagesDisplayed >= 9) {
-                    isDone = true
-                }
-
-                // if the grid's spot is was selected/caught, have the smiley face image display.
-                for (displayedImage in displayedImageList) {
-                    displayedIdx = imageList.indexOf(displayedImage)
-                    if (imageList.indexOf(displayedImage) >= 0) {
-                        imageList[displayedIdx].setImageDrawable(resources.getDrawable(drawable.piggysnake_smiley_trans))
-                        imageList[displayedIdx].maxWidth = 75
-                        // set image that overlaps with piggy snake image to be invisible whan at the selected spot.
-                        if (displayedIdx == 1) {
-                            //  orangeTwo.visibility = View.INVISIBLE
-                        }
-                    }
-                }
-
-                // if the grid's spot has not yet been selected/caught, do not diplay anything.
-                for (image in imageList) {
-                    // if not selected yet, hide it.
-                    if (displayedImageList.indexOf(image) == -1) {
-                        image.visibility = View.INVISIBLE
-                    }
-                }
-
-                // select a random index to work with and then remove that entry from the list that holds the randomly ordered index values.
-                if (randomIndexesList.size > 0) {
-                    randomIdx = randomIndexesList.get(0)
-                    randomIndexesList.removeAt(0)
-                }
-
-                nbrImagesDisplayed++
-                imageList[randomIdx].visibility = View.VISIBLE
-                handler.postDelayed(runnable, imageTimer)
+        runnable = Runnable {
+            if (nbrImagesDisplayed >= 9) {
+                isDone = true
             }
+
+            // if the grid's spot is was selected/caught, have the smiley face image display.
+            for (displayedImage in displayedImageList) {
+                displayedIdx = imageList.indexOf(displayedImage)
+                if (imageList.indexOf(displayedImage) >= 0) {
+                    imageList[displayedIdx].setImageDrawable(resources.getDrawable(drawable.piggysnake_smiley_trans))
+                    imageList[displayedIdx].maxWidth = 75
+                    // set image that overlaps with piggy snake image to be invisible whan at the selected spot.
+                    if (displayedIdx == 1) {
+                        //  orangeTwo.visibility = View.INVISIBLE
+                    }
+                }
+            }
+
+            // if the grid's spot has not yet been selected/caught, do not diplay anything.
+            for (image in imageList) {
+                // if not selected yet, hide it.
+                if (displayedImageList.indexOf(image) == -1) {
+                    image.visibility = View.INVISIBLE
+                }
+            }
+
+            // select a random index to work with and then remove that entry from the list that holds the randomly ordered index values.
+            if (randomIndexesList.size > 0) {
+                randomIdx = randomIndexesList.get(0)
+                randomIndexesList.removeAt(0)
+            }
+
+            nbrImagesDisplayed++
+            imageList[randomIdx].visibility = View.VISIBLE
+            handler.postDelayed(runnable, imageTimer)
         }
 
         handler.post(runnable)
@@ -302,7 +388,6 @@ class GameBoardActivity : AppCompatActivity(), OnInitListener {
     }
 
     fun increaseScore(view: View) {
-
         if (gameActive) {
             vibrate()
             score++
@@ -318,29 +403,9 @@ class GameBoardActivity : AppCompatActivity(), OnInitListener {
         restartTheGame()
     }
 
-    fun restartTheGame() {
+    private fun restartTheGame() {
         finishAndRemoveTask()
         startActivity(intent)
-    }
-
-    fun doBackArrow(view: View) {
-        finishAndRemoveTask()
-    }
-
-    fun doWinter(view: View) {
-        changeSeasons(WINTERLABEL)
-    }
-
-    fun doSpring(view: View) {
-        changeSeasons(SPRINGLABEL)
-    }
-
-    fun doSummer(view: View) {
-        changeSeasons(SUMMERLABEL)
-    }
-
-    fun doAutumn(view: View) {
-        changeSeasons(AUTUMNLABEL)
     }
 
     private fun changeSeasons(season: String) {
@@ -357,7 +422,7 @@ class GameBoardActivity : AppCompatActivity(), OnInitListener {
         prefs!!.determineSeason(bgImage)
 
         // determine the piggy snake image to display - is based on season.
-        var dr = prefs!!.setPiggySnakeImage()
+        val dr = prefs!!.setPiggySnakeImage()
 
         // load the grid's views with the piggy snake image.
         imageView1.setImageDrawable(resources.getDrawable(dr))
@@ -436,6 +501,7 @@ class GameBoardActivity : AppCompatActivity(), OnInitListener {
     override fun onInit(status: Int) {
         if (status == TextToSpeech.SUCCESS) {
             val result = textToSpeech!!.setLanguage(Locale.getDefault())
+            textToSpeech!!.setPitch(1.75F)
             if (result == TextToSpeech.LANG_MISSING_DATA || result == TextToSpeech.LANG_NOT_SUPPORTED) {
                 Log.e("TTS", "The specified language is not supported.")
             }
@@ -448,8 +514,29 @@ class GameBoardActivity : AppCompatActivity(), OnInitListener {
         doTalk(seasonFriendName)
     }
 
-    private fun doTalk(text: String) {
-        textToSpeech!!.speak(text, TextToSpeech.QUEUE_FLUSH, null, "")
+    fun sayEndOfGameFriendName(view: View) {
+        doTalk(endOfGameFriendName)
     }
 
+    private fun doTalk(text: String) {
+        if (textToSpeech != null) {
+            if (!textToSpeech!!.isSpeaking) {
+                textToSpeech!!.speak(text, TextToSpeech.QUEUE_FLUSH, null, "")
+            }
+        }
+    }
+//    private fun doTalk(text: String) {
+//        messagesQueue.add(text)
+//        var currentMessage: String
+//        if (textToSpeech != null) {
+//            for (message in messagesQueue) {
+//                if (!textToSpeech!!.isSpeaking) {
+//                    currentMessage = messagesQueue.poll()
+//                    textToSpeech!!.speak(currentMessage, TextToSpeech.QUEUE_FLUSH, null, "")
+//                }
+//            }
+//        }
+//    }
+
+//
 }

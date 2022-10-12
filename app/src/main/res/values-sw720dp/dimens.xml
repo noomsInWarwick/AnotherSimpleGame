@@ -1,5 +1,5 @@
 <resources>
-    <dimen name="text_font_size">55sp</dimen>
+    <dimen name="score_text_font_size">55sp</dimen>
     <dimen name="ps_main_header_text_size">72sp</dimen>
     <dimen name="ps_start_button_text_size">34sp</dimen>
 
@@ -43,5 +43,6 @@
     <dimen name="image_row_height">215dp</dimen>
     <dimen name="center_image_row_height">225dp</dimen>
     <dimen name="image_row_spacer">220dp</dimen>
+
     <dimen name="timer_text_view_height">60dp</dimen>
 </resources>
