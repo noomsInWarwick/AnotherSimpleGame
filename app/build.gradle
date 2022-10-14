@@ -11,8 +11,8 @@ android {
         applicationId "com.piggysnake.anothersimplegame"
         minSdkVersion 21
         targetSdkVersion 32
-        versionCode 1071
-        versionName "1.7.1"
+        versionCode 1074
+        versionName "1.7.4"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {

@@ -1,5 +1,6 @@
 package com.piggysnake.catchme
 
+import android.animation.ObjectAnimator
 import android.content.Context
 import android.graphics.Color
 import android.os.*
@@ -10,6 +11,7 @@ import android.util.DisplayMetrics
 import android.util.Log
 import android.view.MotionEvent
 import android.view.View
+import android.view.animation.AccelerateInterpolator
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import com.piggysnake.catchme.R.drawable
@@ -226,7 +228,8 @@ GameBoardActivity : AppCompatActivity(), OnInitListener {
                     increaseScore(view)
                 } else {
                     sayEndOfGameFriendName(view)
-                    vibrate()
+                    rotateAndVibrate(view)
+                    //vibrate()
                 }
             }
         })
@@ -525,7 +528,8 @@ GameBoardActivity : AppCompatActivity(), OnInitListener {
             }
         }
     }
-//    private fun doTalk(text: String) {
+
+    //    private fun doTalk(text: String) {
 //        messagesQueue.add(text)
 //        var currentMessage: String
 //        if (textToSpeech != null) {
@@ -537,6 +541,18 @@ GameBoardActivity : AppCompatActivity(), OnInitListener {
 //            }
 //        }
 //    }
+    fun rotateAndVibrate(view: View) {
+        rotate(view)
+        vibrate()
+    }
+
+    private fun rotate(view: View) {
+        val rotate = ObjectAnimator.ofFloat(view, View.ROTATION, -360f, 0f)
+        rotate.duration = 1000L
+        rotate.setFloatValues(0f, 360f)
+        rotate.interpolator = AccelerateInterpolator()
+        rotate.start()
+    }
 
 //
 }

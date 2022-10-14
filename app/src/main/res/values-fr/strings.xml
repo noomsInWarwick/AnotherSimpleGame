@@ -9,16 +9,16 @@
     <string name="niceMsg4">Jouons encore!</string>
     <string name="niceMsg5">Vous avez attrapé Piggy Snake!</string>
 
-    <string name="orange"></string>
-    <string name="piggysnake"></string>
-    <string name="redleaf"></string>
-    <string name="greenleaf"></string>
-    <string name="purpleleaf"></string>
-    <string name="yellowleaf"></string>
-    <string name="playagain"></string>
-    <string name="snowflake"></string>
-    <string name="sun"></string>
-    <string name="flower"></string>
+    <string name="orange">orange</string>
+    <string name="piggysnake">piggy snake</string>
+    <string name="redleaf">feuille rouge</string>
+    <string name="greenleaf">feuille verte</string>
+    <string name="purpleleaf">feuille violette</string>
+    <string name="yellowleaf">feuille jaune</string>
+    <string name="playagain">rejouer</string>
+    <string name="snowflake">flocon de neige</string>
+    <string name="sun">sous</string>
+    <string name="flower">fleur</string>
 
     <string name="snowman">bonhomme de neige</string>
     <string name="redbug">insecte rouge</string>
@@ -31,4 +31,5 @@
     <string name="reset">Reset</string>
     <string name="goodbye">Goodbye</string>
     <string name="splat">splat</string>
+    <string name="backarrow">back arrow</string>
 </resources>

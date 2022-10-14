@@ -3,9 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/tgrad/AndroidStudioProjects/AnotherSimpleGame/app/src/main/res/layout/activity_game_board.xml" value="0.67" />
+        <entry key="..\:/Users/tgrad/AndroidStudioProjects/AnotherSimpleGame/app/src/main/res/layout/activity_game_board.xml" value="0.75" />
         <entry key="..\:/Users/tgrad/AndroidStudioProjects/AnotherSimpleGame/app/src/main/res/layout/activity_main.xml" value="0.67" />
         <entry key="..\:/Users/tgrad/AndroidStudioProjects/AnotherSimpleGame/app/src/main/res/layout/activity_piggy_snake_splash.xml" value="0.5" />
+        <entry key="..\:/Users/tgrad/AndroidStudioProjects/AnotherSimpleGame/app/src/main/res/layout/fragment_season_character.xml" value="0.6420454545454546" />
         <entry key="..\:/Users/tgrad/AndroidStudioProjects/AnotherSimpleGame/app/src/main/res/layout/fragment_start_again.xml" value="0.2986111111111111" />
         <entry key="..\:/Users/tgrad/AndroidStudioProjects/AnotherSimpleGame/app/src/main/res/layout/fragment_timer_n_messages.xml" value="0.5763888888888888" />
         <entry key="..\:/Users/tgrad/AndroidStudioProjects/AnotherSimpleGame/app/src/main/res/layout/fragment_tool_bar_constrained.xml" value="0.5151515151515151" />

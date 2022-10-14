@@ -21,23 +21,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-   <!--        <TextView
-                android:id="@+id/toolbarFragment"
-                style="@style/TextAppearance.AppCompat.Title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/ps_detail_name_margin_top"
-                android:layout_marginEnd="200dp"
-                android:layout_marginBottom="0dp"
-                android:isScrollContainer="false"
-                android:scrollbarAlwaysDrawHorizontalTrack="false"
-                android:scrollbarAlwaysDrawVerticalTrack="false"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:ignore="HardcodedText" />  -->
-
             <ImageView
                 android:id="@+id/backarrow_image"
                 android:layout_width="wrap_content"
@@ -49,7 +32,8 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/spring_image"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                android:contentDescription="@string/backarrow" />
 
             <ImageView
                 android:id="@+id/spring_image"

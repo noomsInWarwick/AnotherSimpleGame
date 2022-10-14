@@ -40,7 +40,7 @@
 
             <TextView
                 android:id="@+id/timerTextView"
-                android:layout_width="200dp"
+                android:layout_width="@dimen/time_label_width"
                 android:layout_height="@dimen/timer_text_view_height"
                 android:gravity="center|start"
                 android:text="@string/time"
